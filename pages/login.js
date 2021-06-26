@@ -1,9 +1,18 @@
-import _JSXStyle from "styled-jsx/style";
+import s from "../styles/Login.module.scss";
 
 const logIn = () => {
   return (
-    <div className="bgColor">
-      <_JSXStyle id="123">{`body {background-color: #FFF6F2}`}</_JSXStyle>
+    <div className={s.background}>
+      <form className={s.form}>
+        <label className={s.label} for="email">
+          Correo electrónico
+        </label>
+        <input id="email" type="email" />
+        <label for="password">Contraseña</label>
+        <input id="password" type="password" />
+        <input className={s.entra} id="logIn" type="submit" value="ENTRA" />
+        <input id="signIn" type="submit" value="Regístrate" />
+      </form>
     </div>
   );
 };

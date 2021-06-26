@@ -1,0 +1,57 @@
+/*PLAYFAIR*/
+@font-face {
+  font-family: Playfair;
+  src: url(./PlayfairDisplay-Regular.ttf);
+  font-weight: lighter;
+}
+@font-face {
+  font-family: Playfair;
+  src: url(./PlayfairDisplay-Medium.ttf);
+  font-weight: medium;
+}
+@font-face {
+  font-family: Playfair;
+  src: url(./PlayfairDisplay-Bold.ttf);
+  font-weight: bold;
+}
+@font-face {
+  font-family: Playfair;
+  src: url(./PlayfairDisplay-SemiBold.ttf);
+  font-weight: bolder;
+}
+/*LEXEND*/
+@font-face {
+  font-family: Lexend;
+  src: url(./Lexend-Thin.ttf);
+  font-weight: 200;
+}
+@font-face {
+  font-family: Lexend;
+  src: url(./Lexend-Light.ttf);
+  font-weight: 300;
+}
+@font-face {
+  font-family: Lexend;
+  src: url(./Lexend-Medium.ttf);
+  font-weight: 400;
+}
+@font-face {
+  font-family: Lexend;
+  src: url(./Lexend-Regular.ttf);
+  font-weight: regular;
+}
+@font-face {
+  font-family: Lexend;
+  src: url(./Lexend-SemiBold.ttf);
+  font-weight: 500;
+}
+@font-face {
+  font-family: Lexend;
+  src: url(./Lexend-Bold.ttf);
+  font-weight: bold;
+}
+@font-face {
+  font-family: Lexend;
+  src: url(./Lexend-ExtraBold.ttf);
+  font-weight: bolder;
+}
