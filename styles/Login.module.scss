@@ -1,0 +1,30 @@
+@import "./variables.scss";
+
+.background {
+  background-color: $backgroundColor;
+  width: 100vw;
+  height: 100vh;
+}
+.entra {
+  width: 116px;
+  height: 40px;
+  border-radius: 18px;
+  border-style: none;
+  color: white;
+  font-family: Lexend;
+  font-size: 18px;
+  font-weight: 500;
+  background-color: $elementsColor;
+}
+@media (max-width: 480px) {
+  .form {
+    width: 292px;
+    height: 375px;
+    padding: 2rem;
+    margin: auto;
+    border-radius: 5px;
+    background-color: magenta;
+    display: flex;
+    flex-direction: column;
+  }
+}
