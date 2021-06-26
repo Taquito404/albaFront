@@ -1,0 +1,23 @@
+.navWrapper {
+  bottom: 0;
+  height: 100vh;
+  left: 0;
+  position: sticky !important;
+  top: 0;
+  width: 15%;
+  .profilePicture {
+    height: 60px;
+    border-radius: 100%;
+    width: 60px;
+  }
+  p {
+    padding: 0;
+    margin: 0;
+  }
+  .separator {
+    background-color: white;
+    height: 0.5px;
+    width: 100%;
+  }
+
+}
