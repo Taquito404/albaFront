@@ -1,5 +1,11 @@
-const saludo = () => {
-  return <h1>hi</h1>;
+import _JSXStyle from "styled-jsx/style";
+
+const logIn = () => {
+  return (
+    <div className="bgColor">
+      <_JSXStyle id="123">{`body {background-color: #FFF6F2}`}</_JSXStyle>
+    </div>
+  );
 };
 
-export default saludo;
+export default logIn;
