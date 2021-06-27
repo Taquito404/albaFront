@@ -7,7 +7,6 @@
   width: 15%;
   .profilePicture {
     height: 60px;
-    border-radius: 100%;
     width: 60px;
   }
   p {
@@ -19,5 +18,8 @@
     height: 0.5px;
     width: 100%;
   }
-
+  .link-nav:hover{
+    text-decoration: none;
+    text-transform: none;
+  }
 }

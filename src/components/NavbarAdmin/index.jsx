@@ -1,5 +1,6 @@
 import React from 'react';
 import AdminInfo from './AdminInfo';
+import Link from 'next/link';
 import NavbarStyles from './styles/navbar.module.scss';
 
 const NavbarAdmin = () => {
@@ -11,9 +12,9 @@ const NavbarAdmin = () => {
             </div>
 
             <div className="btn-group-vertical w-100">
-                <button type="button" className="btn btn-primary text-left">Usuarios Partners</button>
-                <button type="button" className="btn btn-primary text-left">Usuarios</button>
-                <button type="button" className="btn btn-primary text-left">Cursos</button>
+                <Link href="/admin/usuarios-partner" className="text-left link-nav">Usuarios Partners</Link>
+                <Link href="/admin/usuarios" className="text-left link-nav">Usuarios</Link>
+                <Link href="/admin/cursos" className="text-left link-nav">Cursos</Link>
             </div>
         </nav>
     )
