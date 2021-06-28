@@ -1,22 +1,37 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import AdminInfo from './AdminInfo';
 import Link from 'next/link';
+
+import NavResponsive from './NavResponsive';
+import NavbarDesktop from './NavbarDesktop';
 import NavbarStyles from './styles/navbar.module.scss';
 
 const NavbarAdmin = () => {
+    const [visibility, setVisibility] = useState(false);
+
     return (
-        <nav className={`d-none d-md-block bg-primary text-white p-4 ${NavbarStyles.navWrapper}`}>
-            <AdminInfo />
-
-            <div className={`my-4 ${NavbarStyles.separator}`}>
+        <>
+            <div className="d-md-none w-100 bg-primary py-4 px-2 d-flex justify-content-end">
+                <div>
+                    <span
+                        onClick={() => setVisibility(!visibility)}
+                        className={`text-white mr-3 fas fa-bars ${NavbarStyles.iconMd}`}
+                    ></span>
+                </div>
             </div>
 
-            <div className="btn-group-vertical w-100">
-                <Link href="/admin/usuarios-partner" className="text-left link-nav">Usuarios Partners</Link>
-                <Link href="/admin/usuarios" className="text-left link-nav">Usuarios</Link>
-                <Link href="/admin/cursos" className="text-left link-nav">Cursos</Link>
-            </div>
-        </nav>
+            <NavbarDesktop />
+
+            {
+                visibility === true ?
+                    <NavResponsive
+                        setVisibility={setVisibility}
+                        visibility={visibility}
+                    />
+                    :
+                    null
+            }
+        </>
     )
 }
 
