@@ -1,6 +1,10 @@
 import React from 'react';
-import Head from 'next/head'
+import Head from 'next/head';
+import Image from 'next/image';
+import headerImg from '../../src/assets/img/elemento-ilustrativo-alba-maternidad-1.png';
 import NavbarAdmin from '../../src/components/NavbarAdmin';
+import adminStyles from './styles/adminStyles.module.scss';
+
 const Home = () => {
     return (
         <>
@@ -15,7 +19,49 @@ const Home = () => {
             </Head>
 
             <NavbarAdmin />
+            <div className="container container-fluid">
+                <div className={`w-100 text-center mt-3 shadow-sm border bg-light position-relative rounded p-4`}>
+                    <h4 className="font-weight-bold">Alba Adminstración</h4>
+                    <div className={adminStyles.imgHeader}>
+                        <Image src={headerImg} alt="header" height={100} width={50} />
+                    </div>
 
+                    <button type="button" className="btn btn-primary w-75 mt-3">
+                        Agrega un curso
+                    </button>
+                </div>
+
+                <h4 className="font-weight-bold text-center mt-3">Usuarios partner</h4>
+                <div className="row d-md-flex justify-content-md-center">
+                    <div className="col-12 col-md-4 mt-2">
+                        <div className={`card mt-2 ${adminStyles.hCard}`}>
+                            <div className="card-body">
+                                <h5 className="card-title">Usuarios partner</h5>
+                                <p className="card-text">Podras visualizar, eliminar, crear y modificar cada uno de tus usuarios partner</p>
+                                <button type="button" className="btn btn-primary w-100">Ir ahora</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-12 col-md-4 mt-2">
+                        <div className={`card mt-2 ${adminStyles.hCard}`}>
+                            <div className="card-body">
+                                <h5 className="card-title">Usuarios</h5>
+                                <p className="card-text">Podras visualizar, eliminar y modificar cada uno de tus usuarios</p>
+                                <button type="button" className="btn btn-primary w-100">Ir ahora</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-12 col-md-4 mt-2">
+                        <div className={`card mt-2 ${adminStyles.hCard}`}>
+                            <div className="card-body">
+                                <h5 className="card-title">Cursos</h5>
+                                <p className="card-text">Podras visualizar, crear y modificar tus cursos. Ademas de agregar lecciones a tu curso.</p>
+                                <button type="button" className="btn btn-primary w-100">Ir ahora</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </>
     )
 }

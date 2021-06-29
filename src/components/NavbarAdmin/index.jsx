@@ -11,7 +11,7 @@ const NavbarAdmin = () => {
 
     return (
         <>
-            <div className="d-md-none w-100 bg-primary py-4 px-2 d-flex justify-content-end">
+            <div className="d-lg-none w-100 bg-primary py-4 px-2 d-flex justify-content-end">
                 <div>
                     <span
                         onClick={() => setVisibility(!visibility)}

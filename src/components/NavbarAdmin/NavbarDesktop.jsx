@@ -3,7 +3,7 @@ import NavbarStyles from './styles/navbar.module.scss';
 
 const NavbarDesktop = () => {
     return (
-        <div className={`d-none d-md-block ${NavbarStyles.navWrapper} bg-primary p-2`}>
+        <div className={`d-none d-md-none d-lg-block ${NavbarStyles.navWrapper} bg-primary p-2`}>
             <div className="list-group-item bg-dark text-white d-flex mb-5 shadow-sm">
                 <img src="https://i.ytimg.com/vi/4GPbu19_D1s/0.jpg" alt="img" className={`${NavbarStyles.avatar}`} />
                 <div className="ml-2 d-flex flex-column">
