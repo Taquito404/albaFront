@@ -1,18 +1,13 @@
-import React, { useState } from 'react'
+import React from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import NavbarAdmin from '../../../src/components/NavbarAdmin';
-import ListElement from '../../../src/components/ListElement';
+import FormAEPartner from '../../../src/components/FormAEPartner';
 
 import adminStyles from '../styles/adminStyles.module.scss';
-import headerImg from '../../../src/assets/img/elemento-ilustrativo-alba-maternidad.png';
-
-const Cursos = () => {
-    const [cursos, setCursos] = useState([{
-        titulo: 'Titulo 1',
-        descripcion: 'descripcion 1 y no tan larga',
-        imgCurso: 'https://e00-elmundo.uecdn.es/assets/multimedia/imagenes/2020/12/14/16079475000780.jpg'
-    }])
+import headerImg from '../../../src/assets/img/elemento-ilustrativo-alba-maternidad-1.png';
+import FormImage from '../../../src/assets/img/alba-form.png';
+const EditarPartner = () => {
     return (
         <>
             <Head>
@@ -26,41 +21,28 @@ const Cursos = () => {
             </Head>
             <div className="w-100 d-flex flex-column flex-lg-row">
                 <NavbarAdmin />
-
                 <div className="container container-fluid">
                     <div className={`w-100 text-center mt-3 shadow-sm border bg-light position-relative rounded p-4`}>
-                        <h4 className="font-weight-bold">Cursos</h4>
+                        <h4 className="font-weight-bold">Editar usuario partner</h4>
                         <div className={adminStyles.imgHeader}>
                             <Image src={headerImg} alt="header" height={70} width={50} />
                         </div>
                     </div>
 
-                    <div className="mt-3 form-group">
-                        <label className="font-weight-bold">Username</label>
-                        <input type="text" className="form-control-plaintext border rounded shadow-sm p-1" placeholder="Filtra por usuario" />
+                    <div className="row mt-3">
+                        <div className="col-12 col-md-8">
+                            <FormAEPartner 
+                                buttonDesc="Editar Usuario"
+                            />
+                        </div>
+                        <div className="d-none d-md-block col-md-4 align-self-end">
+                            <Image src={FormImage} alt="form-image" height={550} />
+                        </div>
                     </div>
-                    <div className="p-2 px-4 bg-primary d-flex justify-content-between text-white align-items-center rounded">
-                        <p className="font-weight-bold">Tus Cursos</p>
-                        <span className="fas fa-plus-circle"></span>
-                    </div>
-
-                    <ul className="list-group mt-3 text-primary">
-                        <ListElement
-                            curso={cursos[0]}
-                        />
-                        <ListElement
-                            curso={cursos[0]}
-                        />
-                        <ListElement
-                            curso={cursos[0]}
-                        />
-                    </ul>
-
-
                 </div>
             </div>
         </>
     )
 }
 
-export default Cursos;
+export default EditarPartner;
