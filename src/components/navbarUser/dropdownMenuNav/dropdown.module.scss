@@ -1,0 +1,22 @@
+@import "../../../../styles/variables.scss";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-weight: 300;
+
+  .trigger {
+    border: none;
+    background-color: $navFooColor;
+  }
+  ul {
+    margin: 0;
+    font-weight: 300;
+    font-size: 1rem;
+  }
+  .isOpen {
+    margin-top: 70px;
+    font-weight: 300;
+  }
+}

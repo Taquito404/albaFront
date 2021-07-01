@@ -1,0 +1,89 @@
+@import "../../../styles/variables.scss";
+
+.navTop {
+  font-family: Lexend;
+
+  height: 67px;
+  width: 100%;
+  background-color: $navFooColor;
+  display: flex;
+  overflow: hidden;
+  .btnLogo {
+    width: 60px;
+    height: 53.66px;
+    background-image: url(./img/Group.svg);
+    background-position: center;
+    background-size: cover;
+    margin: 0 1rem 0 0.5rem;
+    align-self: center;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+  }
+  h3 {
+    width: 110px;
+    text-align: center;
+    align-self: center;
+    font-weight: 300;
+  }
+  .drop {
+    align-self: center;
+    font-weight: 300;
+  }
+  .user {
+    align-self: center;
+    display: flex;
+    height: 50px;
+  }
+  .exit {
+    align-self: center;
+    margin-left: 2rem;
+    display: flex;
+    height: 50px;
+  }
+}
+.navBot {
+  background-color: $secondNavColor;
+  font-family: Playfar;
+  height: 42px;
+  display: flex;
+  justify-content: space-between;
+  ul {
+    display: flex;
+    margin: 0;
+    list-style: none;
+    align-self: center;
+    padding: 0;
+    li {
+      margin: 0 0.5rem;
+    }
+  }
+  a {
+    align-self: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .navTop {
+    height: 42px;
+    background-color: $navFooColor;
+    .btnLogo {
+      display: inline-block;
+    }
+    .drop {
+      display: none;
+    }
+    .location {
+      display: none;
+    }
+    input {
+      display: none;
+    }
+    button {
+      display: none;
+    }
+  }
+  .navBot {
+    display: none;
+  }
+}
