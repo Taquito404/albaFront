@@ -1,6 +1,10 @@
 import React from 'react'
 import Head from 'next/head'
-import NavbarPartner  from '../../src/components/NavbarPartner';
+import NavbarPartner  from '../../src/components/NavbarPartner'
+import BarChart from '../../src/components/BarChart/BarChart'
+import PieChart from '../../src/components/PieChart/PieChart'
+import Styles from '../../styles/Partner.module.scss'
+
 
 const Home = () => {
     return (
@@ -14,9 +18,13 @@ const Home = () => {
                     href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
                 />
             </Head>
-            <div className="w-100 d-flex flex-column flex-lg-row">
-                <NavbarPartner />
-                {/* <HomeContent /> */}
+            <div className="w-100 d-flex flex-column flex-lg-row justify-content-evenly">
+                <NavbarPartner className="m-5"/>
+                
+                <div className={`d-flex flex-row justify-content-center  border-dark ${Styles.chartOutContainer}`}>
+                    <BarChart/>
+                    <PieChart/>
+                </div>
             </div>
         </>
     )
