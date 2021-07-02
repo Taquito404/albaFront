@@ -2,12 +2,11 @@
 
 .navTop {
   font-family: Lexend;
-
   height: 67px;
   width: 100%;
   background-color: $navFooColor;
   display: flex;
-  overflow: hidden;
+  justify-content: space-between;
   .btnLogo {
     width: 60px;
     height: 53.66px;
@@ -26,20 +25,51 @@
     align-self: center;
     font-weight: 300;
   }
-  .drop {
-    align-self: center;
-    font-weight: 300;
-  }
-  .user {
-    align-self: center;
+  .searchBar {
     display: flex;
-    height: 50px;
+    .drop {
+      align-self: center;
+      cursor: pointer;
+    }
+    input {
+      height: 41px;
+      align-self: center;
+      border-color: transparent;
+      border-style: solid;
+      padding-left: 0.2rem;
+      width: 30vw;
+      &::placeholder {
+        font-family: Lexend;
+        font-size: 14px;
+        font-weight: 300;
+      }
+      &:focus-within {
+        outline-color: $elementsColor;
+      }
+    }
+    .search {
+      height: 41px;
+      width: 41px;
+      align-self: center;
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+      border-color: transparent;
+      background-color: $secondNavColor;
+      cursor: pointer;
+    }
   }
-  .exit {
-    align-self: center;
-    margin-left: 2rem;
+  .settings {
     display: flex;
-    height: 50px;
+    .user {
+      align-self: center;
+      display: flex;
+      height: 50px;
+    }
+    .exit {
+      align-self: center;
+      display: flex;
+      height: 50px;
+    }
   }
 }
 .navBot {

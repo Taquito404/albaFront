@@ -7,6 +7,7 @@
   background-image: url("../src/img/login-alba-maternidad.png");
   background-repeat: no-repeat;
   background-position-x: 18vw;
+  overflow: hidden;
   Nav {
     top: 0;
     left: 0;
@@ -30,6 +31,7 @@
       border-color: gray;
       border-style: solid;
       padding: 0 0.5rem;
+      border-radius: 5px;
       -moz-box-shadow: inset 2px 2px 2px rgba(68, 68, 68, 0.25);
       -webkit-box-shadow: inset 2px 2px 2px rgba(68, 68, 68, 0.25);
       box-shadow: inset 2px 2px 2px rgba(68, 68, 68, 0.25);

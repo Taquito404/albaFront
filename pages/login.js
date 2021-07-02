@@ -4,8 +4,6 @@ import s from "../styles/Login.module.scss";
 import Input from "../src/components/inputs";
 import Nav from "../src/components/navbarUser/index";
 import Footer from "../src/components/footerUser";
-//this allows the navbar to be sticked at top
-import Sticky from "react-sticky-el";
 
 const logIn = () => {
   const [email, setEmail] = useState("");
@@ -27,10 +25,7 @@ const logIn = () => {
 
   return (
     <div className={s.background}>
-      <Sticky>
-        <Nav />
-      </Sticky>
-
+      <Nav />
       <form onSubmit={makeSubmit} className={s.form}>
         <label for="email">Correo electrónico</label>
         <Input
