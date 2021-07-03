@@ -25,8 +25,6 @@ const Usuarios = () => {
                 />
             </Head>
             <div className="w-100 d-flex flex-column flex-lg-row">
-                <NavbarAdmin />
-
                 <div className="container container-fluid">
                     <div className={`w-100 text-center mt-3 shadow-sm border bg-light position-relative rounded p-4`}>
                         <h4 className="font-weight-bold">Usuarios</h4>

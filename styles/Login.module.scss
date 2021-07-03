@@ -5,26 +5,83 @@
   width: 100vw;
   height: 100vh;
 }
-.entra {
-  width: 116px;
-  height: 40px;
-  border-radius: 18px;
-  border-style: none;
-  color: white;
+.form {
   font-family: Lexend;
+  width: 340px;
   font-size: 18px;
-  font-weight: 500;
-  background-color: $elementsColor;
+  font-weight: 600;
+  margin: 266px auto;
+  padding: 0 21px;
+  .email {
+    margin-bottom: 32px;
+  }
+  label {
+    margin-bottom: 4px;
+  }
+  input {
+    width: 326px;
+    height: 43px;
+    border-color: gray;
+    border-style: solid;
+    padding: 0 0.5rem;
+    -moz-box-shadow: inset 2px 2px 2px rgba(68, 68, 68, 0.25);
+    -webkit-box-shadow: inset 2px 2px 2px rgba(68, 68, 68, 0.25);
+    box-shadow: inset 2px 2px 2px rgba(68, 68, 68, 0.25);
+    &::placeholder {
+      font-family: Lexend;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    &:focus-within {
+      outline-color: $elementsColor;
+    }
+  }
+  .entra {
+    width: 116px;
+    height: 40px;
+    border-radius: 18px;
+    border-style: none;
+    color: white;
+    font-family: Lexend;
+    font-size: 18px;
+    font-weight: 600;
+    background-color: $elementsColor;
+    box-shadow: none;
+    margin: 47px 30px 0 0;
+  }
+  .registrar {
+    width: 140px;
+    height: 40px;
+    border-radius: 18px;
+    border-style: solid;
+    border-color: $elementsColor;
+    border-width: 2.5pt;
+    color: $elementsColor;
+    background-color: transparent;
+    font-family: Lexend;
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+    box-shadow: none;
+  }
 }
 @media (max-width: 480px) {
   .form {
+    background-color: rgb(255, 255, 255, 0.7);
     width: 292px;
-    height: 375px;
-    padding: 2rem;
-    margin: auto;
-    border-radius: 5px;
-    background-color: magenta;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    height: 375px;
+    margin: auto;
+    border-radius: 5px;
+    input {
+      height: 43px;
+      width: 250px;
+      border-radius: 4px;
+    }
+    .entra {
+      margin: 50px 0 23px 0;
+    }
   }
 }
