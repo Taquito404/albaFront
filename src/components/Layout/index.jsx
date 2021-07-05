@@ -5,13 +5,12 @@ import axios from 'axios';
 import NavbarAdmin from '../NavbarAdmin';
 
 const Layout = ({ children }) => {
-    //const router = useRouter();
     const [role, setRole] = useState('user');
 
     useEffect(() => {
         const getUser = async () => {
             try {
-                window.localStorage.setItem('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwZGRmYThjYzhmZTFhMWU4MmEwMzg5OCIsImlhdCI6MTYyNTI0NTIzOCwiZXhwIjoxNjI1MzMxNjM4fQ.VXx_uSA66ZH1MyyLAJGjhqmsAlfE8DXqjKXzp8alnI0');
+                window.localStorage.setItem('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwZGRmYThjYzhmZTFhMWU4MmEwMzg5OCIsImlhdCI6MTYyNTQ5NDg4OSwiZXhwIjoxNjI1NTgxMjg5fQ.vhESJgUH2T9gFGNf_hgFbT9O6WcSqIowVaJWYT7shZ8');
                 const token = window.localStorage.getItem('token');
                 if (!token) {
                     setRole('user');
@@ -37,12 +36,15 @@ const Layout = ({ children }) => {
                 data.user.role.map(userRole => {
                     setRole(userRole);
                 })
-                console.log(children);
             } catch (error) {
                 console.error(error);
             }
         }
         getUser()
+
+        return () => {
+            setRole('')
+        }
     }, []);
 
     const setView = (userRole) => {
@@ -60,8 +62,10 @@ const Layout = ({ children }) => {
                             />
                         </Head>
                         <div className="w-100 d-flex flex-column flex-lg-row">
-                            <NavbarAdmin/>
-                            {children}
+                            <NavbarAdmin />
+                            <div className="container container-fluid w-100">
+                                {children}
+                            </div>
                         </div>
                     </div>
                 )

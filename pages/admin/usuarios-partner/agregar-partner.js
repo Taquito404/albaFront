@@ -1,28 +1,98 @@
-import React from 'react';
-import Head from 'next/head';
+import React, { useState } from 'react';
 import Image from 'next/image';
-import NavbarAdmin from '../../../src/components/NavbarAdmin';
 import FormAEPartner from '../../../src/components/FormAEPartner';
+import { useRouter } from 'next/router';
 
 import adminStyles from '../styles/adminStyles.module.scss';
 import headerImg from '../../../src/assets/img/elemento-ilustrativo-alba-maternidad-1.png';
 import FormImage from '../../../src/assets/img/alba-form.png';
+import axios from 'axios';
 
 const AgregarPartner = () => {
+    const [user, setUser] = useState({
+        userName: '',
+        email: '',
+        name: '',
+        lastName: '',
+        cellphone: '',
+        password: '',
+    });
+    const [visibilityPopUp, setVisibilityPopUp] = useState(false);
+    const [messagePopUp, setMessagePopUp] = useState({
+        titlePopUp: '',
+        bodyPopUp: ''
+    });
+    const router = useRouter();
+
+    const handleChangeValues = ev => {
+        setUser({
+            ...user,
+            [ev.target.name]: ev.target.value
+        })
+    }
+
+    const handleSubmit = async (ev) => {
+        ev.preventDefault();
+        try {
+            const { userName, email, name, lastName, cellphone, password } = user;
+            if (!userName || !email || !name || !lastName || !cellphone || !password) {
+                setVisibilityPopUp(true);
+                setMessagePopUp({
+                    titlePopUp: 'Campos vacios',
+                    bodyPopUp: 'Favor de llenar todos los campos.'
+                })
+                return;
+            }
+            const newUser = {
+                userName,
+                email,
+                name,
+                lastName,
+                cellphone,
+                password,
+                role: 'partner'
+            };
+            const token = window.localStorage.getItem('token');
+            let options = {
+                headers: {
+                    'Content-Type': 'application/json;charset=UTF-8',
+                    "Access-Control-Allow-Origin": "*",
+                    auth: token
+                }
+            }
+            const { data } = await axios.post('https://dev-alba.herokuapp.com/users/signup', newUser, options);
+
+            console.log(data);
+            setVisibilityPopUp(true);
+            setUser({
+                userName: '',
+                email: '',
+                name: '',
+                lastName: '',
+                cellphone: '',
+                password: '',
+            });
+            router.push('/admin/usuarios-partner')
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
     return (
         <>
-            <Head>
-                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous" />
-                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/flatly/bootstrap.min.css" integrity="sha384-qF/QmIAj5ZaYFAeQcrQ6bfVMAh4zZlrGwTPY7T/M+iTTLJqJBJjwwnsE5Y0mV7QK" crossorigin="anonymous" />
-                <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-                <link
-                    rel="stylesheet"
-                    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-                />
-            </Head>
+            {
+                visibilityPopUp === true ?
+                    <div className="mt-3 animate__animated animate__backInDown alert alert-dismissible alert-danger position-fixed fixed-top w-50 mx-auto">
+                        <span className={`${adminStyles.cursor} fas fa-times mr-2`} onClick={() => setVisibilityPopUp(false)}></span>
+                        <strong className="mr-2">{messagePopUp.titlePopUp}!</strong>
+                        {messagePopUp.bodyPopUp}
+                    </div>
+                    :
+                    null
+            }
             <div className="w-100 d-flex flex-column flex-lg-row">
-                <NavbarAdmin />
                 <div className="container container-fluid">
+
                     <div className={`w-100 text-center mt-3 shadow-sm border bg-light position-relative rounded p-4`}>
                         <h4 className="font-weight-bold">Agregar usuario partner</h4>
                         <div className={adminStyles.imgHeader}>
@@ -32,8 +102,11 @@ const AgregarPartner = () => {
 
                     <div className="row mt-3">
                         <div className="col-12 col-md-8">
-                            <FormAEPartner 
+                            <FormAEPartner
                                 buttonDesc="Agregar Usuario"
+                                handleChangeValues={handleChangeValues}
+                                handleSubmit={handleSubmit}
+                                user={user}
                             />
                         </div>
                         <div className="d-none d-md-block col-md-4 align-self-end">

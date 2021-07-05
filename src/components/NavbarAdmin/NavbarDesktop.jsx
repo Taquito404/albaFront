@@ -3,15 +3,15 @@ import NavbarStyles from './styles/navbar.module.scss';
 import { useRouter } from 'next/router';
 import Link from 'next/link'
 
-const NavbarDesktop = () => {
+const NavbarDesktop = ({ user }) => {
     const router = useRouter();
     return (
         <div className={`d-none d-md-none d-lg-block ${NavbarStyles.navWrapper} bg-primary p-2`}>
             <div className="list-group-item bg-dark text-white d-flex mb-5 shadow-sm">
                 <img src="https://i.ytimg.com/vi/4GPbu19_D1s/0.jpg" alt="img" className={`${NavbarStyles.avatar}`} />
                 <div className="ml-2 d-flex flex-column">
-                    <span className=" font-weight-bold">@User</span>
-                    <span className="text-muted">Alba Admin</span>
+                    <span className=" font-weight-bold">@{user.userName}</span>
+                    <span className="text-muted">{user.name}</span>
                 </div>
             </div>
             <div className="btn-group-vertical w-100 h-75 d-flex justify-content-between">
@@ -33,12 +33,14 @@ const NavbarDesktop = () => {
                     <button
                         type="button"
                         className="btn btn-primary w-100 text-left d-flex align-items-center"
-                        onClick={()=> router.push('/admin/cursos')}
+                        onClick={() => router.push('/admin/cursos')}
                     >
                         <span className={`fas fa-video ${NavbarStyles.iconSm} mr-4`}></span>Cursos
                     </button>
                 </div>
-                <span onClick={() => console.log('Saliendo...')} className="w-100 text-left text-danger font-weight-bold">Log out</span>
+                <div className="w-100">
+                    <button type="button" onClick={() => console.log('Saliendo...')} className="btn btn-outline-danger w-100">Log out</button>
+                </div>
             </div>
         </div >
     )

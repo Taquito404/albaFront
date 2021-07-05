@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import axios from 'axios';
-
-import AdminInfo from './AdminInfo';
 import NavResponsive from './NavResponsive';
 import NavbarDesktop from './NavbarDesktop';
 import NavbarStyles from './styles/navbar.module.scss';
@@ -10,11 +8,11 @@ import NavbarStyles from './styles/navbar.module.scss';
 const NavbarAdmin = () => {
     const [isProtected, setIsProtected] = useState(false);
     const [visibility, setVisibility] = useState(false);
+    const [user, setUser] = useState({});
     const router = useRouter();
 
     useEffect(() => {
         const getProtection = async () => {
-            window.localStorage.setItem('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwZGRmYThjYzhmZTFhMWU4MmEwMzg5OCIsImlhdCI6MTYyNTI0NTIzOCwiZXhwIjoxNjI1MzMxNjM4fQ.VXx_uSA66ZH1MyyLAJGjhqmsAlfE8DXqjKXzp8alnI0');
             const token = window.localStorage.getItem('token');
             let options = {
                 headers: {
@@ -33,8 +31,35 @@ const NavbarAdmin = () => {
                 setIsProtected(true);
             });
         }
-        getProtection()
+        getProtection();
+        return()=> {
+            setIsProtected(false);
+        }
     }, []);
+
+
+    useEffect(() => {
+        const getUser = async () => {
+            try {
+                const token = window.localStorage.getItem('token');
+                let options = {
+                    headers: {
+                        'Content-Type': 'application/json;charset=UTF-8',
+                        "Access-Control-Allow-Origin": "*",
+                        auth: token,
+                    }
+                }
+                const { data } = await axios.get('https://dev-alba.herokuapp.com/users/profile', options);
+                setUser(data.user);
+            } catch (error) {
+                console.error(error);
+            }
+        }
+        getUser()
+        return()=> {
+            setUser({})
+        }
+    }, [])
 
     if (!isProtected) {
         return (
@@ -53,12 +78,13 @@ const NavbarAdmin = () => {
                     ></span>
                 </div>
             </div>
-
-            <NavbarDesktop />
-
+            <NavbarDesktop
+                user={user}
+            />
             {
                 visibility === true ?
                     <NavResponsive
+                        user={user}
                         setVisibility={setVisibility}
                         visibility={visibility}
                     />

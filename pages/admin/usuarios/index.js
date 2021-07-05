@@ -1,29 +1,62 @@
-import React, { useState } from 'react'
-import Head from 'next/head';
+import React, { useEffect, useState } from 'react'
+import axios from 'axios'
 import Image from 'next/image';
-import NavbarAdmin from '../../../src/components/NavbarAdmin';
 import ListElement from '../../../src/components/ListElement';
 
 import adminStyles from '../styles/adminStyles.module.scss';
 import headerImg from '../../../src/assets/img/elemento-ilustrativo-alba-maternidad.png';
+
 const Usuarios = () => {
-    const [users, setUsers] = useState([{
-        username: "demian1",
-        email: "ericdemian.martinez@gmail.com",
-        firstName: "Eric",
-        lastName: "Martinez"
-    }])
+    const [users, setUsers] = useState([]);
+    const [hasRemoved, setHasRemoved] = useState(false);
+
+    useEffect(() => {
+        const getUsers = async () => {
+            try {
+                const token = window.localStorage.getItem('token');
+                let options = {
+                    headers: {
+                        'Content-Type': 'application/json;charset=UTF-8',
+                        "Access-Control-Allow-Origin": "*",
+                        auth: token
+                    }
+                }
+                const { data } = await axios.get('https://dev-alba.herokuapp.com/users', options);
+                
+                const filteredUser = data.data.users.filter(user => user.role.includes('user'))
+                setUsers(filteredUser);
+            } catch (error) {
+                console.error(error)
+            }
+        }
+        getUsers();
+        return () => {
+            setUsers([])
+        }
+    }, [hasRemoved]);
+
+    const handleDeleteUser = async id => {
+        try {
+            const token = window.localStorage.getItem('token');
+            let options = {
+                headers: {
+                    'Content-Type': 'application/json;charset=UTF-8',
+                    "Access-Control-Allow-Origin": "*",
+                    auth: token
+                }
+            }
+            const { data } = await axios.delete(`https://dev-alba.herokuapp.com/users/${id}`, options);
+            setHasRemoved(true);
+            setHasRemoved(false);
+        } catch (error) {
+            console.error(error)
+        }
+
+    }
+    
     return (
         <>
-            <Head>
-                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous" />
-                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/flatly/bootstrap.min.css" integrity="sha384-qF/QmIAj5ZaYFAeQcrQ6bfVMAh4zZlrGwTPY7T/M+iTTLJqJBJjwwnsE5Y0mV7QK" crossorigin="anonymous" />
-                <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-                <link
-                    rel="stylesheet"
-                    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-                />
-            </Head>
+
             <div className="w-100 d-flex flex-column flex-lg-row">
                 <div className="container container-fluid">
                     <div className={`w-100 text-center mt-3 shadow-sm border bg-light position-relative rounded p-4`}>
@@ -42,33 +75,9 @@ const Usuarios = () => {
                     </div>
 
                     <ul className="list-group mt-3 text-primary">
-                        <ListElement
-                            user={users[0]}
-                        />
-                        <ListElement
-                            user={users[0]}
-                        />
-                        <ListElement
-                            user={users[0]}
-                        />
-                        <ListElement
-                            user={users[0]}
-                        />
-                        <ListElement
-                            user={users[0]}
-                        />
-                        <ListElement
-                            user={users[0]}
-                        />
-                        <ListElement
-                            user={users[0]}
-                        />
-                        <ListElement
-                            user={users[0]}
-                        />
-                        <ListElement
-                            user={users[0]}
-                        />
+                        {
+                            !users ? <ListElement /> : users.map(user => <ListElement user={user} key={user._id} handleDeleteUser={handleDeleteUser} />)
+                        }
                     </ul>
 
 

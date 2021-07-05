@@ -1,7 +1,7 @@
 import React from 'react'
 import NavbarStyles from './styles/navbar.module.scss';
 
-const NavResponsive = ({ setVisibility, visibility }) => {
+const NavResponsive = ({ setVisibility, visibility, user }) => {
     const openAnimate = 'animate__animated animate__backInLeft';
 
     return (
@@ -16,8 +16,8 @@ const NavResponsive = ({ setVisibility, visibility }) => {
             <div className="list-group-item bg-dark text-white d-flex mb-5 shadow-sm">
                 <img src="https://i.ytimg.com/vi/4GPbu19_D1s/0.jpg" alt="img" className={`${NavbarStyles.avatar}`} />
                 <div className="ml-2 d-flex flex-column">
-                    <span className="font-weight-bold">@User</span>
-                    <span className="text-muted">Alba Admin</span>
+                    <span className="font-weight-bold">@{user.userName}</span>
+                    <span className="text-muted">{user.name}</span>
                 </div>
             </div>
             <div className="btn-group-vertical w-100 h-50 d-flex justify-content-between">
@@ -26,7 +26,9 @@ const NavResponsive = ({ setVisibility, visibility }) => {
                     <button type="button" className="btn btn-primary w-100 text-left d-flex align-items-center"><span className={`fas fa-users ${NavbarStyles.iconSm} mr-4`}></span>Usuarios</button>
                     <button type="button" className="btn btn-primary w-100 text-left d-flex align-items-center"><span className={`fas fa-video ${NavbarStyles.iconSm} mr-4`}></span>Cursos</button>
                 </div>
-                <span onClick={() => console.log('Saliendo...')} className="w-100 text-left text-danger font-weight-bold">Log out</span>
+                <div className="w-100">
+                    <button type="button" onClick={() => console.log('Saliendo...')} className="btn btn-outline-danger w-100">Log out</button>
+                </div>
             </div>
         </div>
     )
