@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import Image from 'next/image';
-import FormAEPartner from '../../../src/components/FormAEPartner';
+import FormAEPartner from '../../../../src/components/FormAEPartner';
+
+import adminStyles from '../../styles/adminStyles.module.scss';
+import headerImg from '../../../../src/assets/img/elemento-ilustrativo-alba-maternidad-1.png';
+import FormImage from '../../../../src/assets/img/alba-form.png';
 import { useRouter } from 'next/router';
 
-import adminStyles from '../styles/adminStyles.module.scss';
-import headerImg from '../../../src/assets/img/elemento-ilustrativo-alba-maternidad-1.png';
-import FormImage from '../../../src/assets/img/alba-form.png';
-import axios from 'axios';
-
-const AgregarPartner = () => {
+const EditarUsuarios = () => {
+    const router = useRouter();
     const [user, setUser] = useState({
         userName: '',
         email: '',
@@ -17,41 +18,58 @@ const AgregarPartner = () => {
         cellphone: '',
         password: '',
     });
+    const [newUser, setNewUser] = useState({});
+
+    const [disableButton, setDisableButton] = useState(true);
     const [visibilityPopUp, setVisibilityPopUp] = useState(false);
     const [messagePopUp, setMessagePopUp] = useState({
         titlePopUp: '',
         bodyPopUp: ''
     });
-    const router = useRouter();
+
+    useEffect(() => {
+        const getUserById = async () => {
+            try {
+                const token = window.localStorage.getItem('token');
+                const { id } = router.query;
+                let options = {
+                    headers: {
+                        'Content-Type': 'application/json;charset=UTF-8',
+                        "Access-Control-Allow-Origin": "*",
+                        auth: token
+                    }
+                }
+                const { data } = await axios.get(`https://dev-alba.herokuapp.com/users/user/${id}`, options);
+                setUser(data.data.user);
+            } catch (error) {
+                console.error(error)
+            }
+        }
+        getUserById();
+        return () => {
+            setUser({
+
+            })
+        }
+    }, []);
 
     const handleChangeValues = ev => {
+        setNewUser({
+            ...newUser,
+            [ev.target.name]: ev.target.value
+        })
         setUser({
             ...user,
             [ev.target.name]: ev.target.value
         })
+        setDisableButton(false);
     }
 
     const handleSubmit = async (ev) => {
         ev.preventDefault();
         try {
-            const { userName, email, name, lastName, cellphone, password } = user;
-            if (!userName || !email || !name || !lastName || !cellphone || !password) {
-                setVisibilityPopUp(true);
-                setMessagePopUp({
-                    titlePopUp: 'Campos vacios',
-                    bodyPopUp: 'Favor de llenar todos los campos.'
-                })
-                return;
-            }
-            const newUser = {
-                userName,
-                email,
-                name,
-                lastName,
-                cellphone,
-                password,
-                role: 'partner'
-            };
+            const { id } = router.query;
+            
             const token = window.localStorage.getItem('token');
             let options = {
                 headers: {
@@ -60,17 +78,11 @@ const AgregarPartner = () => {
                     auth: token
                 }
             }
-            const { data } = await axios.post('https://dev-alba.herokuapp.com/users/signup', newUser, options);
+            const { data } = await axios.patch(`https://dev-alba.herokuapp.com/users/${id}`, newUser, options);
+
             setVisibilityPopUp(false);
-            setUser({
-                userName: '',
-                email: '',
-                name: '',
-                lastName: '',
-                cellphone: '',
-                password: '',
-            });
-            router.push('/admin/usuarios-partner')
+            setDisableButton(false);
+            router.push('/admin/usuarios')
         } catch (error) {
             console.error(error);
         }
@@ -90,9 +102,8 @@ const AgregarPartner = () => {
             }
             <div className="w-100 d-flex flex-column flex-lg-row">
                 <div className="container container-fluid">
-
                     <div className={`w-100 text-center mt-3 shadow-sm border bg-light position-relative rounded p-4`}>
-                        <h4 className="font-weight-bold">Agregar usuario partner</h4>
+                        <h4 className="font-weight-bold">Editar usuario partner</h4>
                         <div className={adminStyles.imgHeader}>
                             <Image src={headerImg} alt="header" height={70} width={50} />
                         </div>
@@ -101,9 +112,10 @@ const AgregarPartner = () => {
                     <div className="row mt-3">
                         <div className="col-12 col-md-8">
                             <FormAEPartner
-                                buttonDesc="Agregar Usuario"
+                                buttonDesc="Editar Usuario"
                                 handleChangeValues={handleChangeValues}
                                 handleSubmit={handleSubmit}
+                                disableButton={disableButton}
                                 user={user}
                             />
                         </div>
@@ -117,4 +129,4 @@ const AgregarPartner = () => {
     )
 }
 
-export default AgregarPartner
+export default EditarUsuarios;

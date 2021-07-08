@@ -9,21 +9,15 @@ import headerImg from '../../../src/assets/img/elemento-ilustrativo-alba-materni
 
 const Cursos = () => {
     const [cursos, setCursos] = useState([]);
+    const [users, setUsers] = useState([]);
+
     const [hasRemoved, setHasRemoved] = useState(false);
     const router = useRouter();
 
     useEffect(() => {
         const getCursos = async () => {
             try {
-                const token = window.localStorage.getItem('token');
-                let options = {
-                    headers: {
-                        'Content-Type': 'application/json;charset=UTF-8',
-                        "Access-Control-Allow-Origin": "*",
-                        auth: token
-                    }
-                }
-                const { data } = await axios.get('https://dev-alba.herokuapp.com/courses', options);
+                const { data } = await axios.get('https://dev-alba.herokuapp.com/courses');
                 setCursos(data.data.courses);
             } catch (error) {
                 console.error(error)
@@ -35,7 +29,7 @@ const Cursos = () => {
         }
     }, [hasRemoved]);
 
-
+   
 
     const handleDeleteCurso = async id => {
         try {
@@ -75,7 +69,7 @@ const Cursos = () => {
                         <p className="font-weight-bold">Tus Cursos</p>
                         <span
                             className={`${adminStyles.cursor} fas fa-plus-circle`}
-                            onClick={()=> router.push('/admin/cursos/agregar-curso')}
+                            onClick={() => router.push('/admin/cursos/agregar-curso')}
                         ></span>
                     </div>
 

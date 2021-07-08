@@ -37,6 +37,13 @@ const NavbarDesktop = ({ user }) => {
                     >
                         <span className={`fas fa-video ${NavbarStyles.iconSm} mr-4`}></span>Cursos
                     </button>
+                    <button
+                        type="button"
+                        className="btn btn-primary w-100 text-left d-flex align-items-center"
+                        onClick={() => router.push('/admin/categorias')}
+                    >
+                        <span className={`fas fa-folder-open ${NavbarStyles.iconSm} mr-4`}></span>Agrega categorias
+                    </button>
                 </div>
                 <div className="w-100">
                     <button type="button" onClick={() => console.log('Saliendo...')} className="btn btn-outline-danger w-100">Log out</button>

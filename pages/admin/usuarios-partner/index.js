@@ -34,7 +34,7 @@ const UsuariosPartner = () => {
         return () => {
             setUsers([])
         }
-    }, []);
+    }, [hasRemoved]);
 
     const handleDeleteUser = async id => {
         try {

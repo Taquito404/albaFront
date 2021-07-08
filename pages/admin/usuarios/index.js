@@ -22,7 +22,6 @@ const Usuarios = () => {
                     }
                 }
                 const { data } = await axios.get('https://dev-alba.herokuapp.com/users', options);
-                
                 const filteredUser = data.data.users.filter(user => user.role.includes('user'))
                 setUsers(filteredUser);
             } catch (error) {
@@ -68,7 +67,7 @@ const Usuarios = () => {
 
                     <div className="mt-3 form-group">
                         <label className="font-weight-bold">Username</label>
-                        <input type="text" className="form-control-plaintext border rounded shadow-sm p-1" placeholder="Filtra por usuario" />
+                        <input type="text" className="form-control-plaintext border rounded shadow-sm p-1" placeholder="Filtra por usuario" disabled />
                     </div>
                     <div className="p-2 px-4 bg-primary d-flex justify-content-between text-white align-items-center rounded">
                         <p className="font-weight-bold">Tus usuarios</p>

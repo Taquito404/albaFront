@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 
 const ListElement = ({ user, curso, handleDeleteCurso, handleDeleteUser }) => {
     const router = useRouter();
+    console.log(router.pathname);
     if (!curso) {
         return (
             <li key={user.name} className="list-group-item list-group-item-action flex-column align-items-start text-primary">
@@ -12,7 +13,7 @@ const ListElement = ({ user, curso, handleDeleteCurso, handleDeleteUser }) => {
                     <div className="d-flex">
                         <span
                             className={`${listStyles.cursor} fas fa-edit text-dark mr-3`}
-                            onClick={()=> router.push(`/admin/usuarios-partner/editar-partner/${user._id}`)}
+                            onClick={() => router.push(router.pathname === '/admin/usuarios' ? `/admin/usuarios/editar-usuarios/${user._id}` : `/admin/usuarios-partner/editar-partner/${user._id}`)}
                         ></span>
                         <span
                             className={`${listStyles.cursor} fas fa-times-circle text-danger`}
@@ -39,7 +40,7 @@ const ListElement = ({ user, curso, handleDeleteCurso, handleDeleteUser }) => {
                 <div className="ml-2">
                     <p className="mb-1 font-weight-bold">Titulo curso: <small className="text-muted">{!curso ? '' : curso.title}</small></p>
                     <p className="mb-2 font-weight-bold">Nombre Completo: <small className="text-muted">{!curso ? '' : curso.description}</small></p>
-                    <button className="btn btn-primary">Agregar leccion</button>
+                    <button type="button" onClick={()=> router.push(`/admin/cursos/agregar-leccion/${curso._id}`)} className="btn btn-primary">Agregar leccion</button>
                 </div>
             </div>
         </li>

@@ -9,8 +9,22 @@ import FormImage from '../../../../src/assets/img/alba-form.png';
 import { useRouter } from 'next/router';
 
 const EditarPartner = () => {
-    const [user, setUser] = useState({});
     const router = useRouter();
+    const [user, setUser] = useState({
+        userName: '',
+        email: '',
+        name: '',
+        lastName: '',
+        cellphone: '',
+    });
+    const [newUser, setNewUser] = useState({});
+
+    const [disableButton, setDisableButton] = useState(true);
+    const [visibilityPopUp, setVisibilityPopUp] = useState(false);
+    const [messagePopUp, setMessagePopUp] = useState({
+        titlePopUp: '',
+        bodyPopUp: ''
+    });
 
     useEffect(() => {
         const getUserById = async () => {
@@ -25,21 +39,64 @@ const EditarPartner = () => {
                     }
                 }
                 const { data } = await axios.get(`https://dev-alba.herokuapp.com/users/user/${id}`, options);
-                //const partners = data.data.users.filter(user => user.role.includes('partner'));
-                //setUsers(partners);
-                console.log(data)
+                setUser(data.data.user);
             } catch (error) {
                 console.error(error)
             }
         }
-            getUserById();
+        getUserById();
         return () => {
             setUser({})
         }
-    }, [])
+    }, []);
+
+    const handleChangeValues = ev => {
+        setNewUser({
+            ...newUser,
+            [ev.target.name]: ev.target.value
+        })
+        setUser({
+            ...user,
+            [ev.target.name]: ev.target.value
+        })
+        setDisableButton(false);
+    }
+
+    const handleSubmit = async (ev) => {
+        ev.preventDefault();
+        try {
+            const { id } = router.query;
+            
+            const token = window.localStorage.getItem('token');
+            let options = {
+                headers: {
+                    'Content-Type': 'application/json;charset=UTF-8',
+                    "Access-Control-Allow-Origin": "*",
+                    auth: token
+                }
+            }
+            const { data } = await axios.patch(`https://dev-alba.herokuapp.com/users/${id}`, newUser, options);
+
+            setVisibilityPopUp(false);
+            setDisableButton(false);
+            router.push('/admin/usuarios-partner')
+        } catch (error) {
+            console.error(error);
+        }
+    }
 
     return (
         <>
+            {
+                visibilityPopUp === true ?
+                    <div className="mt-3 animate__animated animate__backInDown alert alert-dismissible alert-danger position-fixed fixed-top w-50 mx-auto">
+                        <span className={`${adminStyles.cursor} fas fa-times mr-2`} onClick={() => setVisibilityPopUp(false)}></span>
+                        <strong className="mr-2">{messagePopUp.titlePopUp}!</strong>
+                        {messagePopUp.bodyPopUp}
+                    </div>
+                    :
+                    null
+            }
             <div className="w-100 d-flex flex-column flex-lg-row">
                 <div className="container container-fluid">
                     <div className={`w-100 text-center mt-3 shadow-sm border bg-light position-relative rounded p-4`}>
@@ -51,9 +108,13 @@ const EditarPartner = () => {
 
                     <div className="row mt-3">
                         <div className="col-12 col-md-8">
-                            {
-                                //<FormAEPartner buttonDesc="Editar Usuario" />
-                            }
+                            <FormAEPartner
+                                buttonDesc="Editar Usuario"
+                                handleChangeValues={handleChangeValues}
+                                handleSubmit={handleSubmit}
+                                disableButton={disableButton}
+                                user={user}
+                            />
                         </div>
                         <div className="d-none d-md-block col-md-4 align-self-end">
                             <Image src={FormImage} alt="form-image" height={550} />
