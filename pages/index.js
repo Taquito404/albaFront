@@ -9,18 +9,22 @@ import axios from 'axios';
 export default function Home() {
   const [isValidated, setIsValidated] = useState(false);
   const router = useRouter();
-  
+
   useEffect(() => {
     const redirectByRole = async () => {
       const token = window.localStorage.getItem('token');
       const today = new Date();
       const decodedToken = jwt.decode(token, { complete: true });
       if (!token) {
+        setIsValidated(true);
+        router.push('/')
         return;
       }
 
       if (decodedToken.payload.exp * 1000 < today.getTime()) {
         window.localStorage.removeItem('token');
+        setIsValidated(true);
+        router.push('/')
         return;
       }
       let options = {
@@ -40,6 +44,11 @@ export default function Home() {
         } else if (userRole === 'partner') {
           //ruta de los partners
           //setIsValidated(true);
+          setIsValidated(true);
+          return;
+        } else if (!userRole || userRole === 'user') {
+          router.push('/');
+          setIsValidated(true);
           return;
         }
       });
@@ -54,10 +63,11 @@ export default function Home() {
 
   return (
     <>
+
+
       {
-        isValidated === false ?
-          <div className="container container-fluid d-flex align-items-center justify-content-center"><h1>Loading...</h1></div>
-          :
+        !isValidated ?
+          <div className="container container-fluid "><h1>Loading...</h1></div> :
           <div className={styles.container}>
             <Head>
               <title>Create Next App</title>
@@ -120,6 +130,7 @@ export default function Home() {
             </footer>
           </div>
       }
+
     </>
   )
 }

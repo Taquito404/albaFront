@@ -34,6 +34,18 @@ const Usuarios = () => {
         }
     }, [hasRemoved]);
 
+    useEffect(() => {
+        try {
+            const token = window.localStorage.getItem('token');
+            if (!token) {
+                router.push('/')
+                return;
+            }
+        } catch (error) {
+
+        }
+    }, [])
+
     const handleDeleteUser = async id => {
         try {
             const token = window.localStorage.getItem('token');
@@ -52,7 +64,7 @@ const Usuarios = () => {
         }
 
     }
-    
+
     return (
         <>
 

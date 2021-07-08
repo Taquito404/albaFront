@@ -4,13 +4,14 @@ import jwt from 'jsonwebtoken'
 import axios from 'axios';
 import NavbarAdmin from '../NavbarAdmin';
 
+
 const Layout = ({ children }) => {
     const [role, setRole] = useState('user');
 
     useEffect(() => {
         const getUser = async () => {
             try {
-                window.localStorage.setItem('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwZGRmYThjYzhmZTFhMWU4MmEwMzg5OCIsImlhdCI6MTYyNTY2NDkyMywiZXhwIjoxNjI1NzUxMzIzfQ.9UtPle5Y8WopTPtgkeUBoF9gIzbVNmJJR-YW1jy-cNc');
+                //window.localStorage.setItem('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwZGRmYThjYzhmZTFhMWU4MmEwMzg5OCIsImlhdCI6MTYyNTY2NDkyMywiZXhwIjoxNjI1NzUxMzIzfQ.9UtPle5Y8WopTPtgkeUBoF9gIzbVNmJJR-YW1jy-cNc');
                 const token = window.localStorage.getItem('token');
                 if (!token) {
                     setRole('user');
@@ -62,7 +63,7 @@ const Layout = ({ children }) => {
                             />
                         </Head>
                         <div className="w-100 d-flex flex-column flex-lg-row">
-                            <NavbarAdmin />
+                           <NavbarAdmin />
                             <div className="container container-fluid w-100">
                                 {children}
                             </div>
@@ -96,14 +97,11 @@ const Layout = ({ children }) => {
     return (
         <>
             {
-                !role ?
-                    <div>Loading...</div>
-                    :
-                    setView(role)
+                setView(role)
             }
         </>
     )
 
 }
 
-export default Layout
+export default Layout;

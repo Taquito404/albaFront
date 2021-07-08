@@ -6,8 +6,8 @@ import NavbarDesktop from './NavbarDesktop';
 import NavbarStyles from './styles/navbar.module.scss';
 
 const NavbarAdmin = () => {
-    const [isProtected, setIsProtected] = useState(false);
     const [visibility, setVisibility] = useState(false);
+    const [hideNavbar, setHideNavbar] = useState(false);
     const [user, setUser] = useState({});
     const router = useRouter();
 
@@ -25,18 +25,17 @@ const NavbarAdmin = () => {
 
             data.user.role.map(userRole => {
                 if (userRole !== 'admin') {
-                    router.push('/')
+                    router.push('/');
+                    setHideNavbar(true)
                     return;
                 }
-                setIsProtected(true);
             });
         }
         getProtection();
-        return()=> {
-            setIsProtected(false);
+        return () => {
+            setHideNavbar(false);
         }
     }, []);
-
 
     useEffect(() => {
         const getUser = async () => {
@@ -56,18 +55,18 @@ const NavbarAdmin = () => {
             }
         }
         getUser()
-        return()=> {
+        return () => {
             setUser({})
         }
     }, [])
 
-    if (!isProtected) {
-        return (
-            <div className="container container-fluid d-flex align-items-center justify-content-center">
-                <h1>NO AUTH</h1>
-            </div>
-        )
+    const handleLogOut = () => {
+        window.localStorage.removeItem('token');
+        router.push('/');
+        setHideNavbar(true);
+        return;
     }
+
     return (
         <>
             <div className="d-lg-none w-100 bg-primary py-4 px-2 d-flex justify-content-end">
@@ -78,15 +77,22 @@ const NavbarAdmin = () => {
                     ></span>
                 </div>
             </div>
-            <NavbarDesktop
-                user={user}
-            />
             {
-                visibility === true ?
+                hideNavbar === false ?
+                    <NavbarDesktop
+                        user={user}
+                        handleLogOut={handleLogOut}
+                    />
+                    :
+                    null
+            }
+            {
+                visibility === true && hideNavbar === false ?
                     <NavResponsive
                         user={user}
                         setVisibility={setVisibility}
                         visibility={visibility}
+                        handleLogOut={handleLogOut}
                     />
                     :
                     null

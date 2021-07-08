@@ -29,7 +29,17 @@ const Cursos = () => {
         }
     }, [hasRemoved]);
 
-   
+    useEffect(() => {
+        try {
+            const token = window.localStorage.getItem('token');
+            if (!token) {
+                router.push('/')
+                return;
+            }
+        } catch (error) {
+
+        }
+    }, [])
 
     const handleDeleteCurso = async id => {
         try {

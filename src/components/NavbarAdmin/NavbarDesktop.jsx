@@ -3,12 +3,13 @@ import NavbarStyles from './styles/navbar.module.scss';
 import { useRouter } from 'next/router';
 import Link from 'next/link'
 
-const NavbarDesktop = ({ user }) => {
+const NavbarDesktop = ({ user, handleLogOut }) => {
     const router = useRouter();
+
     return (
         <div className={`d-none d-md-none d-lg-block ${NavbarStyles.navWrapper} bg-primary p-2`}>
             <div className="list-group-item bg-dark text-white d-flex mb-5 shadow-sm">
-                <img src="https://i.ytimg.com/vi/4GPbu19_D1s/0.jpg" alt="img" className={`${NavbarStyles.avatar}`} />
+                <img src={user.urlImage ? user.urlImage : 'https://www.sogapar.info/wp-content/uploads/2015/12/default-user-image.png'} alt="img" className={`${NavbarStyles.avatar}`} />
                 <div className="ml-2 d-flex flex-column">
                     <span className=" font-weight-bold">@{user.userName}</span>
                     <span className="text-muted">{user.name}</span>
@@ -46,7 +47,7 @@ const NavbarDesktop = ({ user }) => {
                     </button>
                 </div>
                 <div className="w-100">
-                    <button type="button" onClick={() => console.log('Saliendo...')} className="btn btn-outline-danger w-100">Log out</button>
+                    <button type="button" onClick={handleLogOut} className="btn btn-outline-danger w-100">Log out</button>
                 </div>
             </div>
         </div >

@@ -9,6 +9,19 @@ import { useRouter } from 'next/router';
 
 const Categories = () => {
     const router = useRouter();
+
+    useEffect(() => {
+        try {
+            const token = window.localStorage.getItem('token');
+            if (!token) {
+                router.push('/')
+                return;
+            }
+        } catch (error) {
+
+        }
+    }, [])
+
     const [category, setCategory] = useState({
         title: '',
         description: ''
