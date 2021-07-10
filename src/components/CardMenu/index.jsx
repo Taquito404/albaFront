@@ -1,9 +1,11 @@
 import React from 'react';
 import Image from 'next/image';
+import { useRouter } from 'next/dist/client/router';
 
-const CardMenu = ({ userDetailsStyles, titleCard, cardImage, isDisable }) => {
+const CardMenu = ({ userDetailsStyles, titleCard, cardImage, isDisable, path }) => {
+    const router = useRouter();
     return (
-        <div className={`${userDetailsStyles.cardMenu} ${isDisable ? userDetailsStyles.disableCard: ''}`}>
+        <div className={`${userDetailsStyles.cardMenu} ${isDisable ? userDetailsStyles.disableCard : ''}`} onClick={()=> !path ? null: router.push(path)}>
             <div>
                 <Image
                     src={cardImage}

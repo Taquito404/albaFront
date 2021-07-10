@@ -8,7 +8,7 @@ const MenuCards = ({ userDetailsStyles, Membresia, Cursos, Marketplace, Manos, S
                 userDetailsStyles={userDetailsStyles}
                 cardImage={Membresia}
                 titleCard='Mi membresia'
-
+                path='/detalles-usuario/mi-membresia'
             />
             <CardMenu
                 userDetailsStyles={userDetailsStyles}

@@ -1,18 +1,19 @@
 import React from 'react';
 import Image from 'next/image'
-import MenuCards from '../src/components/MenuCards';
+import MenuCards from '../../src/components/MenuCards';
 
-import UserImg from '../src/assets/img/UserImg.png';
-import Membresia from '../src/assets/img/iconos/DISEÑO-DE-INTERIORES.png';
-import Marketplace from '../src/assets/img/iconos/marketplace-alba-maternidad.png';
-import Manos from '../src/assets/img/iconos/NON-PROFIT.png';
-import Servicios from '../src/assets/img/iconos/servicios-medicos-alba-maternidad.png';
-import Cursos from '../src/assets/img/iconos/cursos-y-talleres-alba-maternidad.png';
-import perfil from '../src/assets/img/perfil-de-usuario-movil.png';
+import UserImg from '../../src/assets/img/UserImg.png';
+import Membresia from '../../src/assets/img/iconos/DISEÑO-DE-INTERIORES.png';
+import Marketplace from '../../src/assets/img/iconos/marketplace-alba-maternidad.png';
+import Manos from '../../src/assets/img/iconos/NON-PROFIT.png';
+import Servicios from '../../src/assets/img/iconos/servicios-medicos-alba-maternidad.png';
+import Cursos from '../../src/assets/img/iconos/cursos-y-talleres-alba-maternidad.png';
+import perfil from '../../src/assets/img/perfil-de-usuario-movil.png';
 
-import userDetailsStyles from '../styles/detallesUsuario.module.scss';
+import userDetailsStyles from './styles/detallesUsuario.module.scss';
 
 const DetallesUsuario = () => {
+    
     return (
         <div className={userDetailsStyles.container}>
             <div className={userDetailsStyles.userWrapper}>
