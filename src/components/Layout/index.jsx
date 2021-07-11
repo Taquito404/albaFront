@@ -11,7 +11,7 @@ const Layout = ({ children }) => {
     useEffect(() => {
         const getUser = async () => {
             try {
-                //window.localStorage.setItem('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwZGRmYThjYzhmZTFhMWU4MmEwMzg5OCIsImlhdCI6MTYyNTY2NDkyMywiZXhwIjoxNjI1NzUxMzIzfQ.9UtPle5Y8WopTPtgkeUBoF9gIzbVNmJJR-YW1jy-cNc');
+                window.localStorage.setItem('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwZTllYjIwMGY3M2I2MDAxNWFhYmFhZCIsImlhdCI6MTYyNjAyMjMyNywiZXhwIjoxNjI2MTA4NzI3fQ.CEhXWmHLlhMbSUUxeQLCzZxPZTeXGZ6JEv4N_XTRBqQ');
                 const token = window.localStorage.getItem('token');
                 if (!token) {
                     setRole('user');

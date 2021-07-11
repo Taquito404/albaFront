@@ -1,4 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import jwt from 'jsonwebtoken'
+
 import Image from 'next/image'
 import MenuCards from '../../src/components/MenuCards';
 
@@ -11,9 +14,56 @@ import Cursos from '../../src/assets/img/iconos/cursos-y-talleres-alba-maternida
 import perfil from '../../src/assets/img/perfil-de-usuario-movil.png';
 
 import userDetailsStyles from './styles/detallesUsuario.module.scss';
+import { useRouter } from 'next/router';
 
 const DetallesUsuario = () => {
-    
+    const router = useRouter();
+    const [user, setUser] = useState({})
+
+    useEffect(() => {
+        const getUser = async () => {
+            try {
+                const token = window.localStorage.getItem('token');
+                if (!token) {
+                    router.push('/')
+                    return;
+                }
+                const today = new Date();
+                const decodedToken = jwt.decode(token, { complete: true });
+
+                if (decodedToken.payload.exp * 1000 < today.getTime()) {
+                    window.localStorage.removeItem('token');
+                    router.push('/')
+                    return;
+                }
+
+                let options = {
+                    headers: {
+                        'Content-Type': 'application/json;charset=UTF-8',
+                        "Access-Control-Allow-Origin": "*",
+                        auth: token,
+                    }
+                }
+                const { data } = await axios.get('https://dev-alba.herokuapp.com/users/profile', options);
+
+                setUser(data.user);
+
+            } catch (error) {
+                console.error(error);
+            }
+        }
+        getUser()
+        return () => {
+            setUser({})
+        }
+    }, []);
+
+
+    const handleLogOut = () => {
+        window.localStorage.removeItem('token');
+        router.push('/')
+    }
+
     return (
         <div className={userDetailsStyles.container}>
             <div className={userDetailsStyles.userWrapper}>
@@ -21,8 +71,8 @@ const DetallesUsuario = () => {
                     <div className={userDetailsStyles.headerCard}>
                         <Image src={UserImg} alt="no-user-image" />
                         <div className={userDetailsStyles.userInfo}>
-                            <h3>User</h3>
-                            <p>user@mail.com</p>
+                            <h3>{user ? user.userName : ''}</h3>
+                            <p>{user ? user.email : ''}</p>
                         </div>
                     </div>
                     <ul>
@@ -35,7 +85,7 @@ const DetallesUsuario = () => {
                 </div>
 
                 <div className={userDetailsStyles.userDetails}>
-                    <p>Hola Usuario (¿no eres tú? <span>Cerrar sessión</span>)</p>
+                    <p>Hola Usuario (¿no eres tú? <span onClick={handleLogOut}>Cerrar sessión</span>)</p>
                     <p>Desde el escritorio de tu cuenta puedes ver tus <span>pedidos recientes</span>, gestionar tus <span>direcciones de envío</span> y <span>facturación</span> , <span>editar tu contraseña</span> y <span>los detalles de tu cuenta</span> y <span>membresía.</span></p>
                     <MenuCards
                         userDetailsStyles={userDetailsStyles}
