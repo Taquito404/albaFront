@@ -1,56 +1,44 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { useRouter } from "next/router";
 import axios from "axios";
 
 import s from "../styles/Login.module.scss";
 import Input from "../src/components/inputs";
 import Nav from "../src/components/navbarUser/index";
 import Footer from "../src/components/footerUser";
+import Link from "next/link";
 
 const logIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isError, setIsError] = useState("errorDiv");
   const [isErrorText, setIsErrorText] = useState("errorText");
-  const [isRegister, setIsRegister] = useState("registrar");
+  const router = useRouter();
+
   const makeSubmit = async (event) => {
     event.preventDefault();
-    const taco = '{"email":"taco123@gmail.com","password":"taco123"}';
     try {
       const logIn = {
         email,
         password,
       };
-      await console.log(logIn);
       await setIsError("errorDiv");
       await setIsErrorText("errorText");
-
-      const token = window.localStorage.getItem("token");
-      let headers = {
-        "Content-Type": "application/json;charset=UTF-8",
-        "Access-Control-Allow-Origin": "*",
-        auth: token,
-      };
-      // console.log(headers);
       const { data } = await axios.post(
-        "https://dev-alba.herokuapp.com/users",
-        taco,
-        {
-          headers,
-        }
+        "https://dev-alba.herokuapp.com/users/signIn",
+        logIn
       );
-      console.log(data);
+      const token = data.data.token;
+      const setToken = window.localStorage.setItem("token", token);
+      setToken;
+      if (token) {
+        router.push("/detalles-usuario");
+      }
     } catch (error) {
-      console.log(error);
+      console.log(error.message);
       if ((error = 400)) {
         await setIsError("errorDivDisplay"), setIsErrorText("errorTextDisplay");
       }
-    }
-  };
-  const registerForm = async (event) => {
-    try {
-      await console.log("aaa");
-    } catch (error) {
-      await console.log(error);
     }
   };
   return (
@@ -81,17 +69,11 @@ const logIn = () => {
         <button className={s.entra} id="logIn" type="submit">
           ENTRA
         </button>
-        <button
-          className={s[isRegister]}
-          id="signIn"
-          type="button"
-          onClick={() => {
-            registerForm();
-          }}
-        >
-          REGÍSTRATE
-        </button>
-        {/* <button>atrás</button> */}
+        <Link href="/users/registrarse">
+          <button className={s.registrar} id="signIn" type="button">
+            REGÍSTRATE
+          </button>
+        </Link>
       </form>
       <Footer />
     </div>

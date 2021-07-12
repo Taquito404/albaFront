@@ -1,4 +1,5 @@
 import s from "./footer.module.scss";
+import Link from "next/link";
 const Footer = () => {
   return (
     <div className={s.footer}>
@@ -26,7 +27,9 @@ const Footer = () => {
             <a>Quienes somos</a>
           </li>
           <li>
-            <a href="/login">Crea tu cuenta</a>
+            <Link href="/login">
+              <a>Crea tu cuenta</a>
+            </Link>
           </li>
         </ul>
         <div className={s.contact}>
