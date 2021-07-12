@@ -1,0 +1,70 @@
+.ontop {
+  z-index: 1;
+  position: relative;
+  color: #ee8d80;
+
+ 
+}
+
+.under {
+  z-index: 0;
+  // margin-bottom: 52.1vh;
+}
+
+.placing {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding-top: 10vh;
+  padding-right: 15vh;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  padding-left: 10vh;
+  padding-top: 0vh;
+  padding-bottom: 30vh;
+  position: relative;
+}
+
+.courseBarContainer {
+  margin-top: 2.5vh;
+  margin-left: 65px;
+  display: flex;
+  background-color: #FFF5F3 ;
+  // justify-content: space-around;
+}
+
+.courseBarLeft {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  z-index: 0;
+  // justify-content: flex-end;
+  // padding-right: 40vh;
+}
+
+.courseBarRight {
+  display: flex;
+  flex-direction: row;
+  margin-left: 65vw;
+  // margin-right: 322px;
+}
+
+.search {
+  display: flex;
+  margin-top: 1vh;
+  margin-right: 5vw;
+  height: 5vh;
+  width: 15.5vw;
+}
+
+.background {
+  background-color: #FFF5F3 ;
+}
+
+.cardStyle {
+  display: flex;
+  flex-direction: row;
+}
