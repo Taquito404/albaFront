@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-import Image from "next/image";
 import InputNav from "./inputNav";
-import Usuario from "./img/USUARIO.png";
 import s from "./Navbar.module.scss";
 import Drop from "./dropdownMenuNav/drop";
 
@@ -19,8 +17,13 @@ const Nav = () => {
   return (
     <div>
       <div className={s.navTop}>
+        <svg className={s.dropMobile} />
         <button className={s.btnLogo}></button>
-        <h3 className={s.location}>Tu ubicación: ---</h3>
+        <h3 className={s.location}>
+          Tu ubicación:
+          <br />
+          ---
+        </h3>
         <form onSubmit={makeSearch} className={s.searchBar}>
           <Drop className={s.drop} />
           <InputNav
@@ -34,11 +37,11 @@ const Nav = () => {
         </form>
         <div className={s.settings}>
           <div className={s.user}>
-            <Image alt="" width={50} src={Usuario} />
-            <h3>Hola, aaaaaa</h3>
+            <svg />
+            <h3>Hola, MariaLuisa</h3>
           </div>
           <div className={s.exit}>
-            <Image alt="" width={50} src={Usuario} />
+            <svg />
             <h3>Cerrar sesión</h3>
           </div>
         </div>
@@ -46,7 +49,7 @@ const Nav = () => {
       <div className={s.navBot}>
         <ul>
           <li>
-            <a>DIRECTORIO</a>
+            <a href="www.facebook.com">DIRECTORIO</a>
           </li>
           <li>
             <a>CURSOS Y TALLERES</a>

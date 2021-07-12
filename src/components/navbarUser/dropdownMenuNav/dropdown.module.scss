@@ -11,10 +11,18 @@
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
   cursor: pointer;
+
   .trigger {
     border: none;
     background-color: $secondNavColor;
     cursor: pointer;
+    svg {
+      background-image: url("../img/Vector.svg");
+      background-repeat: no-repeat;
+      background-position-x: right;
+      width: 10px;
+      height: 11px;
+    }
   }
   .isOpen {
     margin-top: 70px;

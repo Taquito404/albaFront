@@ -55,7 +55,7 @@ const Dropdown = ({
         })}
         {...getToggleButtonProps()}
       >
-        Todas las categorías
+        Todas las categorías <svg />
         {/* {selectedItem?.label ?? placeholderLabel} */}
       </button>
       <ul className={styles.menu} {...getMenuProps()}>

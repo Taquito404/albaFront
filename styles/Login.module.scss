@@ -6,12 +6,16 @@
   min-height: 100vh;
   background-image: url("../src/img/login-alba-maternidad.png");
   background-repeat: no-repeat;
-  background-position-x: 18vw;
+  background-position: 19vw 15vh;
   overflow: hidden;
   Nav {
     top: 0;
     left: 0;
   }
+  .none {
+    display: none;
+  }
+
   .form {
     font-family: Lexend;
     width: 340px;
@@ -19,6 +23,29 @@
     font-weight: 600;
     margin: 266px auto;
     box-sizing: border-box;
+    .errorDiv {
+      display: none;
+    }
+    .errorText {
+      display: none;
+    }
+    .errorDivDisplay {
+      display: block;
+      height: 5rem;
+      background: rgba(254, 60, 60, 0.8);
+      border-radius: 10px;
+      width: 96%;
+      color: white;
+      margin-bottom: 1rem;
+      display: flex;
+      justify-content: center;
+      .errorTextDisplay {
+        align-self: center;
+        width: 80%;
+        height: 80%;
+      }
+    }
+
     .email {
       margin-bottom: 32px;
     }
