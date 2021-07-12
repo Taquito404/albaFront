@@ -38,7 +38,7 @@
 
 .courseBarLeft {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   position: absolute;
   z-index: 0;
   // justify-content: flex-end;
@@ -47,7 +47,7 @@
 
 .courseBarRight {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   margin-left: 65vw;
   // margin-right: 322px;
 }
@@ -66,5 +66,28 @@
 
 .cardStyle {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+}
+
+@media screen and (min-device-width: 768px) {
+  .cardStyle {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .courseBarLeft {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    z-index: 0;
+    // justify-content: flex-end;
+    // padding-right: 40vh;
+  }
+
+  .courseBarRight {
+    display: flex;
+    flex-direction: row;
+    margin-left: 65vw;
+    // margin-right: 322px;
+  }
 }
