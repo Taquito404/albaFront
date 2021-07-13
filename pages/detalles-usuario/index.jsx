@@ -18,7 +18,7 @@ import { useRouter } from 'next/router';
 
 const DetallesUsuario = () => {
     const router = useRouter();
-    const [user, setUser] = useState({})
+    const [user, setUser] = useState({});
 
     useEffect(() => {
         const getUser = async () => {

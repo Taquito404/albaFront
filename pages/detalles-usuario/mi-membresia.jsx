@@ -119,7 +119,7 @@ const MiMembresia = () => {
                         </div>
 
                         <div className={miMembresiaStyles.buttonWrapper}>
-                            <button type="button" onClick={handleLogOut}>Salir</button>
+                            <button type="button" onClick={handleLogOut}>Regresar</button>
                         </div>
                     </div>
 
