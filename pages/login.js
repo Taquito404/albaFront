@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
+import Link from "next/link";
 import axios from "axios";
 
 import s from "../styles/Login.module.scss";
 import Input from "../src/components/inputs";
-import Nav from "../src/components/navbarUser/index";
-import Footer from "../src/components/footerUser";
-import Link from "next/link";
 
 const logIn = () => {
   const [email, setEmail] = useState("");
@@ -32,7 +30,7 @@ const logIn = () => {
       const setToken = window.localStorage.setItem("token", token);
       setToken;
       if (token) {
-        router.push("/detalles-usuario");
+        router.push("/");
       }
     } catch (error) {
       console.log(error.message);
@@ -43,8 +41,6 @@ const logIn = () => {
   };
   return (
     <div className={s.background}>
-      <Nav />
-
       <form onSubmit={makeSubmit} className={s.form}>
         <div className={s[isError]}>
           <h3 className={s[isErrorText]}>
@@ -69,13 +65,12 @@ const logIn = () => {
         <button className={s.entra} id="logIn" type="submit">
           ENTRA
         </button>
-        <Link href="/users/registrarse">
+        <Link href="/registrarse">
           <button className={s.registrar} id="signIn" type="button">
             REGÍSTRATE
           </button>
         </Link>
       </form>
-      <Footer />
     </div>
   );
 };

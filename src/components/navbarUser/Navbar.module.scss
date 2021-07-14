@@ -99,6 +99,12 @@
       height: 100%;
       width: fit-content;
       margin-right: 0.5rem;
+      .hide {
+        display: none;
+      }
+      .show {
+        display: inline-block;
+      }
       svg {
         background-image: url("./img/logOut.svg");
         width: 36px;

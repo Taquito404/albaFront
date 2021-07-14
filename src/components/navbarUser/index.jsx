@@ -1,10 +1,36 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import InputNav from "./inputNav";
 import s from "./Navbar.module.scss";
 import Drop from "./dropdownMenuNav/drop";
+import { useRouter } from "next/router";
+import Link from "next/link";
 
 const Nav = () => {
+  const router = useRouter();
   const [search, setSearch] = useState("");
+  const [logIn, setLogIn] = useState("hide");
+  const [logOut, setLogOut] = useState("hide");
+
+  const handleLogIn = () => {
+    router.push("/login");
+  };
+  const handleLogOut = () => {
+    if (window.localStorage.getItem("token")) {
+      window.localStorage.removeItem("token");
+      router.push("/");
+    } else {
+      setLogIn("show");
+    }
+  };
+  useEffect(() => {
+    if (!window.localStorage.getItem("token")) {
+      setLogOut("hide");
+      setLogIn("show");
+    } else {
+      setLogOut("show");
+      setLogIn("hide");
+    }
+  });
 
   const makeSearch = async (event) => {
     event.preventDefault();
@@ -18,7 +44,9 @@ const Nav = () => {
     <div>
       <div className={s.navTop}>
         <svg className={s.dropMobile} />
-        <button className={s.btnLogo}></button>
+        <Link href="/">
+          <button className={s.btnLogo}></button>
+        </Link>
         <h3 className={s.location}>
           Tu ubicación:
           <br />
@@ -41,15 +69,21 @@ const Nav = () => {
             <h3>Hola, MariaLuisa</h3>
           </div>
           <div className={s.exit}>
-            <svg />
-            <h3>Cerrar sesión</h3>
+            <div onClick={handleLogIn} className={s[logIn]}>
+              <svg />
+              <h3>Login</h3>
+            </div>
+            <div onClick={handleLogOut} className={s[logOut]}>
+              <svg />
+              <h3>Cerrar sesión</h3>
+            </div>
           </div>
         </div>
       </div>
       <div className={s.navBot}>
         <ul>
           <li>
-            <a href="www.facebook.com">DIRECTORIO</a>
+            <a>DIRECTORIO</a>
           </li>
           <li>
             <a>CURSOS Y TALLERES</a>
