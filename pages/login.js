@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import axios from "axios";
-
 import s from "../styles/Login.module.scss";
 import Input from "../src/components/inputs";
 
@@ -23,7 +22,8 @@ const logIn = () => {
       await setIsError("errorDiv");
       await setIsErrorText("errorText");
       const { data } = await axios.post(
-        "https://dev-alba.herokuapp.com/users/signIn",
+        "https://alba-app.us-south.cf.appdomain.cloud/users/signIn",
+        // `${process.env.DB_URL}/users/signIn`,
         logIn
       );
       const token = data.data.token;

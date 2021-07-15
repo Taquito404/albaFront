@@ -37,7 +37,7 @@ const signIn = () => {
           setIsErrorInputs("errorDiv"),
           setIsErrorTextInputs("errorText");
         const { data } = await axios.post(
-          "https://dev-alba.herokuapp.com/users/signup",
+          "https://alba-app.us-south.cf.appdomain.cloud/users/signup",
           signUp
         );
         const token = data.data.token;
