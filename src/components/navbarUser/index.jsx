@@ -44,29 +44,32 @@ const Nav = () => {
     }
   });
 
-  useEffect(async () => {
-    if (window.localStorage.getItem("token")) {
-      try {
-        const token = window.localStorage.getItem("token");
-        let options = {
-          headers: {
-            "Content-Type": "application/json;charset=UTF-8",
-            "Access-Control-Allow-Origin": "*",
-            auth: token,
-          },
-        };
-        const { data } = await axios.get(
-          "https://dev-alba.herokuapp.com/users/profile",
-          options
-        );
-        setUser(data.user);
-      } catch (error) {
-        console.error(error);
+  useEffect(() => {
+    async () => {
+      if (window.localStorage.getItem("token")) {
+        try {
+          const token = window.localStorage.getItem("token");
+          let options = {
+            headers: {
+              "Content-Type": "application/json;charset=UTF-8",
+              "Access-Control-Allow-Origin": "*",
+              auth: token,
+            },
+          };
+          const { data } = await axios.get(
+            `${process.env.NEXT_PUBLIC_API_URL}users/profile`,
+            options
+          );
+          setUser(data.user);
+        } catch (error) {
+          console.error(error);
+        }
+      } else {
+        setUser(null);
       }
-    } else {
-      setUser(null);
-    }
-  }, [logIn, logOut]);
+    },
+      [logIn, logOut];
+  });
 
   const makeSearch = async (event) => {
     event.preventDefault();
