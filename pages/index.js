@@ -36,7 +36,8 @@ export default function Home() {
         },
       };
       const { data } = await axios.get(
-        "https://alba-app.us-south.cf.appdomain.cloud/users/profile",
+        `${process.env.NEXT_PUBLIC_API_URL}users/profile`,
+
         options
       );
       data.user.role.map((userRole) => {

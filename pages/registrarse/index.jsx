@@ -37,7 +37,7 @@ const SignIn = () => {
           setIsErrorInputs("errorDiv"),
           setIsErrorTextInputs("errorText");
         const { data } = await axios.post(
-          "https://alba-app.us-south.cf.appdomain.cloud/users/signup",
+          `${process.env.NEXT_PUBLIC_API_URL}users/signup`,
           signUp
         );
         const token = data.data.token;
