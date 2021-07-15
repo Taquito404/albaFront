@@ -22,8 +22,8 @@ const logIn = () => {
       await setIsError("errorDiv");
       await setIsErrorText("errorText");
       const { data } = await axios.post(
+        // `${process.env.REACT_APP_DB_HOST}/users/signIn`,
         "https://alba-app.us-south.cf.appdomain.cloud/users/signIn",
-        // `${process.env.DB_URL}/users/signIn`,
         logIn
       );
       const token = data.data.token;
