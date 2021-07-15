@@ -1,0 +1,168 @@
+@import "../../styles/variables.scss";
+
+.background {
+  background-color: $backgroundColor;
+  width: 100%;
+  min-height: 100vh;
+  background-image: url("../../src/img/login-alba-maternidad.png");
+  background-repeat: no-repeat;
+  background-position: 19vw 15vh;
+  overflow: hidden;
+  .danger {
+    background-color: #f75676;
+    width: 48vw;
+    height: 40vh;
+    display: flex;
+    position: fixed;
+    border-radius: 30px;
+    top: 30vh;
+    left: 25vw;
+    justify-content: center;
+    color: #f8fbfc;
+    span {
+      align-self: center;
+    }
+    button {
+      width: 30px;
+      height: 30px;
+      position: fixed;
+      left: 68vw;
+      top: 32vh;
+      border-color: #f8fbfc;
+      background-color: transparent;
+      border-style: solid;
+      border-radius: 5px;
+      color: #f8fbfc;
+    }
+  }
+  .none {
+    display: none;
+  }
+
+  .form {
+    font-family: Lexend;
+    width: 340px;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 266px auto;
+    box-sizing: border-box;
+    .errorDiv {
+      display: none;
+    }
+    .errorText {
+      display: none;
+    }
+    .errorDivDisplay {
+      display: block;
+      height: 5rem;
+      background: rgba(254, 60, 60, 0.8);
+      border-radius: 10px;
+      width: 96%;
+      color: white;
+      margin-bottom: 1rem;
+      display: flex;
+      justify-content: center;
+      .errorTextDisplay {
+        align-self: center;
+        width: 80%;
+        height: 80%;
+      }
+    }
+
+    .email {
+      margin-bottom: 32px;
+    }
+    label {
+      margin-bottom: 4px;
+    }
+    Input {
+      width: 326px;
+      height: 43px;
+      border-color: gray;
+      border-style: solid;
+      padding: 0 0.5rem;
+      border-radius: 5px;
+      -moz-box-shadow: inset 2px 2px 2px rgba(68, 68, 68, 0.25);
+      -webkit-box-shadow: inset 2px 2px 2px rgba(68, 68, 68, 0.25);
+      box-shadow: inset 2px 2px 2px rgba(68, 68, 68, 0.25);
+      &::placeholder {
+        font-family: Lexend;
+        font-size: 14px;
+        font-weight: 600;
+      }
+      &:focus-within {
+        outline-color: $elementsColor;
+      }
+    }
+    .entra {
+      width: 116px;
+      height: 40px;
+      border-radius: 18px;
+      border-style: none;
+      color: white;
+      font-family: Lexend;
+      font-size: 18px;
+      font-weight: 600;
+      background-color: $elementsColor;
+      box-shadow: none;
+
+      transition: ease-in-out 0.5s;
+      &:hover {
+        background-color: transparent;
+        color: $elementsColor;
+        border-style: solid;
+        border-width: 2.5pt;
+        border-color: $elementsColor;
+        transition: ease-in-out 0.5s;
+      }
+    }
+    .registrar {
+      width: 140px;
+      height: 40px;
+      border-radius: 18px;
+      border-style: solid;
+      border-color: $elementsColor;
+      border-width: 2.5pt;
+      color: $elementsColor;
+      background-color: transparent;
+      font-family: Lexend;
+      font-size: 18px;
+      font-weight: 600;
+      text-align: center;
+      box-shadow: none;
+      transition: ease-in-out 0.5s;
+      &:hover {
+        border-style: none;
+        color: white;
+        background-color: $elementsColor;
+        transition: ease-in-out 0.5s;
+      }
+    }
+  }
+}
+@media (min-width: 481px) {
+  .entra {
+    margin: 47px 30px 0 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .form {
+    background-color: rgb(255, 255, 255, 0.7);
+    width: 292px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 375px;
+    margin: 150px auto;
+    border-radius: 5px;
+    Input {
+      height: 43px;
+      width: 250px;
+      border-radius: 4px;
+    }
+    .entra {
+      margin: 50px 0 23px 0;
+    }
+  }
+}

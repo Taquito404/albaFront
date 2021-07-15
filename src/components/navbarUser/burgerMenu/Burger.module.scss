@@ -1,0 +1,11 @@
+.hide {
+  display: none;
+}
+.show {
+  display: inline-block;
+  svg {
+    background-image: url("../img/logOut.svg");
+    width: 36px;
+    height: 36px;
+  }
+}
