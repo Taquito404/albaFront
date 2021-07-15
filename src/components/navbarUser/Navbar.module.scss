@@ -167,8 +167,9 @@
     justify-content: space-between;
     .bur {
       display: block;
-      align-self: center;
-      margin-left: 0.5rem;
+      margin: auto;
+      // align-self: center;
+      // margin-left: 0.5rem;
       button {
         background-image: url("./img/menu.svg");
         background-repeat: no-repeat;
