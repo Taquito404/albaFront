@@ -1,0 +1,131 @@
+.ontop {
+  z-index: 1;
+  position: relative;
+  color: #ee8d80;
+}
+
+.under {
+  z-index: 0;
+  // margin-bottom: 52.1vh;
+}
+
+.placing {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding-top: 10vh;
+  padding-right: 15vh;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  padding-left: 0vh; //10vh
+  padding-top: 0vh;
+  padding-bottom: 30vh;
+  padding-right: 0vw;
+  position: relative;
+  margin-left: 0;
+  margin-right: 0;
+  width: 120%;
+}
+
+// .courseBarContainer {
+//   // margin-top: 2.5vh;
+//   // margin-left: 65px; //65px
+//   // margin-right: 65px; //10vw
+//   // // margin-bottom: 8.5vh;
+//   // padding-left: 4vw;
+//   // display: flex;
+//   // background-color: #FFF5F3 ;
+//   // width: 120%;
+//   // // justify-content: space-around;
+// }
+
+.courseBarLeft {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  z-index: 0;
+  // justify-content: flex-end;
+  // padding-right: 40vh;
+}
+
+.courseBarRight {
+  display: flex;
+  flex-direction: column;
+  margin-left: 65vw; //65vw
+  // margin-right: 100px;
+  background-color: #fff5f3;
+}
+
+.search {
+  display: flex;
+  margin-top: 1vh;
+  margin-right: 5vw;
+  height: 5vh;
+  width: 15.5vw;
+}
+
+.background {
+  background-color: #fff5f3;
+}
+
+.cardStyle {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 767px) and (-webkit-min-device-pixel-ratio: 2) {
+  .courseBarContainer {
+    width: 120%;
+  }
+}
+
+@media screen and (min-device-width: 768px) {
+  .cardStyle {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .courseBarLeft {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    z-index: 0;
+    // justify-content: flex-end;
+    // padding-right: 40vh;
+  }
+
+  .courseBarRight {
+    display: flex;
+    flex-direction: row;
+    margin-left: 65vw;
+    // margin-right: 322px;
+  }
+
+  .courseBarContainer {
+    display: flex;
+    margin-top: 2.5vh;
+    margin-left: 65px; //65px
+    margin-right: 100px; //10vw
+    display: flex;
+    background-color: #fff5f3;
+    // justify-content: space-around;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: row;
+    padding-left: 10vh; //10vh
+    padding-top: 0vh;
+    padding-bottom: 30vh;
+    padding-right: 0vw;
+    position: relative;
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+  }
+}
