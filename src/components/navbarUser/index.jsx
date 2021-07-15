@@ -1,15 +1,25 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import { useRouter } from "next/router";
+import Link from "next/link";
+import axios from "axios";
+
 import InputNav from "./inputNav";
 import s from "./Navbar.module.scss";
 import Drop from "./dropdownMenuNav/drop";
-import { useRouter } from "next/router";
-import Link from "next/link";
+import Burger from "./burgerMenu/burger/Burger";
+import Menu from "./burgerMenu/menu/Menu";
+import { useOnClickOutside } from "./burgerMenu/hooks";
 
 const Nav = () => {
   const router = useRouter();
   const [search, setSearch] = useState("");
   const [logIn, setLogIn] = useState("hide");
   const [logOut, setLogOut] = useState("hide");
+  const [open, setOpen] = useState(false);
+  const [user, setUser] = useState({});
+
+  const node = useRef();
+  useOnClickOutside(node, () => setOpen(false));
 
   const handleLogIn = () => {
     router.push("/login");
@@ -22,15 +32,41 @@ const Nav = () => {
       setLogIn("show");
     }
   };
+  //se hacen cambios para hacer las peticiones del endpoint si se tiene token, para tener el nombre del usuario
+  //se hacen cambios para hacer log in o cerrar sesión en el apartado
   useEffect(() => {
-    if (!window.localStorage.getItem("token")) {
-      setLogOut("hide");
-      setLogIn("show");
-    } else {
+    if (window.localStorage.getItem("token")) {
       setLogOut("show");
       setLogIn("hide");
+    } else {
+      setLogOut("hide");
+      setLogIn("show");
     }
   });
+
+  useEffect(async () => {
+    if (window.localStorage.getItem("token")) {
+      try {
+        const token = window.localStorage.getItem("token");
+        let options = {
+          headers: {
+            "Content-Type": "application/json;charset=UTF-8",
+            "Access-Control-Allow-Origin": "*",
+            auth: token,
+          },
+        };
+        const { data } = await axios.get(
+          "https://dev-alba.herokuapp.com/users/profile",
+          options
+        );
+        setUser(data.user);
+      } catch (error) {
+        console.error(error);
+      }
+    } else {
+      setUser(null);
+    }
+  }, [logIn, logOut]);
 
   const makeSearch = async (event) => {
     event.preventDefault();
@@ -43,7 +79,10 @@ const Nav = () => {
   return (
     <div>
       <div className={s.navTop}>
-        <svg className={s.dropMobile} />
+        <div ref={node} className={s.bur}>
+          <Burger open={open} setOpen={setOpen} />
+          <Menu open={open} setOpen={setOpen} />
+        </div>
         <Link href="/">
           <button className={s.btnLogo}></button>
         </Link>
@@ -66,7 +105,7 @@ const Nav = () => {
         <div className={s.settings}>
           <div className={s.user}>
             <svg />
-            <h3>Hola, MariaLuisa</h3>
+            <h3>Hola, {user ? user.userName : "---"}</h3>
           </div>
           <div className={s.exit}>
             <div onClick={handleLogIn} className={s[logIn]}>
