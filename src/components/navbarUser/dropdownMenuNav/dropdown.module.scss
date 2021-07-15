@@ -1,0 +1,38 @@
+@import "../../../../styles/variables.scss";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-weight: 300;
+  background-color: $secondNavColor;
+  height: 41px;
+  margin-top: 13px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  cursor: pointer;
+
+  .trigger {
+    border: none;
+    background-color: $secondNavColor;
+    cursor: pointer;
+    svg {
+      background-image: url("../img/Vector.svg");
+      background-repeat: no-repeat;
+      background-position-x: right;
+      width: 10px;
+      height: 11px;
+    }
+  }
+  .isOpen {
+    margin-top: 70px;
+    font-weight: 300;
+  }
+  .menu {
+    display: contents;
+    overflow: visible;
+    margin: 0;
+    font-weight: 300;
+    font-size: 1rem;
+  }
+}

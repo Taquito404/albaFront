@@ -2,7 +2,7 @@
 @font-face {
   font-family: Playfair;
   src: url(./PlayfairDisplay-Regular.ttf);
-  font-weight: lighter;
+  font-weight: regular;
 }
 @font-face {
   font-family: Playfair;
@@ -17,7 +17,7 @@
 @font-face {
   font-family: Playfair;
   src: url(./PlayfairDisplay-SemiBold.ttf);
-  font-weight: bolder;
+  font-weight: semibold;
 }
 /*LEXEND*/
 @font-face {
@@ -37,13 +37,8 @@
 }
 @font-face {
   font-family: Lexend;
-  src: url(./Lexend-Regular.ttf);
-  font-weight: 500;
-}
-@font-face {
-  font-family: Lexend;
   src: url(./Lexend-SemiBold.ttf);
-  font-weight: 600;
+  font-weight: 500;
 }
 @font-face {
   font-family: Lexend;
@@ -54,4 +49,9 @@
   font-family: Lexend;
   src: url(./Lexend-ExtraBold.ttf);
   font-weight: bolder;
+}
+@font-face {
+  font-family: Lexend;
+  src: url(./Lexend-Regular.ttf);
+  font-weight: 700;
 }
