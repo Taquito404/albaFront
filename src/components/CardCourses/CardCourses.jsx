@@ -5,7 +5,7 @@ import Styles from "../CardCourses/styles/card.module.scss";
 import RoundButton from "../RoundButton/RoundButton";
 import CourseModal from "../CourseModal/CourseModal";
 
-export default function CardCourses({ curso, openModal }) {
+export default function CardCourses({ curso, openModal, leccion }) {
   // console.log ('props', data)
 
   return (
@@ -13,15 +13,20 @@ export default function CardCourses({ curso, openModal }) {
       <div className={`${Styles.band}`}>
         <div className={`${Styles.item1}`}>
           <div className={`${Styles.card}`}>
-            <div className={`${Styles.thumb}`}></div>
+            <div>
+              <img src={curso.imgUrl} className={Styles.image}></img>
+            </div>
             <article>
               <h1>{curso.title}</h1>
               <ul className={Styles.listStyle}>
                 <il>
                   <svg className={Styles.babyLogo} />
+                  {!leccion ? "" : leccion.length}
                 </il>
-                <svg className={Styles.videoPlayer} />
-                <il></il>
+
+                <il>
+                  <svg className={Styles.videoPlayer} />
+                </il>
               </ul>
               <span>{curso.description}</span>
             </article>
