@@ -7,43 +7,42 @@ import NavUser from "../navbarUser";
 import FooterUser from "../footerUser";
 
 const Layout = ({ children }) => {
-  const [role, setRole] = useState("user");
 
-  useEffect(() => {
-    const getUser = async () => {
-      try {
-        //window.localStorage.setItem('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwZGRmYThjYzhmZTFhMWU4MmEwMzg5OCIsImlhdCI6MTYyNTkzMzI0OCwiZXhwIjoxNjI2MDE5NjQ4fQ.TqpbeTkIcDFwDB-CPjcVe4nnvA_vjRZPBuP4vUZmZB8');
-        const token = window.localStorage.getItem("token");
-        if (!token) {
-          setRole("user");
-          return;
-        }
-        const today = new Date();
-        const decodedToken = jwt.decode(token, { complete: true });
+  const [role, setRole] = useState('user');
 
-        if (decodedToken.payload.exp * 1000 < today.getTime()) {
-          window.localStorage.removeItem("token");
-          setRole("user");
-          return;
-        }
+    useEffect(() => {
+        const getUser = async () => {
+            try {
+                const token = window.localStorage.getItem('token');
+                if (!token) {
+                    setRole('user');
+                    return;
+                }
+                const today = new Date();
+                const decodedToken = jwt.decode(token, { complete: true });
 
-        let options = {
-          headers: {
-            "Content-Type": "application/json;charset=UTF-8",
-            "Access-Control-Allow-Origin": "*",
-            auth: token,
-          },
-        };
-        const { data } = await axios.get(
-          "https://dev-alba.herokuapp.com/users/profile",
-          options
-        );
-        data.user.role.map((userRole) => {
-          setRole(userRole);
-        });
-      } catch (error) {
-        console.error(error);
-      }
+                if (decodedToken.payload.exp * 1000 < today.getTime()) {
+                    window.localStorage.removeItem('token');
+                    setRole('user');
+                    return;
+                }
+
+                let options = {
+                    headers: {
+                        'Content-Type': 'application/json;charset=UTF-8',
+                        "Access-Control-Allow-Origin": "*",
+                        auth: token,
+                    }
+                }
+                const { data } = await axios.get('https://dev-alba.herokuapp.com/users/profile', options);
+                
+                data.user.role.map(userRole => {
+                    setRole(userRole);
+                })
+            } catch (error) {
+                console.error(error);
+            }
+        
     };
     getUser();
 

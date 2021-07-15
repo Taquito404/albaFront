@@ -78,7 +78,7 @@ const EditarUsuarios = () => {
                     auth: token
                 }
             }
-            const { data } = await axios.patch(`https://dev-alba.herokuapp.com/users/${id}`, newUser, options);
+            const { data } = await axios.patch(`https://dev-alba.herokuapp.com/users/user/${id}`, newUser, options);
 
             setVisibilityPopUp(false);
             setDisableButton(false);
