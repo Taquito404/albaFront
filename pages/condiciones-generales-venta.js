@@ -31,14 +31,14 @@ const Condiciones = () => {
             su naturaleza que se encuentre disponible en el sitio web para su
             compra, adquisición o contratación aún de manera gratuita. Cuando se
             haga referencia a más de un producto disponible se hará referencia a
-            estos como "productos disponibles".{" "}
+            estos como &quot;productos disponibles&quot;.{" "}
           </li>
           <li>
             Producto adquirido. Todo tipo de bien, así como todo tipo de
             servicio independientemente de su naturaleza, una vez que haya sido
             comprado, adquirido o contratado por los usuarios del sitio web.
             Cuando se haga referencia a más de un producto adquirido se hará
-            referencia a estos como "productos adquiridos".{" "}
+            referencia a estos como &quot;productos adquiridos&quot;.{" "}
           </li>
           <li>
             Usuario. Toda persona independiente de su naturaleza que haga uso

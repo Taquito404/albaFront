@@ -4,12 +4,12 @@ const Terminos = () => {
       <h1>TÉRMINOS Y CONDICIONES </h1>
       <p>
         Este contrato describe los términos y condiciones generales (en adelante
-        únicamente "TÉRMINOS Y CONDICIONES") aplicables al uso de los
+        únicamente &quot;TÉRMINOS Y CONDICIONES&quot;) aplicables al uso de los
         contenidos, productos y servicios ofrecidos a través del sitio
-        www.albamaternidad.com (en adelante, "SITIO WEB"), del cual es titular
-        Alba Maternidad Consciente S.A. de C.V. (en adelante, "TITULAR") quien
-        tiene su domicilio establecido en la Ciudad de México, en la siguiente
-        dirección: <br />
+        www.albamaternidad.com (en adelante, &quot;SITIO WEB&quot;), del cual es
+        titular Alba Maternidad Consciente S.A. de C.V. (en adelante,
+        &quot;TITULAR&quot;) quien tiene su domicilio establecido en la Ciudad
+        de México, en la siguiente dirección: <br />
         <br />
         Prolongación División del Norte 5201, C.P 16030, Ciudad de México,
         México.

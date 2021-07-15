@@ -7,7 +7,7 @@ import { Alert } from "reactstrap";
 import s from "./signIn.module.scss";
 import Input from "../../src/components/inputs";
 
-const signIn = () => {
+const SignIn = () => {
   const [name, setName] = useState("");
   const [lastName, setLastName] = useState("");
   const [userName, setUserName] = useState("");
@@ -88,7 +88,7 @@ const signIn = () => {
             Todos los campos son obligatorios.
           </h3>
         </div>
-        <label for="text">Nombre</label>
+        <label htmlFor="text">Nombre</label>
         <Input
           className={s.email}
           type="text"
@@ -97,7 +97,7 @@ const signIn = () => {
           placeholder="Ana Luisa"
           required
         />
-        <label for="text">Apellido</label>
+        <label htmlFor="text">Apellido</label>
         <Input
           className={s.email}
           type="text"
@@ -105,7 +105,7 @@ const signIn = () => {
           callback={setLastName}
           placeholder="Pérez"
         />
-        <label for="text">Nombre de Usuario</label>
+        <label htmlFor="text">Nombre de Usuario</label>
         <Input
           className={s.email}
           type="text"
@@ -113,7 +113,7 @@ const signIn = () => {
           callback={setUserName}
           placeholder="AnaLu"
         />
-        <label for="email">Correo electrónico</label>
+        <label htmlFor="email">Correo electrónico</label>
         <Input
           className={s.email}
           type="email"
@@ -137,14 +137,14 @@ const signIn = () => {
           callback={setCelphone}
           placeholder="Pérez"
         /> */}
-        <label for="password">Contraseña</label>
+        <label htmlFor="password">Contraseña</label>
         <Input
           type="password"
           value={password}
           callback={setPassword}
           placeholder="**********"
         />
-        <label for="password">Confirmar contraseña</label>
+        <label htmlFor="password">Confirmar contraseña</label>
         <Input
           type="password"
           value={passwordConfirm}
@@ -164,4 +164,4 @@ const signIn = () => {
   );
 };
 
-export default signIn;
+export default SignIn;
