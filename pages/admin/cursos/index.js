@@ -73,7 +73,7 @@ const Cursos = () => {
 
                     <div className="mt-3 form-group">
                         <label className="font-weight-bold">Username</label>
-                        <input type="text" className="form-control-plaintext border rounded shadow-sm p-1" placeholder="Filtra por usuario" disabled />
+                        <input type="text" className="form-control-plaintext border rounded shadow-sm p-1" placeholder="Filtra por curso" disabled />
                     </div>
                     <div className="p-2 px-4 bg-primary d-flex justify-content-between text-white align-items-center rounded">
                         <p className="font-weight-bold">Tus Cursos</p>

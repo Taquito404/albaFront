@@ -14,6 +14,7 @@ const MenuCards = ({ userDetailsStyles, Membresia, Cursos, Marketplace, Manos, S
                 userDetailsStyles={userDetailsStyles}
                 cardImage={Cursos}
                 titleCard='Mis cursos'
+                path='/mis-cursos'
             />
 
             <CardMenu
