@@ -7,7 +7,8 @@
   background-color: $navFooColor;
   display: flex;
   justify-content: space-between;
-  .dropMobile {
+  overflow: visible;
+  .bur {
     display: none;
   }
   .btnLogo {
@@ -70,7 +71,6 @@
       border-top-right-radius: 5px;
       border-bottom-right-radius: 5px;
       border-color: transparent;
-
       cursor: pointer;
     }
   }
@@ -99,6 +99,12 @@
       height: 100%;
       width: fit-content;
       margin-right: 0.5rem;
+      .hide {
+        display: none;
+      }
+      .show {
+        display: inline-block;
+      }
       svg {
         background-image: url("./img/logOut.svg");
         width: 36px;
@@ -108,6 +114,7 @@
       &:hover {
         background-color: $secondNavColor;
         border-radius: 5px;
+        cursor: pointer;
       }
     }
   }
@@ -158,16 +165,19 @@
     height: 42px;
     background-color: $navFooColor;
     justify-content: space-between;
-    .dropMobile {
-      display: inline-block;
-      background-image: url("./img/menu.svg");
-      background-repeat: no-repeat;
-      background-size: contain;
-      height: 25px;
-      width: 25px;
+    .bur {
+      display: block;
       align-self: center;
-      transform: rotate(90deg);
       margin-left: 0.5rem;
+      button {
+        background-image: url("./img/menu.svg");
+        background-repeat: no-repeat;
+        background-color: transparent;
+        background-size: contain;
+        background-position: center;
+        width: 2rem;
+        height: 2rem;
+      }
     }
     .btnLogo {
       display: inline-block;
@@ -190,16 +200,10 @@
         }
       }
     }
-    .drop {
-      display: none;
-    }
     .location {
       display: none;
     }
-    input {
-      display: none;
-    }
-    button {
+    .searchBar {
       display: none;
     }
   }

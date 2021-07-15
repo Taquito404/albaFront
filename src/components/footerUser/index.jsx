@@ -6,26 +6,32 @@ const Footer = () => {
       <div className={s.container}>
         <ul>
           <li>
-            <a href="/condiciones-generales-venta">
-              Condiciones Generales de Venta
-            </a>
+            <Link href="/condiciones-generales-venta">
+              <a>Condiciones Generales de Venta</a>
+            </Link>
           </li>
           <li>
-            <a href="/terminos-y-condiciones">Términos y Condiciones</a>
+            <Link href="/terminos-y-condiciones">
+              <a>Términos y Condiciones</a>
+            </Link>
           </li>
           <li>
-            <a href="/aviso-privacidad">Políticas de Privacidad</a>
+            <Link href="/aviso-privacidad">
+              <a>Políticas de Privacidad</a>
+            </Link>
           </li>
         </ul>
         <ul>
           <li>
-            <a href="/">
-              <svg className={s.btnLogo} />
-            </a>
+            <Link href="/">
+              <a>
+                <svg className={s.btnLogo} />
+              </a>
+            </Link>
           </li>
-          <li className={s.gray}>
+          {/* <Link className={s.gray}>
             <a>Quienes somos</a>
-          </li>
+          </Link> */}
           <li>
             <Link href="/login">
               <a>Crea tu cuenta</a>
