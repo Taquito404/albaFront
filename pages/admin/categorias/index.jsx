@@ -81,7 +81,7 @@ const Categories = () => {
             <div className="w-100 d-flex flex-column flex-lg-row">
                 <div className="container container-fluid">
                     <div className={`w-100 text-center mt-3 shadow-sm border bg-light position-relative rounded p-4`}>
-                        <h4 className="font-weight-bold">Agregar curso</h4>
+                        <h4 className="font-weight-bold">Agregar categoria</h4>
                         <div className={adminStyles.imgHeader}>
                             <Image src={headerImg} alt="header" height={70} width={50} />
                         </div>

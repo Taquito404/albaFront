@@ -11,7 +11,7 @@ const Layout = ({ children }) => {
     useEffect(() => {
         const getUser = async () => {
             try {
-                //window.localStorage.setItem('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwZGRmYThjYzhmZTFhMWU4MmEwMzg5OCIsImlhdCI6MTYyNTkzMzI0OCwiZXhwIjoxNjI2MDE5NjQ4fQ.TqpbeTkIcDFwDB-CPjcVe4nnvA_vjRZPBuP4vUZmZB8');
+                window.localStorage.setItem('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwZWYzM2MyY2IzZTBmMDAxNWM0ZmNjOCIsImlhdCI6MTYyNjI4OTA5MCwiZXhwIjoxNjI2Mzc1NDkwfQ.CxxdABx_B2yq_YUcpp-jsNGtJd6roShlfmp3kJoeK5Y');
                 const token = window.localStorage.getItem('token');
                 if (!token) {
                     setRole('user');
@@ -34,6 +34,7 @@ const Layout = ({ children }) => {
                     }
                 }
                 const { data } = await axios.get('https://dev-alba.herokuapp.com/users/profile', options);
+                
                 data.user.role.map(userRole => {
                     setRole(userRole);
                 })

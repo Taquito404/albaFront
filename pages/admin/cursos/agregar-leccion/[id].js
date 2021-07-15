@@ -143,7 +143,7 @@ const AgregarLeccion = () => {
                                     <label className="font-weight-bold">Url del video</label>
                                     <input type="text" className="form-control border rounded shadow-sm p-1" placeholder="E.g. https://vimeo.com/121212/1212" name="url" value={leccion.url ? leccion.url : ''} onChange={handleChangeValues} />
                                 </div>
-                                <button type="submit" className="btn btn-primary w-100">Agrega categoria</button>
+                                <button type="submit" className="btn btn-primary w-100">Agrega leccion</button>
                             </form>
                         </div>
                         <div className="col-12 mt-5">

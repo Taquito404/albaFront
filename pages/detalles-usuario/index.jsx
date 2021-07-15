@@ -18,7 +18,7 @@ import { useRouter } from 'next/router';
 
 const DetallesUsuario = () => {
     const router = useRouter();
-    const [user, setUser] = useState({})
+    const [user, setUser] = useState({});
 
     useEffect(() => {
         const getUser = async () => {
@@ -80,13 +80,13 @@ const DetallesUsuario = () => {
                         <li>Pedidos</li>
                         <li>Consultas</li>
                         <li>Descargas</li>
-                        <li>Informacion de la cuenta</li>
+                        <li onClick={() => router.push('/detalles-usuario/mi-membresia')}>Informacion de la cuenta</li>
                     </ul>
                 </div>
 
                 <div className={userDetailsStyles.userDetails}>
                     <p>Hola Usuario (¿no eres tú? <span onClick={handleLogOut}>Cerrar sessión</span>)</p>
-                    <p>Desde el escritorio de tu cuenta puedes ver tus <span>pedidos recientes</span>, gestionar tus <span>direcciones de envío</span> y <span>facturación</span> , <span>editar tu contraseña</span> y <span>los detalles de tu cuenta</span> y <span>membresía.</span></p>
+                    <p>Desde el escritorio de tu cuenta puedes ver tus <span>pedidos recientes</span>, gestionar tus <span>direcciones de envío</span> y <span>facturación</span> , <span>editar tu contraseña</span> y <span>los detalles de tu cuenta</span> y <span onClick={() => router.push('/detalles-usuario/mi-membresia')}>membresía.</span></p>
                     <MenuCards
                         userDetailsStyles={userDetailsStyles}
                         Membresia={Membresia}

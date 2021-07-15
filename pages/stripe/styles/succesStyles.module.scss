@@ -1,0 +1,44 @@
+@import "../../../styles/variables.scss";
+@import url("https://fonts.googleapis.com/css2?family=Lexend:wght@100;300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+/*
+font-family: 'Lexend', sans-serif;
+font-family: 'Playfair Display', serif;
+*/
+
+.container {
+    align-items: center;
+    background-color: $backgroundColor;
+    color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    font-family: "Lexend", sans-serif;
+    height: 100vh;
+    justify-content: center;
+    overflow-wrap: break-word;
+    overflow: hidden;
+    width: 100%;
+    .checkWrapper {
+        p {
+            &:first-of-type{
+                font-weight: bold;
+            }
+            text-align: center;
+            font-weight: 400;
+            font-size: 20px;
+            span{
+                color: rgba(24, 24, 24, 0.333);
+                font-weight: 600;
+                cursor: pointer;
+            }
+        }
+        .imgWrapper {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            .successImg {
+                height: 250px;
+                width: 250px;
+            }
+        }
+    }
+}
