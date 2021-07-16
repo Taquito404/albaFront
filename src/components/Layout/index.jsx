@@ -7,8 +7,8 @@ import NavUser from "../navbarUser";
 import FooterUser from "../footerUser";
 
 const Layout = ({ children }) => {
-  const [role, setRole] = useState("user");
-
+  const [role, setRole] = useState(null);
+  const [isNewSession, setIsNewSession] = useState(false);
   useEffect(() => {
     const getUser = async () => {
       try {
@@ -48,7 +48,7 @@ const Layout = ({ children }) => {
     getUser();
 
     return () => {
-      setRole("");
+      setRole(null);
     };
   }, []);
 
@@ -78,12 +78,14 @@ const Layout = ({ children }) => {
               />
               <link
                 rel="stylesheet"
-                href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+                href="https://cdnjs.cloudflare.com/ajax/libs/Ianimate.css/4.1.1/animate.min.css"
               />
             </Head>
             <div className="w-100 d-flex flex-column flex-lg-row">
-              <NavbarAdmin />
-              <div className="container container-fluid w-100">{children}</div>
+              <NavbarAdmin setIsNewSession={setIsNewSession} />
+              <div className="container container-fluid w-100">
+                {children}
+              </div>
             </div>
           </div>
         );
@@ -94,7 +96,7 @@ const Layout = ({ children }) => {
         // ruta users
         return (
           <div>
-            <NavUser />
+            <NavUser setIsNewSession={setIsNewSession} />
             <div>{children}</div>
             <FooterUser />
           </div>
@@ -103,7 +105,7 @@ const Layout = ({ children }) => {
         // ruta users
         return (
           <div>
-            <NavUser />
+            <NavUser setIsNewSession={setIsNewSession} />
             <div>{children}</div>
             <FooterUser />
           </div>
@@ -111,7 +113,13 @@ const Layout = ({ children }) => {
     }
   };
 
-  return <>{setView(role)}</>;
+  return <>{
+    !role ?
+      <p>Loading...</p>
+      :
+      setView(role)
+  }</>;
+
 };
 
 export default Layout;

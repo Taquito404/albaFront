@@ -31,6 +31,7 @@ const LogIn = () => {
       if (token) {
         router.push("/");
       }
+      location.reload()
     } catch (error) {
       console.log(error.message);
       if ((error = 400)) {

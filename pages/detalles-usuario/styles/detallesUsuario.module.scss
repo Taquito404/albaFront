@@ -4,6 +4,7 @@
 
 .container {
   background-color: $backgroundColor;
+  position: relative;
   color: rgba(0, 0, 0, 0.8);
   height: auto;
   font-family: "Lexend", sans-serif;
@@ -130,7 +131,7 @@
 }
 
 .positionFixed {
-  position: fixed;
+  position: absolute;
   bottom: 15px;
   right: -100px;
   height: auto;
@@ -204,7 +205,6 @@
   }
 
   .positionFixed {
-    position: fixed;
     bottom: 0;
     left: 0;
     right: unset;
@@ -230,7 +230,6 @@
   }
 
   .positionFixed {
-    position: fixed;
     bottom: -240px;
     left: 30%;
     right: unset;

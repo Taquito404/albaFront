@@ -28,6 +28,7 @@ const Nav = () => {
     if (window.localStorage.getItem("token")) {
       window.localStorage.removeItem("token");
       router.push("/");
+      location.reload();
     } else {
       setLogIn("show");
     }
