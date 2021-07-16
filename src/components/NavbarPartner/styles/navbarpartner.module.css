@@ -2,28 +2,32 @@
   bottom: 0;
   height: 100vh;
   left: 0;
+  position: -webkit-sticky !important;
   position: sticky !important;
   top: 0;
   width: 15%;
-  // background-color: #f99ab3;
   background-color: #a4d7bd;
-  .profilePicture {
-    height: 60px;
-    width: 60px;
-  }
-  p {
-    padding: 0;
-    margin: 0;
-  }
-  .separator {
-    background-color: white;
-    height: 0.5px;
-    width: 100%;
-  }
-  .link-nav:hover {
-    text-decoration: none;
-    text-transform: none;
-  }
+}
+
+.navWrapper .profilePicture {
+  height: 60px;
+  width: 60px;
+}
+
+.navWrapper p {
+  padding: 0;
+  margin: 0;
+}
+
+.navWrapper .separator {
+  background-color: white;
+  height: 0.5px;
+  width: 100%;
+}
+
+.navWrapper .link-nav:hover {
+  text-decoration: none;
+  text-transform: none;
 }
 
 .navButton {
@@ -33,8 +37,6 @@
 }
 
 .buttonElement {
-  // padding: 50px 0;
-  // text-align: center;
   height: 10vh;
   padding: 50px;
   margin-right: 0rem;
@@ -43,8 +45,6 @@
 }
 
 .buttonLogout {
-  // padding: 50px 0;
-  // text-align: center;
   height: 13vh;
   padding: 25px;
   margin-right: 0rem;
@@ -62,4 +62,4 @@
 .textDecoration {
   color: red;
 }
-// Falta el hover en los links.
+/*# sourceMappingURL=navbarpartner.module.css.map */

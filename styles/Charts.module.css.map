@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,eAAe,CAAC;EACd,MAAM,EAAE,IAAI;EACZ,KAAK,EAAE,IAAI;EACX,WAAW,EAAE,IAAI;EACjB,UAAU,EAAE,GAAG;EACf,aAAa,EAAE,IAAI;CACpB",
+    "sources": [
+        "Charts.module.scss"
+    ],
+    "names": [],
+    "file": "Charts.module.css"
+}

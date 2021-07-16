@@ -1,12 +1,15 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Head from 'next/head'
+import axios from  'axios'
 import NavbarPartner  from '../../src/components/NavbarPartner'
 import BarChart from '../../src/components/BarChart/BarChart'
-import PieChart from '../../src/components/PieChart/PieChart'
+import CoursesList from '../../src/components/CoursesList/CoursesList'
 import Styles from '../../styles/Partner.module.scss'
+import HeaderDesktop from '../../src/components/HeaderPartner/HeaderDesktop'
 
 
 const Home = () => {
+ 
     return (
         <>
             <Head>
@@ -20,10 +23,10 @@ const Home = () => {
             </Head>
             <div className="w-100 d-flex flex-column flex-lg-row justify-content-evenly">
                 <NavbarPartner className="m-5"/>
-                
-                <div className={`d-flex flex-row justify-content-center  border-dark ${Styles.chartOutContainer}`}>
+            <div className={`d-flex flex-column justify-content-center  border border-dark ${Styles.chartOutContainer}`}>
+                    <HeaderDesktop/>
                     <BarChart/>
-                    <PieChart/>
+                    <CoursesList/>
                 </div>
             </div>
         </>
