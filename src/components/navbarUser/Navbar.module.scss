@@ -84,6 +84,7 @@
       display: flex;
       height: 100%;
       margin-right: 1rem;
+
       transition: all 0.4s ease;
       &:hover {
         cursor: pointer;
@@ -165,12 +166,16 @@
       margin: 0 0.25rem;
       height: 42px;
       display: flex;
+
       transition: all 0.4s ease;
+
 
       &:hover {
         cursor: pointer;
         background-color: $navFooColor;
+
         transition: all 0.4s ease;
+
       }
 
       a {
