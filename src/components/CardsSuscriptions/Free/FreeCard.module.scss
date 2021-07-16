@@ -1,6 +1,5 @@
 @import "../../../../styles/variables.scss";
 
-
 .card {
   height: 430px;
   width: 40%;
@@ -20,7 +19,7 @@
     width: 100%;
     position: absolute;
   }
-  .backSide{
+  .backSide {
     display: none;
   }
 }
@@ -54,8 +53,9 @@
       position: absolute;
     }
     .backSide {
-      color: rgba(0, 0, 0, 0.7);;
-      display: unset;
+      color: rgba(0, 0, 0, 0.7);
+      display: flex;
+      flex-direction: column;
       padding: 2rem;
       border-radius: 50px;
       transition: all 0.8s ease;
@@ -66,13 +66,31 @@
       height: 430px;
       width: 291px;
       position: absolute;
-      ul{
+      button {
+        background-color: transparent;
+        border-radius: 18px;
+        border: 2px solid $elementsColor;
+        color: white;
+        cursor: pointer;
+        font-weight: 400;
+        font-size: 18px;
+        margin-top: 20px;
+        text-transform: uppercase;
+        transition: all 300ms;
+        padding: 0.5rem 1rem;
+        font-weight: bold;
+        &:hover {
+          border: none;
+          background-color: #1b9b8e;
+        }
+      }
+      ul {
         width: 100%;
-        li{
+        li {
           list-style-type: none;
           margin-bottom: 10px;
           width: 100%;
-          &:first-of-type{
+          &:first-of-type {
             margin-top: 10px;
           }
         }

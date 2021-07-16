@@ -3,8 +3,10 @@
 .body {
   background-color: $backgroundColor;
   width: 100%;
+  .backSide {
+    display: none;
+  }
   .video {
-    //background-image: url("../src/img/video.png");
     width: 100%;
     height: auto;
     z-index: 999;
@@ -19,15 +21,19 @@
     height: 664px;
     justify-content: flex-end;
     padding: 20px;
-    margin-top: 50;
+    margin-top: 50px;
     margin-bottom: 62px;
   }
   .suscriptions {
+    font-family: Lexend;
     height: 81px;
     background-color: $navFooColor;
     display: flex;
     justify-content: center;
     align-items: center;
+    h1 {
+      font-weight: bold;
+    }
   }
   .cards {
     display: flex;
@@ -67,10 +73,10 @@
     button {
       background-color: transparent;
       border-radius: 18px;
-      border: 1px solid $elementsColor;
-      color: white;
+      border: 3px solid $elementsColor;
+      color: $elementsColor;
       cursor: pointer;
-      font-weight: 400;
+      font-weight: bold;
       font-size: 18px;
       margin-top: 20px;
       text-transform: uppercase;
@@ -78,6 +84,7 @@
       padding: 0.5rem 1rem;
       &:hover {
         border: none;
+        color: white;
         background-color: #1b9b8e;
       }
     }
@@ -85,12 +92,12 @@
 }
 
 @media only screen and (min-width: 768px) {
-  .body{
+  .body {
     .card {
       height: 90%;
       padding: 20px;
       width: 40%;
-      button{
+      button {
         margin: 0 auto;
         width: 50%;
       }
