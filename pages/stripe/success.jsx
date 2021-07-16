@@ -30,7 +30,7 @@ const Success = () => {
         };
         // 'https://dev-alba.herokuapp.com/stripe/create-subscription'
         const { data } = await axios.post(
-          `${process.env.NEXT_PUBLIC_API_URL}/stripe/create-subscription`,
+          `${process.env.NEXT_PUBLIC_API_URL}stripe/create-subscription`,
           { session_id },
           options
         );
