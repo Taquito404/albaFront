@@ -6,20 +6,20 @@ export const StyledMenu = styled.nav`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 100vh;
+  max-height: 60vh;
   text-align: left;
-  padding: 1rem;
+  padding: 1rem 0;
   position: absolute;
   top: 42px;
   left: 0;
   width: 55%;
   transition: transform 0.3s ease-in-out;
-
+  z-index: 999;
   a {
     font-family: Playfar;
     font-size: 0.9rem;
-    padding: 2rem 0;
+    padding: 0.5rem 0.5rem;
     text-decoration: none;
-    width: 50%;
+    width: 100%;
   }
 `;

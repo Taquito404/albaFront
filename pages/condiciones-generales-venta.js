@@ -1,6 +1,8 @@
+import s from "../styles/Documents.module.scss";
+
 const Condiciones = () => {
   return (
-    <div>
+    <div className={s.document}>
       <h1>CONDICIONES GENERALES DE VENTA </h1>
       <p>
         El sitio web www.albamaternidad.com permite a sus usuarios adquirir
