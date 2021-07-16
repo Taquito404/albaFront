@@ -1,3 +1,5 @@
+@import "../../../../styles/variables.scss";
+
 .card {
   height: 430px;
   width: 40%;
@@ -40,16 +42,28 @@
       }
     }
     .backSide {
+      color: rgba(0, 0, 0, 0.7);
       display: unset;
       border-radius: 50px;
       transform: rotateY(180deg);
       padding: 2rem;
-      background-color: hotpink;
+      background-color: $navFooColor;
       transition: all 0.8s ease;
       backface-visibility: hidden;
       height: 430px;
       width: 291px;
       position: absolute;
+      ul {
+        width: 100%;
+        li {
+          list-style-type: none;
+          margin-bottom: 10px;
+          width: 100%;
+          &:first-of-type {
+            margin-top: 10px;
+          }
+        }
+      }
     }
   }
 }

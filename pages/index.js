@@ -106,7 +106,7 @@ export default function Home() {
                 responsive
                 loop
                 autoplay
-                controls={false}
+                controls={true}
                 showTitle={false}
                 volume={.2}
               />
