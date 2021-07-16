@@ -1,11 +1,10 @@
-  
 import React, { useCallback } from "react";
 import PropTypes from "prop-types";
 import { useSelect } from "downshift";
 import classNames from "classnames";
-import DropdownItem from "../dropDownMenu/dropdownItem";
+import DropdownItem from "./dropDownItem";
 
-import styles from "../dropDownMenu/styles/dropDown.module.scss";
+import styles from "./styles/dropDown.module.scss";
 
 const itemToString = (item) => item?.value ?? "";
 const placeholderLabel = "Choose your option";
