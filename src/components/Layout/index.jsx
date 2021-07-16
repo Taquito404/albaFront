@@ -77,10 +77,6 @@ const Layout = ({ children }) => {
                 integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
                 crossOrigin="anonymous"
               />
-              <link
-                rel="stylesheet"
-                href="https://cdnjs.cloudflare.com/ajax/libs/Ianimate.css/4.1.1/animate.min.css"
-              />
             </Head>
             <div className="w-100 d-flex flex-column flex-lg-row">
               <NavbarAdmin setIsNewSession={setIsNewSession} />
