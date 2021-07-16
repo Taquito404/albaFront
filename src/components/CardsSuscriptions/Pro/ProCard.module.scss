@@ -43,7 +43,8 @@
     }
     .backSide {
       color: rgba(0, 0, 0, 0.7);
-      display: unset;
+      display: flex;
+      flex-direction: column;
       border-radius: 50px;
       transform: rotateY(180deg);
       padding: 2rem;
@@ -53,6 +54,24 @@
       height: 430px;
       width: 291px;
       position: absolute;
+      button {
+        background-color: transparent;
+        border-radius: 18px;
+        border: 2px solid $elementsColor;
+        color: white;
+        cursor: pointer;
+        font-weight: 400;
+        font-size: 18px;
+        margin-top: 20px;
+        text-transform: uppercase;
+        transition: all 300ms;
+        padding: 0.5rem 1rem;
+        font-weight: bold;
+        &:hover {
+          border: none;
+          background-color: #1b9b8e;
+        }
+      }
       ul {
         width: 100%;
         li {

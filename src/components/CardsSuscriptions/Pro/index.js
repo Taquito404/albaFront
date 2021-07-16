@@ -1,4 +1,5 @@
 import s from "./ProCard.module.scss";
+import Link from "next/link";
 
 const ProCard = () => {
   return (
@@ -16,6 +17,9 @@ const ProCard = () => {
           </li>
         </ul>
         <h3>$349.00</h3>
+        <Link href="/login">
+          <button>Ver</button>
+        </Link>
       </div>
     </div>
   );
