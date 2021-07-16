@@ -1,5 +1,7 @@
 @import "../../../styles/variables.scss";
 .footer {
+  font-family: Lexend;
+  font-weight: 200;
   height: max-content;
   font-weight: bold;
   .disabled {
@@ -13,7 +15,7 @@
     display: flex;
     height: max-content;
     background-color: $navFooColor;
-    justify-content: space-between;
+    justify-content: space-evenly;
     padding: 1rem 5%;
     align-items: center;
     font-family: Lexend;
@@ -29,6 +31,7 @@
         &:hover {
           cursor: pointer;
           color: $elementsColor;
+          transition: all 0.4s ease;
         }
       }
       .btnLogo {
@@ -38,9 +41,9 @@
         height: 50px;
         width: 60px;
         border-radius: 10px;
-
         &:hover {
           transform: scale(1.5);
+          transition: all 0.4s ease;
         }
       }
       &:first-of-type {
@@ -53,11 +56,15 @@
     .contact {
       width: 30%;
       display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
       a {
         margin: 0.2rem;
         svg {
+          transition: all 0.1s ease;
           &:hover {
             transform: scale(1.2);
+            transition: all 0.1s ease;
           }
         }
       }
@@ -122,6 +129,10 @@
     .contact {
       flex-direction: column;
       justify-content: space-evenly;
+      flex-wrap: wrap;
+      align-content: space-evenly;
+      height: 150px;
+      padding-left: 20px;
       div {
         align-self: center;
       }
