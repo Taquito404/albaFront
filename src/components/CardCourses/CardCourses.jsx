@@ -46,15 +46,12 @@ export default function CardCourses({ curso, openModal, lecciones }) {
             </div>
             <article>
               <h1>{curso.title}</h1>
-              <ul className={Styles.listStyle}>
-                <il>
-                  <svg className={Styles.babyLogo} />
-                </il>
-
-                <il className={Styles.listCounter}>
-                  <svg className={Styles.videoPlayer} /> {numLecciones}
-                </il>
-              </ul>
+              <div className={Styles.listStyle}>
+                <div className={Styles.listCounter}>
+                  <svg className={Styles.videoPlayer} />
+                  <span>{numLecciones}</span>
+                </div>
+              </div>
               <span>{curso.description}</span>
             </article>
             <button
