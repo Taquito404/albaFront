@@ -78,7 +78,7 @@
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  
+
   width: 100%;
   overflow: hidden;
 }
@@ -106,6 +106,10 @@
       margin-top: 10px;
       &:first-of-type {
         font-size: 20px;
+      }
+      &:nth-child(2) {
+        font-size: 18;
+        font-weight: 400;
       }
       span {
         font-weight: 500;
@@ -148,7 +152,13 @@
         font-size: 40px;
       }
       p {
-        font-size: 20px;
+        &:first-of-type {
+          font-size: 20px;
+        }
+        &:nth-child(2) {
+          font-weight: 400;
+          font-size: 20px;
+        }
       }
     }
   }

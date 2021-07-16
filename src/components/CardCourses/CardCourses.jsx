@@ -25,7 +25,7 @@ export default function CardCourses({ curso, lecciones, handleOpenModal }) {
     const getUser = async () => {
       try {
         const { data } = await axios.get(
-          `https://dev-alba.herokuapp.com/users/mentor/${curso.authorId}`
+          `${process.env.NEXT_PUBLIC_API_URL}users/mentor/${curso.authorId}`
         );
         setAuthor(data.data.user);
       } catch (error) {
@@ -52,7 +52,7 @@ export default function CardCourses({ curso, lecciones, handleOpenModal }) {
           <span>{curso.description}</span>
         </article>
         <button
-          onClick={handleOpenModal}
+          onClick={() => handleOpenModal(curso)}
           type="button"
           className={`${pack.buttonModal}`}
         >
