@@ -1,0 +1,219 @@
+@import "../../../styles/variables.scss";
+
+.navTop {
+  font-family: Lexend;
+  height: 67px;
+  width: 100%;
+  background-color: $navFooColor;
+  display: flex;
+  justify-content: space-between;
+  overflow: visible;
+  .bur {
+    display: none;
+  }
+  .btnLogo {
+    width: 80px;
+    height: 73.66px;
+    background-image: url(./img/Group.svg);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin: 0 1rem 0 0.5rem;
+    align-self: center;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+    &:hover {
+      background-color: $secondNavColor;
+      border-radius: 5px;
+    }
+  }
+  h3 {
+    font-size: 13px;
+    text-align: center;
+    align-self: center;
+    font-weight: 500;
+  }
+  .location {
+    width: 90px;
+  }
+  .searchBar {
+    display: flex;
+    .drop {
+      align-self: center;
+      cursor: pointer;
+    }
+    input {
+      height: 41px;
+      align-self: center;
+      border-color: transparent;
+      border-style: solid;
+      padding-left: 0.2rem;
+      width: 30vw;
+      &::placeholder {
+        font-family: Lexend;
+        font-size: 14px;
+        font-weight: 300;
+      }
+      &:focus-within {
+        outline-color: $elementsColor;
+      }
+    }
+    .search {
+      background-color: $secondNavColor;
+      background-image: url("./img/search.svg");
+      background-position: center;
+      background-size: contain;
+      background-repeat: no-repeat;
+      height: 41px;
+      width: 41px;
+      align-self: center;
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+      border-color: transparent;
+      cursor: pointer;
+    }
+  }
+  .settings {
+    display: flex;
+    .user {
+      align-self: center;
+      display: flex;
+      height: 50px;
+      &:hover {
+        cursor: pointer;
+        background-color: $secondNavColor;
+        border-radius: 5px;
+      }
+      h3 {
+        width: 80px;
+        margin-right: 10px;
+      }
+      svg {
+        background-image: url(./img/USUARIO1.svg);
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 39px;
+        height: 41px;
+        align-self: center;
+      }
+    }
+    .exit {
+      align-self: center;
+      display: flex;
+      height: 100%;
+      width: fit-content;
+      margin-right: 0.5rem;
+      .hide {
+        display: none;
+      }
+      .show {
+        display: inline-block;
+      }
+      svg {
+        background-image: url("./img/logOut.svg");
+        width: 36px;
+        height: 36px;
+        align-self: center;
+      }
+      &:hover {
+        background-color: $secondNavColor;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+    }
+  }
+}
+.navBot {
+  background-color: $secondNavColor;
+  font-family: Playfar;
+  letter-spacing: -0.01em;
+  font-weight: regular;
+  font-size: 1rem;
+  height: 42px;
+  display: flex;
+  justify-content: space-between;
+  ul {
+    display: flex;
+    margin: 0;
+    list-style: none;
+    align-self: center;
+    align-items: center;
+    padding: 0;
+
+    li {
+      margin: 0 0.25rem;
+      a {
+        padding: 12px 0.25rem;
+        height: 42px;
+        text-align: center;
+        &:hover {
+          cursor: pointer;
+          background-color: $navFooColor;
+        }
+      }
+    }
+  }
+  a {
+    align-self: center;
+    padding: 12px 0.5rem;
+    text-align: center;
+    &:hover {
+      cursor: pointer;
+      background-color: $navFooColor;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .navTop {
+    height: 42px;
+    background-color: $navFooColor;
+    justify-content: space-between;
+    .bur {
+      display: block;
+      margin: auto;
+      // align-self: center;
+      // margin-left: 0.5rem;
+      button {
+        background-image: url("./img/menu.svg");
+        background-repeat: no-repeat;
+        background-color: transparent;
+        background-size: contain;
+        background-position: center;
+        width: 2rem;
+        height: 2rem;
+      }
+    }
+    .btnLogo {
+      display: inline-block;
+      height: 90%;
+      margin: 0 0 0 4rem;
+      padding: 0;
+      width: 50px;
+      background-position: center;
+    }
+    .settings {
+      .exit {
+        display: none;
+      }
+      .user {
+        display: flex;
+        flex-direction: row-reverse;
+        h3 {
+          text-align: right;
+          font-size: 0.7rem;
+        }
+      }
+    }
+    .location {
+      display: none;
+    }
+    .searchBar {
+      display: none;
+    }
+  }
+  .navBot {
+    display: none;
+  }
+}

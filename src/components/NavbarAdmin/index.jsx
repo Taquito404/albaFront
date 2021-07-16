@@ -1,22 +1,108 @@
-import React from 'react';
-import AdminInfo from './AdminInfo';
-import Link from 'next/link';
+import React, { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
+import axios from 'axios';
+import NavResponsive from './NavResponsive';
+import NavbarDesktop from './NavbarDesktop';
 import NavbarStyles from './styles/navbar.module.scss';
 
 const NavbarAdmin = () => {
+    const [visibility, setVisibility] = useState(false);
+    const [hideNavbar, setHideNavbar] = useState(false);
+    const [user, setUser] = useState({});
+    const router = useRouter();
+
+    useEffect(() => {
+        const getProtection = async () => {
+            const token = window.localStorage.getItem('token');
+            let options = {
+                headers: {
+                    'Content-Type': 'application/json;charset=UTF-8',
+                    "Access-Control-Allow-Origin": "*",
+                    auth: token,
+                }
+            }
+            const { data } = await axios.get('https://dev-alba.herokuapp.com/users/profile', options);
+
+            data.user.role.map(userRole => {
+                if (userRole !== 'admin') {
+                    router.push('/');
+                    setHideNavbar(true)
+                    return;
+                }
+
+                if(userRole === 'admin'){
+                    router.push('/admin')
+                }
+            });
+        }
+        getProtection();
+        return () => {
+            setHideNavbar(false);
+        }
+    }, []);
+
+    useEffect(() => {
+        const getUser = async () => {
+            try {
+                const token = window.localStorage.getItem('token');
+                let options = {
+                    headers: {
+                        'Content-Type': 'application/json;charset=UTF-8',
+                        "Access-Control-Allow-Origin": "*",
+                        auth: token,
+                    }
+                }
+                const { data } = await axios.get('https://dev-alba.herokuapp.com/users/profile', options);
+                setUser(data.user);
+            } catch (error) {
+                console.error(error);
+            }
+        }
+        getUser()
+        return () => {
+            setUser({})
+        }
+    }, [])
+
+    const handleLogOut = () => {
+        window.localStorage.removeItem('token');
+        router.push('/');
+        setHideNavbar(true);
+        location.reload();
+        return;
+    }
+
     return (
-        <nav className={`d-none d-md-block bg-primary text-white p-4 ${NavbarStyles.navWrapper}`}>
-            <AdminInfo />
-
-            <div className={`my-4 ${NavbarStyles.separator}`}>
+        <>
+            <div className="d-lg-none w-100 bg-primary py-4 px-2 d-flex justify-content-end">
+                <div>
+                    <span
+                        onClick={() => setVisibility(!visibility)}
+                        className={`text-white mr-3 fas fa-bars ${NavbarStyles.iconMd}`}
+                    ></span>
+                </div>
             </div>
-
-            <div className="btn-group-vertical w-100">
-                <Link href="/admin/usuarios-partner" className="text-left link-nav">Usuarios Partners</Link>
-                <Link href="/admin/usuarios" className="text-left link-nav">Usuarios</Link>
-                <Link href="/admin/cursos" className="text-left link-nav">Cursos</Link>
-            </div>
-        </nav>
+            {
+                hideNavbar === false ?
+                    <NavbarDesktop
+                        user={user}
+                        handleLogOut={handleLogOut}
+                    />
+                    :
+                    null
+            }
+            {
+                visibility === true && hideNavbar === false ?
+                    <NavResponsive
+                        user={user}
+                        setVisibility={setVisibility}
+                        visibility={visibility}
+                        handleLogOut={handleLogOut}
+                    />
+                    :
+                    null
+            }
+        </>
     )
 }
 
