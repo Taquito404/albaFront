@@ -17,7 +17,7 @@ const HomeContent = () => {
                     <Image src={headerImg} alt="header" height={100} width={50} />
                 </div>
 
-                <button type="button" className="btn btn-primary w-75 mt-3" onClick={() => router.push('/admin/usuarios-partner/agregar-curso')} >
+                <button type="button" className="btn btn-primary w-75 mt-3" onClick={() => router.push('/admin/cursos/agregar-curso')} >
                     Agrega un curso
                 </button>
             </div>

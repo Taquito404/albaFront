@@ -29,6 +29,10 @@ const NavbarAdmin = () => {
                     setHideNavbar(true)
                     return;
                 }
+
+                if(userRole === 'admin'){
+                    router.push('/admin')
+                }
             });
         }
         getProtection();
@@ -64,6 +68,7 @@ const NavbarAdmin = () => {
         window.localStorage.removeItem('token');
         router.push('/');
         setHideNavbar(true);
+        location.reload();
         return;
     }
 
