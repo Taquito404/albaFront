@@ -24,6 +24,7 @@ export default function CardCourses({ curso, lecciones, handleOpenModal }) {
   useEffect(() => {
     const getUser = async () => {
       try {
+        // `https://dev-alba.herokuapp.com/users/mentor/${curso.authorId}`
         const { data } = await axios.get(
           `${process.env.NEXT_PUBLIC_API_URL}users/mentor/${curso.authorId}`
         );
@@ -64,7 +65,6 @@ export default function CardCourses({ curso, lecciones, handleOpenModal }) {
           </span>
         </div>
       </div>
-
     </>
   );
 }
