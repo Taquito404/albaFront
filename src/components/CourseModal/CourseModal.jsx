@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import modalStyles from "../CourseModal/styles/modalStyles.module.scss";
 
 
-export default function CourseModal({ selected, closeModal }) {
+export default function CourseModal({ handleCloseModal }) {
   const router = useRouter();
 
   return (
@@ -30,11 +30,11 @@ export default function CourseModal({ selected, closeModal }) {
           <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatibus, amet dicta delectus cumque dolor beatae. Eum animi soluta distinctio. Sapiente non nobis est voluptatem quasi officia nihil vitae incidunt rerum!</p>
           <div className={modalStyles.btnWrapper}>
             <button type="text">Ver ahora</button>
-            <button type="text">Cerrar ventana</button>
+            <button type="text" onClick={handleCloseModal}>Cerrar ventana</button>
           </div>
         </div>
 
-        <button className={modalStyles.btnClose}>x</button>
+        <button className={modalStyles.btnClose} onClick={handleCloseModal}>x</button>
       </div>
     </div>
   );
