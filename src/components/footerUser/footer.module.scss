@@ -1,26 +1,31 @@
 @import "../../../styles/variables.scss";
 .footer {
-  .gray {
-    color: gray;
+  height: max-content;
+  font-weight: bold;
+  .disabled {
+    color: rgba(128, 128, 128, 0.644);
     a:hover {
-      color: gray;
+      color: rgba(128, 128, 128, 0.644);
       cursor: default;
     }
   }
   .container {
     display: flex;
-    height: 192px;
+    height: max-content;
     background-color: $navFooColor;
     justify-content: space-between;
-    padding: 3rem;
-
+    padding: 1rem 5%;
+    align-items: center;
+    font-family: Lexend;
+    font-weight: 200;
     ul {
       list-style: none;
       margin: 0;
       padding: 0;
       li {
         text-align: center;
-        margin: 10px;
+        margin: 0.5rem 0;
+        font-weight: 700;
         &:hover {
           cursor: pointer;
           color: $elementsColor;
@@ -33,6 +38,7 @@
         height: 50px;
         width: 60px;
         border-radius: 10px;
+
         &:hover {
           transform: scale(1.5);
         }

@@ -29,9 +29,9 @@ const Footer = () => {
               </a>
             </Link>
           </li>
-          {/* <Link className={s.gray}>
+          <li className={s.disabled}>
             <a>Quienes somos</a>
-          </Link> */}
+          </li>
           <li>
             <Link href="/login">
               <a>Crea tu cuenta</a>
@@ -46,14 +46,17 @@ const Footer = () => {
             <a href="https://www.linkedin.com/company/alba-maternidad/">
               <svg className={s.linkedin} />
             </a>
-            <a href="https://www.facebook.com/alba.maternidad">
-              <svg className={s.facebook} />
-            </a>
           </div>
           <div>
+            {" "}
+            <a href="https://www.facebook.com/alba.maternidad">
+              <svg className={s.facebook} />
+            </a>{" "}
             <a href="https://wa.me/5215539376827">
               <svg className={s.whatsapp} />
             </a>
+          </div>
+          <div>
             <a href="mailto:contacto@albamaternidad.com">
               <svg className={s.emailIcon} />
             </a>

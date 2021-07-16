@@ -1,6 +1,7 @@
+import s from "../styles/Documents.module.scss";
 const Politicas = () => {
   return (
-    <div>
+    <div className={s.document}>
       <h1>Aviso de Privacidad Alba Maternidad </h1>
       <p>
         Con fundamento en los artículos 15 y 16 de la Ley Federal de Protección
