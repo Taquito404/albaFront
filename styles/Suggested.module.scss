@@ -1,3 +1,5 @@
+@import ".//variables.scss";
+
 .ontop {
   z-index: 1;
   position: relative;
@@ -76,6 +78,58 @@
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: space-evenly;
+  
+  width: 100%;
+  overflow: hidden;
+}
+
+.headerWrapper {
+  background-image: url("../src/assets/img/CoverImageA.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  padding: 30px 20px;
+  display: flex;
+  flex-flow: column wrap;
+  height: auto;
+  justify-content: center;
+  width: 100%;
+  div {
+    h3 {
+      color: $elementsColor;
+      font-family: "Playfair Display", serif;
+      font-size: 30px;
+    }
+    p {
+      color: white;
+      font-size: 15px;
+      margin-top: 10px;
+      &:first-of-type {
+        font-size: 20px;
+      }
+      span {
+        font-weight: 500;
+      }
+    }
+    button {
+      background-color: $elementsColor;
+      border: none;
+      border-radius: 18px;
+      border-color: none;
+      color: white;
+      cursor: pointer;
+      font-weight: 400;
+      font-size: 18px;
+      margin-top: 20px;
+      text-transform: uppercase;
+      transition: all 300ms;
+      padding: 0.5rem 1rem;
+      &:hover {
+        background-color: #1b9b8e;
+        padding: 0.7rem 1.6rem;
+      }
+    }
+  }
 }
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 767px) and (-webkit-min-device-pixel-ratio: 2) {
@@ -85,9 +139,24 @@
 }
 
 @media screen and (min-device-width: 768px) {
+  .headerWrapper {
+    padding: 30px 40px;
+    height: 60vh;
+    div {
+      width: 50%;
+      h3 {
+        font-size: 40px;
+      }
+      p {
+        font-size: 20px;
+      }
+    }
+  }
+
   .cardStyle {
     display: flex;
-    flex-direction: row;
+    flex-flow: row wrap;
+    padding: 30px;
   }
 
   .courseBarLeft {

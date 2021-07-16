@@ -98,7 +98,9 @@ const Nav = () => {
         <Link href="/">
           <button className={s.btnLogo}></button>
         </Link>
-        <h3 className={s.location}>
+        {
+          /*
+          <h3 className={s.location}>
           Tu ubicación:
           <br />
           ---
@@ -114,6 +116,8 @@ const Nav = () => {
           />
           <button className={s.search} id="search" type="submit" />
         </form>
+          */
+        }
         <div className={s.settings}>
           <div onClick={toUserPage} className={s.user}>
             <svg />
