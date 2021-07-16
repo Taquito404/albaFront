@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
+import Head from "next/head";
 import axios from 'axios'
 import Image from 'next/image';
 import ListElement from '../../../src/components/ListElement';
@@ -69,7 +70,9 @@ const Usuarios = () => {
 
     return (
         <>
-
+            <Head>
+                <title>Editar usuarios</title>
+            </Head>
             <div className="w-100 d-flex flex-column flex-lg-row">
                 <div className="container container-fluid">
                     <div className={`w-100 text-center mt-3 shadow-sm border bg-light position-relative rounded p-4`}>
