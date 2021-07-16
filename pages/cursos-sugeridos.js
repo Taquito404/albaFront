@@ -9,7 +9,7 @@ import DropDown from '../src/components/dropDownMenu/dropDown'
 import CourseModal from '../src/components/CourseModal/CourseModal'
 import Styles from '../styles/Suggested.module.scss'
 
-export default function sugeridos({ data }) {
+export default function Sugeridos({ data }) {
     const [selectedCourse, setSelectedCourse] = useState(null)
     const [cursos, setCursos] = useState([]);
     const [mentores, setMentores] = useState([])
@@ -71,7 +71,7 @@ export default function sugeridos({ data }) {
             </div>
             {
                 selectedCourse === true ?
-                <CourseModal selected={selectedCourse} closeModal={setSelectedCourse} />
+                <CourseModal handleCloseModal={handleCloseModal} />
                 :
                 null
             }
