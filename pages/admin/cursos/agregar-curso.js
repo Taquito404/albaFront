@@ -57,11 +57,11 @@ const AgregarCurso = () => {
     useEffect(() => {
         const getCategories = async () => {
             try {
-                // 'https://dev-alba.herokuapp.com/categories'
                 const { data } = await axios.get(
-                    `${process.env.NEXT_PUBLIC_API_URL}categories}`
+                    `${process.env.NEXT_PUBLIC_API_URL}categories`
                 );
                 setCategories(data.data.categories);
+                console.log(categories)
             } catch (error) {
                 console.error(error)
             }

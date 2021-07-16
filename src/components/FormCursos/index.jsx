@@ -18,7 +18,7 @@ const FormCursos = ({ categories, users, curso, handleChangeValues, handleSubmit
                         !curso.categoryId ? <option value={undefined}>---Asigna una categoria---</option> : null
                     }
                     {
-                        categories.map((category, idx) => <option value={category._id} key={category._id} defaultValue={idx === 0 ? true : false}>{category.title}</option>)
+                        !categories ? null: categories.map((category, idx) => <option value={category._id} key={category._id} defaultValue={idx === 0 ? true : false}>{category.title}</option>)
                     }
                 </select>
             </div>
