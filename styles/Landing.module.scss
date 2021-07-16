@@ -2,9 +2,10 @@
 .body {
   background-color: $backgroundColor;
   .video {
-    background-image: url("../src/img/video.png");
+    //background-image: url("../src/img/video.png");
     width: 100%;
     height: 637px;
+    z-index: 999;
   }
   .cursos {
     background-image: url("../src/img/young.png");
