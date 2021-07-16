@@ -12,16 +12,17 @@ import Styles from '../styles/Suggested.module.scss'
 export default function Sugeridos({ data }) {
     const [selectedCourse, setSelectedCourse] = useState(null)
     const [cursos, setCursos] = useState([]);
-    const [mentores, setMentores] = useState([])
+    const [mentor, setMentor] = useState({});
 
     const [lecciones, setLecciones] = useState([])
+    const [curso, setCurso] = useState({})
     const router = useRouter()
 
 
     useEffect(() => {
         const getCursos = async () => {
             try {
-                const { data } = await axios.get('https://dev-alba.herokuapp.com/courses');
+                const { data } = await axios.get(process.env.NEXT_PUBLIC_API_URL + 'courses');
                 setCursos(data.data.courses)
                 // console.log (data)
             } catch (error) {
@@ -40,9 +41,8 @@ export default function Sugeridos({ data }) {
     useEffect(() => {
         const getLeccionesByCurso = async () => {
             try {
-                const { data } = await axios.get('https://dev-alba.herokuapp.com/videos');
+                const { data } = await axios.get(process.env.NEXT_PUBLIC_API_URL + 'videos');
                 setLecciones(data.data.videos)
-                console.log(data)
             } catch (error) {
                 console.error(error);
             }
@@ -52,13 +52,35 @@ export default function Sugeridos({ data }) {
 
     }, [])
 
-    const handleOpenModal = () => {setSelectedCourse(true); console.log(selectedCourse)}
+    useEffect(() => {
+        const getMentor = async () => {
+            try {
+                if (Object.keys(curso).length === 0) {
+                    return;
+                }
+
+                const { data } = await axios.get(process.env.NEXT_PUBLIC_API_URL + 'users/mentor/' + curso.authorId);
+                setMentor(data.data.user)
+            } catch (error) {
+                console.error(error)
+            }
+        }
+        getMentor()
+        return () => {
+            setMentor({});
+        }
+    }, [selectedCourse])
+
+    const handleOpenModal = (curso) => {
+        setSelectedCourse(true);
+        setCurso(curso);
+    }
     const handleCloseModal = () => setSelectedCourse(false);
 
     return (
         <div className={`${Styles.background}`}>
             <div>
-                <Cover />
+                <Cover cursos={cursos}/>
             </div>
 
             <div className={Styles.cardStyle}>
@@ -71,21 +93,11 @@ export default function Sugeridos({ data }) {
             </div>
             {
                 selectedCourse === true ?
-                <CourseModal handleCloseModal={handleCloseModal} />
-                :
-                null
+                    <CourseModal handleCloseModal={handleCloseModal} curso={curso} lecciones={lecciones} mentor={mentor} setSelectedCourse={setSelectedCourse} />
+                    :
+                    null
             }
 
         </div>
     )
 }
-
-
-
-// {/* //  {mentores.map ((mentor) => { */}
-//                 //     return (<CardCourses key={item._id} mentor={mentor})
-//                 // })}
-
-// {cursos.map ((item) => {
-//     return (curso={item})
-// })}

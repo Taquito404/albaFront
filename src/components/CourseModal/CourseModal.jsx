@@ -3,33 +3,38 @@ import { useRouter } from "next/router";
 import modalStyles from "../CourseModal/styles/modalStyles.module.scss";
 
 
-export default function CourseModal({ handleCloseModal }) {
+export default function CourseModal({ handleCloseModal, curso, lecciones, mentor, setSelectedCourse }) {
   const router = useRouter();
+  
+  const handleClickRouter = () => {
+    router.push('/curso/'+curso._id);
+    setSelectedCourse(false);
 
+  }
   return (
     <div className={modalStyles.container}>
       <div className={modalStyles.modal}>
         <div className={modalStyles.modalImgWrapper}>
-          <img src='https://i.vimeocdn.com/video/1175908678_240' alt="a" />
+          <img src={curso.imgUrl} alt={curso.imgUrl} />
         </div>
 
         <div className={modalStyles.titleWrapper}>
-          <h3>Titulo del video</h3>
+          <h3>{curso.title}</h3>
           <div className={modalStyles.titleVideoWrapper}>
             <div className={modalStyles.videoInfoWrapper}>
               <svg className={modalStyles.videoPlayer} />
-              <p>10</p>
+              <p>{lecciones.length === 0 || !lecciones ? '0': lecciones.filter(leccion => leccion.courseId === curso._id).length}</p>
             </div>
 
-            <p>Por: <span>Nombre del mentor</span></p>
+            <p>Por: <span>{mentor.name+' '+ mentor.lastName}</span></p>
           </div>
         </div>
 
 
         <div className={modalStyles.descriptionWrapper}>
-          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatibus, amet dicta delectus cumque dolor beatae. Eum animi soluta distinctio. Sapiente non nobis est voluptatem quasi officia nihil vitae incidunt rerum!</p>
+          <p>{curso.description}</p>
           <div className={modalStyles.btnWrapper}>
-            <button type="text">Ver ahora</button>
+            <button type="text" onClick={handleClickRouter}>Ver ahora</button>
             <button type="text" onClick={handleCloseModal}>Cerrar ventana</button>
           </div>
         </div>
