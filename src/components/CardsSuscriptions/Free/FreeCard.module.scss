@@ -1,0 +1,40 @@
+.card {
+  height: 430px;
+  width: 291px;
+  backface-visibility: hidden;
+  box-shadow: none;
+  background: none;
+  position: relative;
+  perspective: 150rem;
+  &:hover {
+    .frontSide {
+      transform: rotateY(180deg);
+    }
+    .backSide {
+      transform: rotateY(0deg);
+    }
+  }
+  .frontSide {
+    background-color: transparent;
+    background-image: url(../img/suscripcion-free-alba-maternidad.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    transition: all 0.8s ease;
+    backface-visibility: hidden;
+    height: 430px;
+    width: 291px;
+    position: absolute;
+  }
+  .backSide {
+    padding: 2rem;
+    border-radius: 50px;
+    transition: all 0.8s ease;
+    transform: rotateY(-180deg);
+    background-color: hotpink;
+    transition: all 0.8s ease;
+    backface-visibility: hidden;
+    height: 430px;
+    width: 291px;
+    position: absolute;
+  }
+}

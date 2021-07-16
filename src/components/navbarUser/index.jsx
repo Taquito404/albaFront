@@ -45,7 +45,7 @@ const Nav = () => {
   });
 
   useEffect(() => {
-    async () => {
+    const getName = async () => {
       if (window.localStorage.getItem("token")) {
         try {
           const token = window.localStorage.getItem("token");
@@ -67,9 +67,17 @@ const Nav = () => {
       } else {
         setUser(null);
       }
-    },
-      [logIn, logOut];
-  });
+    };
+    getName();
+  }, [logIn, logOut]);
+
+  const toUserPage = () => {
+    if (window.localStorage.getItem("token")) {
+      router.push("/detalles-usuario");
+    } else {
+      router.push("/login");
+    }
+  };
 
   const makeSearch = async (event) => {
     event.preventDefault();
@@ -106,7 +114,7 @@ const Nav = () => {
           <button className={s.search} id="search" type="submit" />
         </form>
         <div className={s.settings}>
-          <div className={s.user}>
+          <div onClick={toUserPage} className={s.user}>
             <svg />
             <h3>Hola, {user ? user.userName : "---"}</h3>
           </div>
@@ -127,9 +135,11 @@ const Nav = () => {
           <li>
             <a>DIRECTORIO</a>
           </li>
-          <li>
-            <a>CURSOS Y TALLERES</a>
-          </li>
+          <Link href={"/cursos-sugeridos"}>
+            <li>
+              <a>CURSOS Y TALLERES</a>
+            </li>
+          </Link>
           <li>
             <a>MARKETPLACE</a>
           </li>

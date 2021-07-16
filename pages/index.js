@@ -4,6 +4,8 @@ import { useRouter } from "next/router";
 import jwt from "jsonwebtoken";
 import s from "../styles/Landing.module.scss";
 import CarouselComplete from "../src/components/Carousel/Carousel";
+import FreeCard from "../src/components/CardsSuscriptions/Free";
+import ProCard from "../src/components/CardsSuscriptions/Pro";
 
 import axios from "axios";
 
@@ -86,9 +88,9 @@ export default function Home() {
             <div className={s.suscriptions}>
               <h1>SUSCRIPCIONES</h1>
             </div>
-            <div>
-              <div>asdas</div>
-              <div>asdas</div>
+            <div className={s.cards}>
+              <FreeCard />
+              <ProCard />
             </div>
           </div>
         </div>
