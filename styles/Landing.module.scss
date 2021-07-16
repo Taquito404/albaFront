@@ -82,3 +82,17 @@
     }
   }
 }
+
+@media only screen and (min-width: 768px) {
+  .body{
+    .card {
+      height: 90%;
+      padding: 20px;
+      width: 40%;
+      button{
+        margin: 0 auto;
+        width: 50%;
+      }
+    }
+  }
+}
