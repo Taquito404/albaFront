@@ -63,7 +63,7 @@ const AgregarPartner = () => {
             }
             // https://dev-alba.herokuapp.com/users/signup
             const { data } = await axios.post(
-                `${process.env.NEXT_PUBLIC_API_URL}/users/sigup`
+                `${process.env.NEXT_PUBLIC_API_URL}users/sigup`
                 , newUser, options);
             setVisibilityPopUp(false);
             setUser({
