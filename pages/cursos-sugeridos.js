@@ -71,7 +71,7 @@ export default function sugeridos({ data }) {
             </div>
             {
                 selectedCourse === true ?
-                <CourseModal selected={selectedCourse} closeModal={setSelectedCourse} />
+                <CourseModal handleCloseModal={handleCloseModal} />
                 :
                 null
             }
