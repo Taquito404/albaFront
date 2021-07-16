@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Vimeo from '@u-wave/react-vimeo';
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import jwt from "jsonwebtoken";
@@ -82,19 +83,29 @@ export default function Home() {
           </Head>
 
           <div className={s.body}>
-            <div className={s.video}></div>
-            <CarouselComplete className={s.carousel} />
-            <div className={s.cursos}></div>
-            <div className={s.suscriptions}>
-              <h1>SUSCRIPCIONES</h1>
+            <div className={s.video}>
+              <Vimeo
+                  video='https://vimeo.com/568598656'
+                  responsive
+                  loop
+                  autoplay
+                  controls={false}
+                  showTitle={false}
+                  volume={.2}
+              />
             </div>
-            <div className={s.cards}>
-              <FreeCard />
-              <ProCard />
+              <CarouselComplete className={s.carousel} />
+              <div className={s.cursos}></div>
+              <div className={s.suscriptions}>
+                <h1>SUSCRIPCIONES</h1>
+              </div>
+              <div className={s.cards}>
+                <FreeCard />
+                <ProCard />
+              </div>
             </div>
           </div>
-        </div>
       )}
     </>
-  );
+      );
 }
