@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import Head from "next/head";
+
 import { useRouter } from "next/router";
 import Link from "next/link";
 import axios from "axios";
@@ -62,67 +64,71 @@ const SignIn = () => {
     }
   };
   return (
-    <div className={s.background}>
-      <Alert className={s.danger} isOpen={dangerAlert}>
-        <span className="alert-text">
-          <strong>Error!</strong> Por favor, inténtelo más tarde.
-        </span>
-        <button
-          type="button"
-          className="close"
-          data-dismiss="alert"
-          aria-label="Close"
-          onClick={() => {
-            setDangerAlert(false);
-          }}
-        >
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </Alert>
-      <form onSubmit={makeSubmit} className={s.form}>
-        <div className={s.imgBackground}></div>
-        <div className={s[isError]}>
-          <h3 className={s[isErrorText]}>Las contraseñas deben coincidir.</h3>
-        </div>
-        <div className={s[isErrorInputs]}>
-          <h3 className={s[isErrorTextInputs]}>
-            Todos los campos son obligatorios.
-          </h3>
-        </div>
-        <label htmlFor="text">Nombre</label>
-        <Input
-          className={s.email}
-          type="text"
-          value={name}
-          callback={setName}
-          placeholder="Ana Luisa"
-          required
-        />
-        <label htmlFor="text">Apellido</label>
-        <Input
-          className={s.email}
-          type="text"
-          value={lastName}
-          callback={setLastName}
-          placeholder="Pérez"
-        />
-        <label htmlFor="text">Nombre de Usuario</label>
-        <Input
-          className={s.email}
-          type="text"
-          value={userName}
-          callback={setUserName}
-          placeholder="AnaLu"
-        />
-        <label htmlFor="email">Correo electrónico</label>
-        <Input
-          className={s.email}
-          type="email"
-          value={email}
-          callback={setEmail}
-          placeholder="micorreo@correo.com"
-        />
-        {/* <label for="text">Bio</label>
+    <>
+      <Head>
+        <title>Registrate</title>
+      </Head>
+      <div className={s.background}>
+        <Alert className={s.danger} isOpen={dangerAlert}>
+          <span className="alert-text">
+            <strong>Error!</strong> Por favor, inténtelo más tarde.
+          </span>
+          <button
+            type="button"
+            className="close"
+            data-dismiss="alert"
+            aria-label="Close"
+            onClick={() => {
+              setDangerAlert(false);
+            }}
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </Alert>
+        <form onSubmit={makeSubmit} className={s.form}>
+          <div className={s.imgBackground}></div>
+          <div className={s[isError]}>
+            <h3 className={s[isErrorText]}>Las contraseñas deben coincidir.</h3>
+          </div>
+          <div className={s[isErrorInputs]}>
+            <h3 className={s[isErrorTextInputs]}>
+              Todos los campos son obligatorios.
+            </h3>
+          </div>
+          <label htmlFor="text">Nombre</label>
+          <Input
+            className={s.email}
+            type="text"
+            value={name}
+            callback={setName}
+            placeholder="Ana Luisa"
+            required
+          />
+          <label htmlFor="text">Apellido</label>
+          <Input
+            className={s.email}
+            type="text"
+            value={lastName}
+            callback={setLastName}
+            placeholder="Pérez"
+          />
+          <label htmlFor="text">Nombre de Usuario</label>
+          <Input
+            className={s.email}
+            type="text"
+            value={userName}
+            callback={setUserName}
+            placeholder="AnaLu"
+          />
+          <label htmlFor="email">Correo electrónico</label>
+          <Input
+            className={s.email}
+            type="email"
+            value={email}
+            callback={setEmail}
+            placeholder="micorreo@correo.com"
+          />
+          {/* <label for="text">Bio</label>
         <Input
           className={s.email}
           type="text"
@@ -130,7 +136,7 @@ const SignIn = () => {
           callback={setBio}
           placeholder="Hola! Esta es mi bio"
         /> */}
-        {/* <label for="text">Teléfono Celular</label>
+          {/* <label for="text">Teléfono Celular</label>
         <Input
           className={s.email}
           type="tel"
@@ -138,30 +144,31 @@ const SignIn = () => {
           callback={setCelphone}
           placeholder="Pérez"
         /> */}
-        <label htmlFor="password">Contraseña</label>
-        <Input
-          type="password"
-          value={password}
-          callback={setPassword}
-          placeholder="**********"
-        />
-        <label htmlFor="password">Confirmar contraseña</label>
-        <Input
-          type="password"
-          value={passwordConfirm}
-          callback={setPasswordConfirm}
-          placeholder="**********"
-        />
-        <button className={s.entra} id="logIn" type="submit">
-          CREAR CUENTA
-        </button>
-        <Link href="/login">
-          <button className={s.registrar} id="signIn" type="button">
-            REGRESAR
+          <label htmlFor="password">Contraseña</label>
+          <Input
+            type="password"
+            value={password}
+            callback={setPassword}
+            placeholder="**********"
+          />
+          <label htmlFor="password">Confirmar contraseña</label>
+          <Input
+            type="password"
+            value={passwordConfirm}
+            callback={setPasswordConfirm}
+            placeholder="**********"
+          />
+          <button className={s.entra} id="logIn" type="submit">
+            CREAR CUENTA
           </button>
-        </Link>
-      </form>
-    </div>
+          <Link href="/login">
+            <button className={s.registrar} id="signIn" type="button">
+              REGRESAR
+            </button>
+          </Link>
+        </form>
+      </div>
+    </>
   );
 };
 

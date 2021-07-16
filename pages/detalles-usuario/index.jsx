@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import Head from "next/head";
+
 import axios from "axios";
 import jwt from "jsonwebtoken";
 
@@ -67,66 +69,71 @@ const DetallesUsuario = () => {
   };
 
   return (
-    <div className={userDetailsStyles.container}>
-      <div className={userDetailsStyles.userWrapper}>
-        <div className={userDetailsStyles.cardUser}>
-          <div className={userDetailsStyles.headerCard}>
-            <Image src={UserImg} alt="no-user-image" />
-            <div className={userDetailsStyles.userInfo}>
-              <h3>{user ? user.userName : ""}</h3>
-              <p>{user ? user.email : ""}</p>
+    <>
+      <Head>
+        <title>Detalle de usuario</title>
+      </Head>
+      <div className={userDetailsStyles.container}>
+        <div className={userDetailsStyles.userWrapper}>
+          <div className={userDetailsStyles.cardUser}>
+            <div className={userDetailsStyles.headerCard}>
+              <Image src={UserImg} alt="no-user-image" />
+              <div className={userDetailsStyles.userInfo}>
+                <h3>{user ? user.userName : ""}</h3>
+                <p>{user ? user.email : ""}</p>
+              </div>
             </div>
+            <ul>
+              <li>Escritorio</li>
+              <li>Pedidos</li>
+              <li>Consultas</li>
+              <li>Descargas</li>
+              <li onClick={() => router.push("/detalles-usuario/mi-membresia")}>
+                Informacion de la cuenta
+              </li>
+            </ul>
           </div>
-          <ul>
-            <li>Escritorio</li>
-            <li>Pedidos</li>
-            <li>Consultas</li>
-            <li>Descargas</li>
-            <li onClick={() => router.push("/detalles-usuario/mi-membresia")}>
-              Informacion de la cuenta
-            </li>
-          </ul>
+
+          <div className={userDetailsStyles.userDetails}>
+            <p>
+              Hola Usuario (¿no eres tú?{" "}
+              <span onClick={handleLogOut}>Cerrar sessión</span>)
+            </p>
+            <p>
+              Desde el escritorio de tu cuenta puedes ver tus{" "}
+              <span>pedidos recientes</span>, gestionar tus{" "}
+              <span>direcciones de envío</span> y <span>facturación</span> ,{" "}
+              <span>editar tu contraseña</span> y{" "}
+              <span>los detalles de tu cuenta</span> y{" "}
+              <span onClick={() => router.push("/detalles-usuario/mi-membresia")}>
+                membresía.
+              </span>
+            </p>
+            <MenuCards
+              userDetailsStyles={userDetailsStyles}
+              Membresia={Membresia}
+              Cursos={Cursos}
+              Marketplace={Marketplace}
+              Manos={Manos}
+              Servicios={Servicios}
+            />
+          </div>
         </div>
 
-        <div className={userDetailsStyles.userDetails}>
-          <p>
-            Hola Usuario (¿no eres tú?{" "}
-            <span onClick={handleLogOut}>Cerrar sessión</span>)
-          </p>
-          <p>
-            Desde el escritorio de tu cuenta puedes ver tus{" "}
-            <span>pedidos recientes</span>, gestionar tus{" "}
-            <span>direcciones de envío</span> y <span>facturación</span> ,{" "}
-            <span>editar tu contraseña</span> y{" "}
-            <span>los detalles de tu cuenta</span> y{" "}
-            <span onClick={() => router.push("/detalles-usuario/mi-membresia")}>
-              membresía.
-            </span>
-          </p>
-          <MenuCards
-            userDetailsStyles={userDetailsStyles}
-            Membresia={Membresia}
-            Cursos={Cursos}
-            Marketplace={Marketplace}
-            Manos={Manos}
-            Servicios={Servicios}
-          />
+        <MenuCards
+          userDetailsStyles={userDetailsStyles}
+          Membresia={Membresia}
+          Cursos={Cursos}
+          Marketplace={Marketplace}
+          Manos={Manos}
+          Servicios={Servicios}
+        />
+
+        <div className={userDetailsStyles.positionFixed}>
+          <Image src={perfil} />
         </div>
       </div>
-
-      <MenuCards
-        userDetailsStyles={userDetailsStyles}
-        Membresia={Membresia}
-        Cursos={Cursos}
-        Marketplace={Marketplace}
-        Manos={Manos}
-        Servicios={Servicios}
-      />
-
-      <div className={userDetailsStyles.positionFixed}>
-        <Image src={perfil} />
-      </div>
-    </div>
+    </>
   );
 };
 

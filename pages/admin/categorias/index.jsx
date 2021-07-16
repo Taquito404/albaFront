@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Head from "next/head";
 import Image from "next/image";
 import axios from "axios";
 
@@ -17,7 +18,7 @@ const Categories = () => {
         router.push("/");
         return;
       }
-    } catch (error) {}
+    } catch (error) { }
   }, []);
 
   const [category, setCategory] = useState({
@@ -70,6 +71,9 @@ const Categories = () => {
   };
   return (
     <>
+      <Head>
+        <title>Categorias</title>
+      </Head>
       {visibilityPopUp === true ? (
         <div className="mt-3 animate__animated animate__backInDown alert alert-dismissible alert-danger position-fixed fixed-top w-50 mx-auto">
           <span
