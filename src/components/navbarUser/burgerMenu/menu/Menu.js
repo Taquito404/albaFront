@@ -31,13 +31,17 @@ const Menu = ({ open }) => {
   });
   return (
     <StyledMenu open={open}>
-      <a>ACCESO A PROVEEDORES</a>
+      <a className={s.disabled}>DIRECTORIO</a>
+      <Link href={"/cursos-sugeridos"}>
+        <a>CURSOS Y TALLERES</a>
+      </Link>
+      <a className={s.disabled}>MARKETPLACE</a>
+      <a className={s.disabled}>COTIZA TU EVENTO</a>
+      <a className={s.disabled}>DONA ROPA Y ARTÍCULOS</a>
       <div onClick={handleLogIn} className={s[logIn]}>
-        <svg />
         <h3>Login</h3>
       </div>
       <div onClick={handleLogOut} className={s[logOut]}>
-        <svg />
         <h3>Cerrar sesión</h3>
       </div>
     </StyledMenu>

@@ -53,7 +53,7 @@ export default function CardCourses({ curso, lecciones, handleOpenModal }) {
           <span>{curso.description}</span>
         </article>
         <button
-          onClick={handleOpenModal}
+          onClick={() => handleOpenModal(curso)}
           type="button"
           className={`${pack.buttonModal}`}
         >

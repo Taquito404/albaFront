@@ -1,6 +1,8 @@
+import s from "../styles/Documents.module.scss";
+
 const Terminos = () => {
   return (
-    <div>
+    <div className={s.document}>
       <h1>TÉRMINOS Y CONDICIONES </h1>
       <p>
         Este contrato describe los términos y condiciones generales (en adelante

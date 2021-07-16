@@ -1,11 +1,22 @@
+@import "../../../../styles/variables.scss";
 .hide {
   display: none;
 }
 .show {
-  display: inline-block;
-  svg {
-    background-image: url("../img/logOut.svg");
-    width: 36px;
-    height: 36px;
+  display: flex;
+  font-family: Lexend;
+  font-size: 0.9rem;
+  padding: 0.5rem 0;
+  text-decoration: none;
+  width: 100%;
+  align-content: flex-start;
+  background-color: white;
+  color: $elementsColor;
+  h3 {
+    padding: 0.5rem 0.5rem;
+    font-size: 1rem;
   }
+}
+.disabled {
+  color: rgba(128, 128, 128, 0.644);
 }

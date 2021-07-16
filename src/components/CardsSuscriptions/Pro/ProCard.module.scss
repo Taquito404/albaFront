@@ -1,21 +1,13 @@
+@import "../../../../styles/variables.scss";
+
 .card {
   height: 430px;
-  width: 291px;
+  width: 40%;
   backface-visibility: hidden;
-  position: relative;
   box-shadow: none;
   background: none;
   position: relative;
   perspective: 150rem;
-
-  &:hover {
-    .frontSide {
-      transform: rotateY(-180deg);
-    }
-    .backSide {
-      transform: rotateY(0deg);
-    }
-  }
   .frontSide {
     background-color: transparent;
     background-image: url(../img/suscripcion-pro-alba-maternidad.png);
@@ -24,18 +16,54 @@
     transition: all 0.8s ease;
     backface-visibility: hidden;
     height: 457px;
-    width: 291px;
+    width: 100%;
     position: absolute;
   }
   .backSide {
-    border-radius: 50px;
-    transform: rotateY(180deg);
-    padding: 2rem;
-    background-color: hotpink;
-    transition: all 0.8s ease;
-    backface-visibility: hidden;
+    display: none;
+  }
+}
+@media screen and (min-device-width: 768px) {
+  .card {
     height: 430px;
     width: 291px;
-    position: absolute;
+    backface-visibility: hidden;
+    position: relative;
+    box-shadow: none;
+    background: none;
+    position: relative;
+    perspective: 150rem;
+    &:hover {
+      .frontSide {
+        transform: rotateY(-180deg);
+      }
+      .backSide {
+        transform: rotateY(0deg);
+      }
+    }
+    .backSide {
+      color: rgba(0, 0, 0, 0.7);
+      display: unset;
+      border-radius: 50px;
+      transform: rotateY(180deg);
+      padding: 2rem;
+      background-color: $navFooColor;
+      transition: all 0.8s ease;
+      backface-visibility: hidden;
+      height: 430px;
+      width: 291px;
+      position: absolute;
+      ul {
+        width: 100%;
+        li {
+          list-style-type: none;
+          margin-bottom: 10px;
+          width: 100%;
+          &:first-of-type {
+            margin-top: 10px;
+          }
+        }
+      }
+    }
   }
 }
