@@ -17,7 +17,8 @@ const Cursos = () => {
     useEffect(() => {
         const getCursos = async () => {
             try {
-                const { data } = await axios.get('https://dev-alba.herokuapp.com/courses');
+                // 'https://dev-alba.herokuapp.com/courses'
+                const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}courses`);
                 setCursos(data.data.courses);
             } catch (error) {
                 console.error(error)
@@ -51,7 +52,8 @@ const Cursos = () => {
                     auth: token
                 }
             }
-            const { data } = await axios.delete(`https://dev-alba.herokuapp.com/courses/${id}`, options);
+            // `https://dev-alba.herokuapp.com/courses/${id}`
+            const { data } = await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}courses/${id}`, options);
             setHasRemoved(true);
             setHasRemoved(false);
         } catch (error) {

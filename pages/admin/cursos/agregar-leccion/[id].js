@@ -25,12 +25,12 @@ const AgregarLeccion = () => {
     titlePopUp: "",
     bodyPopUp: "",
   });
-
+  // "https://dev-alba.herokuapp.com/videos"
   useEffect(() => {
     const getLecciones = async () => {
       try {
         const { data } = await axios.get(
-          "https://dev-alba.herokuapp.com/videos"
+          `${process.env.NEXT_PUBLIC_API_URL}videos`
         );
         const filteredLecciones = data.data.videos.filter(
           (leccion) => leccion.courseId == router.query.id
@@ -59,8 +59,9 @@ const AgregarLeccion = () => {
           auth: token,
         },
       };
+      // `https://dev-alba.herokuapp.com/videos/${id}`
       const { data } = await axios.delete(
-        `https://dev-alba.herokuapp.com/videos/${id}`,
+        `${process.env.NEXT_PUBLIC_API_URL}videos/${id}`,
         options
       );
       setHasRemoved(true);
@@ -92,8 +93,9 @@ const AgregarLeccion = () => {
         });
         return;
       }
+      // "https://dev-alba.herokuapp.com/videos"
       const { data } = await axios.post(
-        "https://dev-alba.herokuapp.com/videos",
+        `${process.env.NEXT_PUBLIC_API_URL}videos`,
         leccion,
         options
       );
