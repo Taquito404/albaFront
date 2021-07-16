@@ -39,7 +39,8 @@ const EditarUsuarios = () => {
                         auth: token
                     }
                 }
-                const { data } = await axios.get(`https://dev-alba.herokuapp.com/users/user/${id}`, options);
+                // `https://dev-alba.herokuapp.com/users/user/${id}`
+                const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}users/user/${id}`, options);
                 setUser(data.data.user);
             } catch (error) {
                 console.error(error)
@@ -78,7 +79,8 @@ const EditarUsuarios = () => {
                     auth: token
                 }
             }
-            const { data } = await axios.patch(`https://dev-alba.herokuapp.com/users/user/${id}`, newUser, options);
+            // `https://dev-alba.herokuapp.com/users/user/${id}`
+            const { data } = await axios.patch(`${process.env.NEXT_PUBLIC_API_URL}users/user/${id}`, newUser, options);
 
             setVisibilityPopUp(false);
             setDisableButton(false);
