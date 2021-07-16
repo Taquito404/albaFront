@@ -177,7 +177,7 @@ const Leccion = () => {
       };
       //   "https://dev-alba.herokuapp.com/stripe/subscription"
       const { data } = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URL}subscription`,
+        `${process.env.NEXT_PUBLIC_API_URL}stripe/subscription`,
         options
       );
 

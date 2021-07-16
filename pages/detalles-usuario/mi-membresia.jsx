@@ -36,6 +36,7 @@ const MiMembresia = () => {
         );
 
         setUser(data.user);
+        console.log(user);
       } catch (error) {
         console.error(error);
       }
@@ -74,12 +75,8 @@ const MiMembresia = () => {
 
   const handleSubscribe = async () => {
     try {
-      const data = await createCheckoutSession(
-        "price_1J8WSdKHiexP1NsDKDoxuQ2j"
-      );
-      const stripePromise = await loadStripe(
-        "pk_test_51IrpVdKHiexP1NsDkcMFdZOFFMNbsFstsTNYxiqeOSE3Vt9klcshochH2Ymeb5pE4AGB6EjbzqWcGz2Rmp3e9sCO00o6k4LBAE"
-      );
+      const data = await createCheckoutSession("price_1J8WSdKHiexP1NsDKDoxuQ2j");
+      const stripePromise = await loadStripe("pk_test_51IrpVdKHiexP1NsDkcMFdZOFFMNbsFstsTNYxiqeOSE3Vt9klcshochH2Ymeb5pE4AGB6EjbzqWcGz2Rmp3e9sCO00o6k4LBAE");
 
       await stripePromise.redirectToCheckout({
         sessionId: data.sessionId,
@@ -100,10 +97,7 @@ const MiMembresia = () => {
         },
       };
       //   `https://dev-alba.herokuapp.com/stripe/subscriptions/${user.subscriptionId}`
-      const { data } = await axios.delete(
-        `${process.env.NEXT_PUBLIC_API_URL}stripe/subscriptions/${user.subscriptionId}`,
-        options
-      );
+      const { data } = await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}stripe/subscriptions/${user.subscriptionId}`, options);
       setCanceledSub(true);
       setCanceledSub(false);
       setVisibility(false);
@@ -153,11 +147,12 @@ const MiMembresia = () => {
                 <label>Membresía:</label>
                 <p>
                   {user.subscriptionId ? "Pro" : "Free"}{" "}
-                  {user.subscriptionId ? (
-                    <span onClick={showModal}>Cancelar suscripción</span>
-                  ) : (
-                    <span onClick={handleSubscribe}>Iniciar suscripción</span>
-                  )}
+                  {
+                    user.subscriptionId ?
+                      <span onClick={showModal}>Cancelar suscripción</span>
+                      :
+                      <span onClick={handleSubscribe}>Iniciar suscripción</span>
+                  }
                 </p>
               </div>
             </div>
