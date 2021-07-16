@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Head from "next/head";
 import axios from "axios";
 import jwt from "jsonwebtoken";
 import { useRouter } from "next/router";
@@ -216,6 +217,9 @@ const Leccion = () => {
 
   return (
     <>
+      <Head>
+        <title>Curso</title>
+      </Head>
       {visibilityToast.error === true ? (
         <Toast data={visibilityToast} handleClose={handleCloseToast} />
       ) : null}
@@ -255,13 +259,14 @@ const Leccion = () => {
             {!lecciones
               ? null
               : lecciones.map((leccion, idx) => (
-                  <VideoCard
-                    leccionStyles={leccionStyles}
-                    leccion={leccion}
-                    hasPurchased={hasPurchased}
-                    key={idx}
-                  />
-                ))}
+                <VideoCard
+                  leccionStyles={leccionStyles}
+                  leccion={leccion}
+                  curso={curso}
+                  hasPurchased={hasPurchased}
+                  key={idx}
+                />
+              ))}
           </div>
         </div>
       </div>

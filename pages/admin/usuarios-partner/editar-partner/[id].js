@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Head from "next/head";
 import axios from 'axios';
 import Image from 'next/image';
 import FormAEPartner from '../../../../src/components/FormAEPartner';
@@ -67,7 +68,7 @@ const EditarPartner = () => {
         ev.preventDefault();
         try {
             const { id } = router.query;
-            
+
             const token = window.localStorage.getItem('token');
             let options = {
                 headers: {
@@ -89,6 +90,9 @@ const EditarPartner = () => {
 
     return (
         <>
+            <Head>
+                <title>Editar Partner</title>
+            </Head>
             {
                 visibilityPopUp === true ?
                     <div className="mt-3 animate__animated animate__backInDown alert alert-dismissible alert-danger position-fixed fixed-top w-50 mx-auto">
