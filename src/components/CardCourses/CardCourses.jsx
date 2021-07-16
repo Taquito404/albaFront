@@ -1,12 +1,40 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { GetServerSideProps } from "next";
+import axios from "axios";
 import pack from "../RoundButton/styles/RoundButton.module.scss";
 import Styles from "../CardCourses/styles/card.module.scss";
 import RoundButton from "../RoundButton/RoundButton";
 import CourseModal from "../CourseModal/CourseModal";
 
-export default function CardCourses({ curso, openModal, leccion }) {
+export default function CardCourses({ curso, openModal, lecciones }) {
   // console.log ('props', data)
+
+  const [author, setAuthor] = useState({ name: "", lastName: "" });
+
+  const numLecciones = useMemo(() => {
+    if (lecciones.length === 0) {
+      return 0;
+    }
+    const filteredLecciones = lecciones.filter(
+      (leccion) => leccion.courseId === curso._id
+    );
+    return filteredLecciones.length;
+  }, [curso, lecciones]);
+
+  useEffect(() => {
+    const getUser = async () => {
+      try {
+        const { data } = await axios.get(
+          `https://dev-alba.herokuapp.com/users/mentor/${curso.authorId}`
+        );
+        setAuthor(data.data.user);
+        // console.log ({data})
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    getUser();
+  }, []);
 
   return (
     <div className={`${Styles.background}`}>
@@ -21,11 +49,10 @@ export default function CardCourses({ curso, openModal, leccion }) {
               <ul className={Styles.listStyle}>
                 <il>
                   <svg className={Styles.babyLogo} />
-                  {!leccion ? "" : leccion.length}
                 </il>
 
-                <il>
-                  <svg className={Styles.videoPlayer} />
+                <il className={Styles.listCounter}>
+                  <svg className={Styles.videoPlayer} /> {numLecciones}
                 </il>
               </ul>
               <span>{curso.description}</span>
@@ -39,9 +66,7 @@ export default function CardCourses({ curso, openModal, leccion }) {
             </button>
             <div className={Styles.cardFooter}>
               <span>
-                Por: Nombre partner
-                <br />
-                Asesor de---certificado
+                Por: {author.name} {author.lastName}
               </span>
             </div>
           </div>

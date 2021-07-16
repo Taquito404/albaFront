@@ -14,7 +14,7 @@ export default function sugeridos ({data}) {
     const [cursos, setCursos] = useState([]);
     const [mentores, setMentores] = useState([])
 
-    const [leccion, setLeccion] = useState([])
+    const [lecciones, setLecciones] = useState([])
     const router = useRouter()
 
     
@@ -34,22 +34,6 @@ export default function sugeridos ({data}) {
         }
     }, [])
 
-//     useEffect(() => {
-//     const getUser = async () => {
-//         try {
-            
-//             const { data } = await axios.get(`https://dev-alba.herokuapp.com/users/mentor/${cursos.authorId}`);
-//             setMentores(data.data.mentores)
-//             console.log ({data})
-//         } catch (error) {
-//             console.error(error);
-//         }
-//     }
-//     getUser();
-//     return () => {
-//         setMentores([])
-//     }
-// }, [])
 
 // Función para obtener las lecciones
 
@@ -57,17 +41,15 @@ useEffect(() => {
     const getLeccionesByCurso = async () => {
         try {
             const { data } = await axios.get('https://dev-alba.herokuapp.com/videos');
-            const filteredLecciones = data.data.videos.filter(leccion => leccion.courseId == router.query.id);
-            setLeccion(filteredLecciones);
+            setLecciones  (data.data.videos)
             console.log (data)
         } catch (error) {
             console.error(error);
         }
     }
     getLeccionesByCurso()
-    return () => {
-        setLeccion([])
-    }
+   
+    
 }, [])
 
     return (
@@ -81,14 +63,9 @@ useEffect(() => {
             <div className={Styles.cardStyle}>
 
                 {cursos.map ((item) => {
-                    return (<CardCourses key={item._id} curso={item} openModal={setSelectedCourse}/>)
+                    return (<CardCourses key={item._id} curso={item} openModal={setSelectedCourse} lecciones={lecciones}/>)
                 })}
-                {/* Mapeo para sacar la cantidad de lecciones en un curso */}
-                {leccion.map((item) =>{
-                    return (
-                        <CardCourses leccion={item}/>
-                    )
-                })} 
+
                 
             </div>
             <div>
@@ -99,6 +76,7 @@ useEffect(() => {
         </div>
     )
 }
+
 
 
 // {/* //  {mentores.map ((mentor) => { */}
