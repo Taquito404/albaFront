@@ -1,4 +1,5 @@
 import s from "./FreeCard.module.scss";
+import Link from "next/link";
 
 const FreeCard = () => {
   return (
@@ -13,6 +14,9 @@ const FreeCard = () => {
             Acceso ilimitado al foro de apoyo y contención (PRÓXIMAMENTE).
           </li>
         </ul>
+        <Link href="/login">
+          <button>Ver</button>
+        </Link>
       </div>
     </div>
   );

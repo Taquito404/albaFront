@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Head from "next/head";
 import axios from "axios";
 import Image from "next/image";
 import Leccion from "../../../../src/components/Leccion";
@@ -25,12 +26,12 @@ const AgregarLeccion = () => {
     titlePopUp: "",
     bodyPopUp: "",
   });
-
+  // "https://dev-alba.herokuapp.com/videos"
   useEffect(() => {
     const getLecciones = async () => {
       try {
         const { data } = await axios.get(
-          "https://dev-alba.herokuapp.com/videos"
+          `${process.env.NEXT_PUBLIC_API_URL}videos`
         );
         const filteredLecciones = data.data.videos.filter(
           (leccion) => leccion.courseId == router.query.id
@@ -59,8 +60,9 @@ const AgregarLeccion = () => {
           auth: token,
         },
       };
+      // `https://dev-alba.herokuapp.com/videos/${id}`
       const { data } = await axios.delete(
-        `https://dev-alba.herokuapp.com/videos/${id}`,
+        `${process.env.NEXT_PUBLIC_API_URL}videos/${id}`,
         options
       );
       setHasRemoved(true);
@@ -92,8 +94,9 @@ const AgregarLeccion = () => {
         });
         return;
       }
+      // "https://dev-alba.herokuapp.com/videos"
       const { data } = await axios.post(
-        "https://dev-alba.herokuapp.com/videos",
+        `${process.env.NEXT_PUBLIC_API_URL}videos`,
         leccion,
         options
       );
@@ -113,6 +116,9 @@ const AgregarLeccion = () => {
 
   return (
     <>
+      <Head>
+        <title>Agregar Leccion</title>
+      </Head>
       {visibilityPopUp === true ? (
         <div className="mt-3 animate__animated animate__backInDown alert alert-dismissible alert-danger position-fixed fixed-top w-50 mx-auto">
           <span
@@ -179,12 +185,12 @@ const AgregarLeccion = () => {
               {!lecciones
                 ? null
                 : lecciones.map((video) => (
-                    <Leccion
-                      key={video._id}
-                      video={video}
-                      handleDeleteLeccion={handleDeleteLeccion}
-                    />
-                  ))}
+                  <Leccion
+                    key={video._id}
+                    video={video}
+                    handleDeleteLeccion={handleDeleteLeccion}
+                  />
+                ))}
             </div>
           </div>
         </div>

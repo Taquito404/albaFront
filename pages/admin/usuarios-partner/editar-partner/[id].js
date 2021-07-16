@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Head from "next/head";
 import axios from 'axios';
 import Image from 'next/image';
 import FormAEPartner from '../../../../src/components/FormAEPartner';
@@ -38,7 +39,8 @@ const EditarPartner = () => {
                         auth: token
                     }
                 }
-                const { data } = await axios.get(`https://dev-alba.herokuapp.com/users/user/${id}`, options);
+                // `https://dev-alba.herokuapp.com/users/user/${id}`
+                const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/users/user`, options);
                 setUser(data.data.user);
             } catch (error) {
                 console.error(error)
@@ -66,7 +68,7 @@ const EditarPartner = () => {
         ev.preventDefault();
         try {
             const { id } = router.query;
-            
+
             const token = window.localStorage.getItem('token');
             let options = {
                 headers: {
@@ -75,6 +77,7 @@ const EditarPartner = () => {
                     auth: token
                 }
             }
+            // https://dev-alba.herokuapp.com/users/user/${id}
             const { data } = await axios.patch(`https://dev-alba.herokuapp.com/users/user/${id}`, newUser, options);
 
             setVisibilityPopUp(false);
@@ -87,6 +90,9 @@ const EditarPartner = () => {
 
     return (
         <>
+            <Head>
+                <title>Editar Partner</title>
+            </Head>
             {
                 visibilityPopUp === true ?
                     <div className="mt-3 animate__animated animate__backInDown alert alert-dismissible alert-danger position-fixed fixed-top w-50 mx-auto">

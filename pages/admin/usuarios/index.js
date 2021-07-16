@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
+import Head from "next/head";
 import axios from 'axios'
 import Image from 'next/image';
 import ListElement from '../../../src/components/ListElement';
@@ -21,7 +22,8 @@ const Usuarios = () => {
                         auth: token
                     }
                 }
-                const { data } = await axios.get('https://dev-alba.herokuapp.com/users', options);
+                // 'https://dev-alba.herokuapp.com/users'
+                const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}users`, options);
                 const filteredUser = data.data.users.filter(user => user.role.includes('user'))
                 setUsers(filteredUser);
             } catch (error) {
@@ -56,7 +58,8 @@ const Usuarios = () => {
                     auth: token
                 }
             }
-            const { data } = await axios.delete(`https://dev-alba.herokuapp.com/users/${id}`, options);
+            // `https://dev-alba.herokuapp.com/users/${id}`
+            const { data } = await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}users/${id}`, options);
             setHasRemoved(true);
             setHasRemoved(false);
         } catch (error) {
@@ -67,7 +70,9 @@ const Usuarios = () => {
 
     return (
         <>
-
+            <Head>
+                <title>Editar usuarios</title>
+            </Head>
             <div className="w-100 d-flex flex-column flex-lg-row">
                 <div className="container container-fluid">
                     <div className={`w-100 text-center mt-3 shadow-sm border bg-light position-relative rounded p-4`}>

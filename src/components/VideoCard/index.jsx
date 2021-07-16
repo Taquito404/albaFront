@@ -9,7 +9,7 @@ const VideoCard = ({ leccionStyles, leccion, hasPurchased, curso }) => {
         <div className={leccionStyles.videoCard} key={leccion.title}>
             {
                 hasPurchased === false ?
-                    <img src={Object.keys(curso).length === 0 || !curso ? '' : curso.imgUrl} alt={leccion.title} className={leccionStyles.imgLeccion} />
+                    <img src={!curso ? '' : curso.imgUrl} alt={leccion.title} className={leccionStyles.imgLeccion} />
                     :
                     <Vimeo
                         video={leccion.url}

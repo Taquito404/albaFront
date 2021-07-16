@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import Head from "next/head";
 import axios from 'axios'
 import Image from 'next/image';
 import { useRouter } from 'next/router';
@@ -17,7 +18,8 @@ const Cursos = () => {
     useEffect(() => {
         const getCursos = async () => {
             try {
-                const { data } = await axios.get('https://dev-alba.herokuapp.com/courses');
+                // 'https://dev-alba.herokuapp.com/courses'
+                const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}courses`);
                 setCursos(data.data.courses);
             } catch (error) {
                 console.error(error)
@@ -51,7 +53,8 @@ const Cursos = () => {
                     auth: token
                 }
             }
-            const { data } = await axios.delete(`https://dev-alba.herokuapp.com/courses/${id}`, options);
+            // `https://dev-alba.herokuapp.com/courses/${id}`
+            const { data } = await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}courses/${id}`, options);
             setHasRemoved(true);
             setHasRemoved(false);
         } catch (error) {
@@ -61,7 +64,9 @@ const Cursos = () => {
 
     return (
         <>
-
+            <Head>
+                <title>Cursos</title>
+            </Head>
             <div className="w-100 d-flex flex-column flex-lg-row">
                 <div className="container container-fluid">
                     <div className={`w-100 text-center mt-3 shadow-sm border bg-light position-relative rounded p-4`}>

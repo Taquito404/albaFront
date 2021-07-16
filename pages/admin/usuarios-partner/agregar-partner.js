@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Head from "next/head";
 import Image from 'next/image';
 import FormAEPartner from '../../../src/components/FormAEPartner';
 import { useRouter } from 'next/router';
@@ -60,7 +61,10 @@ const AgregarPartner = () => {
                     auth: token
                 }
             }
-            const { data } = await axios.post('https://dev-alba.herokuapp.com/users/signup', newUser, options);
+            // https://dev-alba.herokuapp.com/users/signup
+            const { data } = await axios.post(
+                `${process.env.NEXT_PUBLIC_API_URL}/users/sigup`
+                , newUser, options);
             setVisibilityPopUp(false);
             setUser({
                 userName: '',
@@ -78,6 +82,9 @@ const AgregarPartner = () => {
 
     return (
         <>
+            <Head>
+                <title>Agregar partner</title>
+            </Head>
             {
                 visibilityPopUp === true ?
                     <div className="mt-3 animate__animated animate__backInDown alert alert-dismissible alert-danger position-fixed fixed-top w-50 mx-auto">

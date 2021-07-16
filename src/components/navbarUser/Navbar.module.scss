@@ -23,9 +23,11 @@
     border: none;
     cursor: pointer;
     background-color: transparent;
+    transition: all 0.4s ease;
     &:hover {
       background-color: $secondNavColor;
       border-radius: 5px;
+      transition: all 0.4s ease;
     }
   }
   h3 {
@@ -82,9 +84,12 @@
       display: flex;
       height: 100%;
       margin-right: 1rem;
+
+      transition: all 0.4s ease;
       &:hover {
         cursor: pointer;
         background-color: $secondNavColor;
+        transition: all 0.4s ease;
       }
       h3 {
         max-width: 80px;
@@ -102,6 +107,7 @@
     .exit {
       align-self: center;
       height: 100%;
+      transition: all 0.4s ease;
       .hide {
         display: none;
       }
@@ -126,6 +132,7 @@
       &:hover {
         background-color: $secondNavColor;
         cursor: pointer;
+        transition: all 0.4s ease;
       }
     }
   }
@@ -160,9 +167,15 @@
       height: 42px;
       display: flex;
 
+      transition: all 0.4s ease;
+
+
       &:hover {
         cursor: pointer;
         background-color: $navFooColor;
+
+        transition: all 0.4s ease;
+
       }
 
       a {

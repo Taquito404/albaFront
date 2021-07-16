@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Head from "next/head";
 import axios from 'axios';
 import Image from 'next/image';
 import FormAEPartner from '../../../../src/components/FormAEPartner';
@@ -39,7 +40,8 @@ const EditarUsuarios = () => {
                         auth: token
                     }
                 }
-                const { data } = await axios.get(`https://dev-alba.herokuapp.com/users/user/${id}`, options);
+                // `https://dev-alba.herokuapp.com/users/user/${id}`
+                const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}users/user/${id}`, options);
                 setUser(data.data.user);
             } catch (error) {
                 console.error(error)
@@ -69,7 +71,7 @@ const EditarUsuarios = () => {
         ev.preventDefault();
         try {
             const { id } = router.query;
-            
+
             const token = window.localStorage.getItem('token');
             let options = {
                 headers: {
@@ -78,7 +80,8 @@ const EditarUsuarios = () => {
                     auth: token
                 }
             }
-            const { data } = await axios.patch(`https://dev-alba.herokuapp.com/users/user/${id}`, newUser, options);
+            // `https://dev-alba.herokuapp.com/users/user/${id}`
+            const { data } = await axios.patch(`${process.env.NEXT_PUBLIC_API_URL}users/user/${id}`, newUser, options);
 
             setVisibilityPopUp(false);
             setDisableButton(false);
@@ -90,6 +93,10 @@ const EditarUsuarios = () => {
 
     return (
         <>
+
+            <Head>
+                <title>Editar usuarios</title>
+            </Head>
             {
                 visibilityPopUp === true ?
                     <div className="mt-3 animate__animated animate__backInDown alert alert-dismissible alert-danger position-fixed fixed-top w-50 mx-auto">
