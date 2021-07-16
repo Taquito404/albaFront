@@ -80,6 +80,7 @@ const SignIn = () => {
         </button>
       </Alert>
       <form onSubmit={makeSubmit} className={s.form}>
+        <div className={s.imgBackground}></div>
         <div className={s[isError]}>
           <h3 className={s[isErrorText]}>Las contraseñas deben coincidir.</h3>
         </div>

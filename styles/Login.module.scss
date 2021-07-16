@@ -4,9 +4,6 @@
   background-color: $backgroundColor;
   width: 100%;
   min-height: 100vh;
-  background-image: url("../src/img/login-alba-maternidad.png");
-  background-repeat: no-repeat;
-  background-position: 19vw 15vh;
   overflow: hidden;
   Nav {
     top: 0;
@@ -22,7 +19,18 @@
     font-size: 18px;
     font-weight: 600;
     margin: 266px auto;
-    box-sizing: border-box;
+    position: relative;
+    .imgBackground {
+      background-image: url("../src/img/login-alba-maternidad.png");
+      background-repeat: no-repeat;
+      background-origin: border-box;
+      width: 1100px;
+      height: 700px;
+      position: absolute;
+      z-index: 0;
+      top: -220px;
+      left: -277px;
+    }
     .errorDiv {
       display: none;
     }
@@ -30,6 +38,8 @@
       display: none;
     }
     .errorDivDisplay {
+      z-index: 1;
+      position: relative;
       display: block;
       height: 5rem;
       background: rgba(254, 60, 60, 0.8);
@@ -40,6 +50,8 @@
       display: flex;
       justify-content: center;
       .errorTextDisplay {
+        z-index: 1;
+        position: relative;
         align-self: center;
         width: 80%;
         height: 80%;
@@ -48,11 +60,18 @@
 
     .email {
       margin-bottom: 32px;
+      z-index: 1;
+      position: relative;
     }
     label {
       margin-bottom: 4px;
+      z-index: 1;
+      position: relative;
     }
     Input {
+      z-index: 1;
+      margin: 5px 0;
+      position: relative;
       width: 326px;
       height: 43px;
       border-color: gray;
@@ -72,6 +91,8 @@
       }
     }
     .entra {
+      z-index: 1;
+      position: relative;
       width: 116px;
       height: 40px;
       border-radius: 18px;
@@ -94,6 +115,8 @@
       }
     }
     .registrar {
+      z-index: 1;
+      position: relative;
       width: 140px;
       height: 40px;
       border-radius: 18px;
@@ -125,6 +148,7 @@
 
 @media (max-width: 480px) {
   .form {
+    padding: 13px 7px 15px 7px;
     background-color: rgb(255, 255, 255, 0.7);
     width: 292px;
     display: flex;
@@ -134,12 +158,13 @@
     margin: 150px auto;
     border-radius: 5px;
     Input {
+      align-self: center;
       height: 43px;
       width: 250px;
       border-radius: 4px;
     }
     .entra {
-      margin: 50px 0 23px 0;
+      margin: 15px 0 15px 0;
     }
   }
 }

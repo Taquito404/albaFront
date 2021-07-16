@@ -31,7 +31,7 @@ const LogIn = () => {
       if (token) {
         router.push("/");
       }
-      location.reload()
+      location.reload();
     } catch (error) {
       console.log(error.message);
       if ((error = 400)) {
@@ -70,6 +70,7 @@ const LogIn = () => {
             REGÍSTRATE
           </button>
         </Link>
+        <div className={s.imgBackground}></div>
       </form>
     </div>
   );
