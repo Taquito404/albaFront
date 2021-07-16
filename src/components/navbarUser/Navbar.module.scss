@@ -7,8 +7,8 @@
   background-color: $navFooColor;
   display: flex;
   justify-content: space-between;
-  overflow: visible;
-  .bur {
+  overflow: hidden;
+  .burger {
     display: none;
   }
   .btnLogo {
@@ -18,7 +18,7 @@
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
-    margin: 0 1rem 0 0.5rem;
+    margin: 0 1rem 0 3rem;
     align-self: center;
     border: none;
     cursor: pointer;
@@ -76,49 +76,55 @@
   }
   .settings {
     display: flex;
+    margin-right: 2rem;
     .user {
       align-self: center;
       display: flex;
-      height: 50px;
+      height: 100%;
+      margin-right: 1rem;
       &:hover {
         cursor: pointer;
         background-color: $secondNavColor;
-        border-radius: 5px;
       }
       h3 {
-        width: 80px;
+        max-width: 80px;
         margin-right: 10px;
       }
       svg {
         background-image: url(./img/USUARIO1.svg);
         background-size: contain;
         background-repeat: no-repeat;
-        width: 39px;
-        height: 41px;
+        width: 50px;
+        height: 80%;
         align-self: center;
       }
     }
     .exit {
       align-self: center;
-      display: flex;
       height: 100%;
-      width: fit-content;
-      margin-right: 0.5rem;
       .hide {
         display: none;
       }
       .show {
-        display: inline-block;
+        display: flex;
+        height: 100%;
+        max-width: 110px;
+        margin: auto;
+      }
+      h3 {
+        max-width: 80px;
+        align-self: center;
+        margin-right: 5px;
       }
       svg {
         background-image: url("./img/logOut.svg");
         width: 36px;
         height: 36px;
         align-self: center;
+        margin-left: 5px;
       }
       &:hover {
         background-color: $secondNavColor;
-        border-radius: 5px;
         cursor: pointer;
       }
     }
@@ -130,9 +136,10 @@
   letter-spacing: -0.01em;
   font-weight: regular;
   font-size: 1rem;
-  height: 42px;
+  height: max-content;
   display: flex;
   justify-content: space-between;
+  overflow: hidden;
   ul {
     display: flex;
     margin: 0;
@@ -140,27 +147,29 @@
     align-self: center;
     align-items: center;
     padding: 0;
+    .disabled {
+      color: rgba(128, 128, 128, 0.644);
+      &:hover {
+        cursor: unset;
+        background-color: unset;
+      }
+    }
 
     li {
       margin: 0 0.25rem;
+      height: 42px;
+      display: flex;
+
+      &:hover {
+        cursor: pointer;
+        background-color: $navFooColor;
+      }
+
       a {
         padding: 12px 0.25rem;
-        height: 42px;
         text-align: center;
-        &:hover {
-          cursor: pointer;
-          background-color: $navFooColor;
-        }
+        align-self: center;
       }
-    }
-  }
-  a {
-    align-self: center;
-    padding: 12px 0.5rem;
-    text-align: center;
-    &:hover {
-      cursor: pointer;
-      background-color: $navFooColor;
     }
   }
 }
@@ -170,11 +179,11 @@
     height: 42px;
     background-color: $navFooColor;
     justify-content: space-between;
-    .bur {
+    .burger {
       display: block;
-      margin: auto;
-      // align-self: center;
-      // margin-left: 0.5rem;
+      align-self: center;
+      display: flex;
+      margin-left: 1rem;
       button {
         background-image: url("./img/menu.svg");
         background-repeat: no-repeat;
@@ -183,26 +192,34 @@
         background-position: center;
         width: 2rem;
         height: 2rem;
+        align-self: center;
       }
     }
     .btnLogo {
       display: inline-block;
       height: 90%;
-      margin: 0 0 0 4rem;
+      // margin: 0 0 0 4rem;
       padding: 0;
       width: 50px;
       background-position: center;
     }
     .settings {
+      margin-right: 1rem;
       .exit {
         display: none;
       }
       .user {
         display: flex;
         flex-direction: row-reverse;
+        margin: 0;
+        svg {
+          width: 35px;
+          height: 90%;
+        }
         h3 {
           text-align: right;
           font-size: 0.7rem;
+          max-width: 60px;
         }
       }
     }

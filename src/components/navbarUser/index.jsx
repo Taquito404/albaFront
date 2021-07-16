@@ -3,16 +3,16 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import axios from "axios";
 
-import InputNav from "./inputNav";
+// import InputNav from "./inputNav";
 import s from "./Navbar.module.scss";
-import Drop from "./dropdownMenuNav/drop";
+// import Drop from "./dropdownMenuNav/drop";
 import Burger from "./burgerMenu/burger/Burger";
 import Menu from "./burgerMenu/menu/Menu";
 import { useOnClickOutside } from "./burgerMenu/hooks";
 
 const Nav = () => {
   const router = useRouter();
-  const [search, setSearch] = useState("");
+  // const [search, setSearch] = useState("");
   const [logIn, setLogIn] = useState("hide");
   const [logOut, setLogOut] = useState("hide");
   const [open, setOpen] = useState(false);
@@ -80,26 +80,25 @@ const Nav = () => {
     }
   };
 
-  const makeSearch = async (event) => {
-    event.preventDefault();
-    try {
-      await console.log(search);
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
+  // const makeSearch = async (event) => {
+  //   event.preventDefault();
+  //   try {
+  //     await console.log(search);
+  //   } catch (error) {
+  //     console.log(error.message);
+  //   }
+  // };
   return (
     <div>
       <div className={s.navTop}>
-        <div ref={node} className={s.bur}>
+        <div ref={node} className={s.burger}>
           <Burger open={open} setOpen={setOpen} />
           <Menu open={open} setOpen={setOpen} />
         </div>
         <Link href="/">
           <button className={s.btnLogo}></button>
         </Link>
-        {
-          /*
+        {/*
           <h3 className={s.location}>
           Tu ubicación:
           <br />
@@ -116,12 +115,11 @@ const Nav = () => {
           />
           <button className={s.search} id="search" type="submit" />
         </form>
-          */
-        }
+          */}
         <div className={s.settings}>
           <div onClick={toUserPage} className={s.user}>
             <svg />
-            <h3>Hola, {user ? user.userName : "---"}</h3>
+            <h3>Hola{user ? `, ${user.userName}` : ""}</h3>
           </div>
           <div className={s.exit}>
             <div onClick={handleLogIn} className={s[logIn]}>
@@ -137,7 +135,7 @@ const Nav = () => {
       </div>
       <div className={s.navBot}>
         <ul>
-          <li>
+          <li className={s.disabled}>
             <a>DIRECTORIO</a>
           </li>
           <Link href={"/cursos-sugeridos"}>
@@ -145,17 +143,17 @@ const Nav = () => {
               <a>CURSOS Y TALLERES</a>
             </li>
           </Link>
-          <li>
+          <li className={s.disabled}>
             <a>MARKETPLACE</a>
           </li>
-          <li>
+          <li className={s.disabled}>
             <a>COTIZA TU EVENTO</a>
           </li>
-          <li>
+          <li className={s.disabled}>
             <a>DONA ROPA Y ARTÍCULOS</a>
           </li>
         </ul>
-        <a>ACCESO A PROVEEDORES</a>
+        {/* <a>ACCESO A PROVEEDORES</a> */}
       </div>
     </div>
   );

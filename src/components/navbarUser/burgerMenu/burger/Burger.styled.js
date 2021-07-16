@@ -7,4 +7,5 @@ export const StyledBurger = styled.button`
   height: 2rem;
   border: none;
   cursor: pointer;
+  transition: transform 0.3s ease-in-out;
 `;
