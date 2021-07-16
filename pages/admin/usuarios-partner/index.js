@@ -61,7 +61,7 @@ const UsuariosPartner = () => {
                 }
             }
                 `https://dev-alba.herokuapp.com/users/${id}`
-            const { data } = await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/users/${id}`, options);
+            const { data } = await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}users/${id}`, options);
             setHasRemoved(true);
             setHasRemoved(false);
         } catch (error) {

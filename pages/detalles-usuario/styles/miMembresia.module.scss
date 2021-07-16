@@ -20,6 +20,7 @@
       display: flex;
       flex-flow: row wrap;
       justify-content: space-between;
+      position: relative;
       .imageWrapper {
         width: 40%;
       }
@@ -86,7 +87,7 @@
 .fixedImage {
   bottom: 25%;
   right: 3px;
-  position: fixed;
+  position: absolute;
   width: 100%;
   z-index: 0;
 }
@@ -131,7 +132,7 @@
 
   .fixedImage {
     display: block;
-    position: unset;
+    position: absolute;
     margin: 100px 0;
     width: 50%;
   }

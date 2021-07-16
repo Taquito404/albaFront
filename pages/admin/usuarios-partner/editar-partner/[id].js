@@ -40,7 +40,7 @@ const EditarPartner = () => {
                     }
                 }
                 // `https://dev-alba.herokuapp.com/users/user/${id}`
-                const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/users/user`, options);
+                const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}users/user`, options);
                 setUser(data.data.user);
             } catch (error) {
                 console.error(error)
@@ -78,7 +78,7 @@ const EditarPartner = () => {
                 }
             }
             // https://dev-alba.herokuapp.com/users/user/${id}
-            const { data } = await axios.patch(`https://dev-alba.herokuapp.com/users/user/${id}`, newUser, options);
+            const { data } = await axios.patch(`${process.env.NEXT_PUBLIC_API_URL}users/user/${id}`, newUser, options);
 
             setVisibilityPopUp(false);
             setDisableButton(false);
