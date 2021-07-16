@@ -80,26 +80,31 @@ export default function Sugeridos({ data }) {
     const handleCloseModal = () => setSelectedCourse(false);
 
     return (
-        <div className={`${Styles.background}`}>
-            <div>
-                <Cover cursos={cursos}/>
-            </div>
+        <>
+            <Head>
+                <title>Cursos alba</title>
+            </Head>
+            <div className={`${Styles.background}`}>
+                <div>
+                    <Cover cursos={cursos} />
+                </div>
 
-            <div className={Styles.cardStyle}>
-                {cursos.map((item) => {
-                    return (<CardCourses key={item._id} curso={item} lecciones={lecciones} handleOpenModal={handleOpenModal} />)
-                })}
-            </div>
-            <div>
-                {/* <Carussel/> */}
-            </div>
-            {
-                selectedCourse === true ?
-                    <CourseModal handleCloseModal={handleCloseModal} curso={curso} lecciones={lecciones} mentor={mentor} setSelectedCourse={setSelectedCourse} />
-                    :
-                    null
-            }
+                <div className={Styles.cardStyle}>
+                    {cursos.map((item) => {
+                        return (<CardCourses key={item._id} curso={item} lecciones={lecciones} handleOpenModal={handleOpenModal} />)
+                    })}
+                </div>
+                <div>
+                    {/* <Carussel/> */}
+                </div>
+                {
+                    selectedCourse === true ?
+                        <CourseModal handleCloseModal={handleCloseModal} curso={curso} lecciones={lecciones} mentor={mentor} setSelectedCourse={setSelectedCourse} />
+                        :
+                        null
+                }
 
-        </div>
+            </div>
+        </>
     )
 }

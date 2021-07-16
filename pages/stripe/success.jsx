@@ -45,25 +45,30 @@ const Success = () => {
   }, [session_id]);
 
   return (
-    <div className={successStyles.container}>
-      <div className={successStyles.checkWrapper}>
-        <div className={successStyles.imgWrapper}>
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Yes_Check_Circle.svg/2048px-Yes_Check_Circle.svg.png"
-            alt="success"
-            className={successStyles.successImg}
-          />
+    <>
+      <Head>
+        <title>Success</title>
+      </Head>
+      <div className={successStyles.container}>
+        <div className={successStyles.checkWrapper}>
+          <div className={successStyles.imgWrapper}>
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Yes_Check_Circle.svg/2048px-Yes_Check_Circle.svg.png"
+              alt="success"
+              className={successStyles.successImg}
+            />
+          </div>
+          <p>Pago realizado exitosamente.</p>
+          <p>
+            Gracias por confiar en nosotros {!user ? null : user.userName}.
+            Bienvenido a la familia de Alba.{" "}
+            <span onClick={() => router.push("/")}>
+              Da click aqui para volver al inicio y disfrutar tus beneficios
+            </span>
+          </p>
         </div>
-        <p>Pago realizado exitosamente.</p>
-        <p>
-          Gracias por confiar en nosotros {!user ? null : user.userName}.
-          Bienvenido a la familia de Alba.{" "}
-          <span onClick={() => router.push("/")}>
-            Da click aqui para volver al inicio y disfrutar tus beneficios
-          </span>
-        </p>
       </div>
-    </div>
+    </>
   );
 };
 

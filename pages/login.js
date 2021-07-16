@@ -40,39 +40,44 @@ const LogIn = () => {
     }
   };
   return (
-    <div className={s.background}>
-      <form onSubmit={makeSubmit} className={s.form}>
-        <div className={s[isError]}>
-          <h3 className={s[isErrorText]}>
-            Correo electrónico o contraseña no válidos.
-          </h3>
-        </div>
-        <label htmlFor="email">Correo electrónico</label>
-        <Input
-          className={s.email}
-          type="email"
-          value={email}
-          callback={setEmail}
-          placeholder="micorreo@correo.com"
-        />
-        <label htmlFor="password">Contraseña</label>
-        <Input
-          type="password"
-          value={password}
-          callback={setPassword}
-          placeholder="**********"
-        />
-        <button className={s.entra} id="logIn" type="submit">
-          ENTRA
-        </button>
-        <Link href="/registrarse">
-          <button className={s.registrar} id="signIn" type="button">
-            REGÍSTRATE
+    <>
+      <Head>
+        <title>Inicia sesión</title>
+      </Head>
+      <div className={s.background}>
+        <form onSubmit={makeSubmit} className={s.form}>
+          <div className={s[isError]}>
+            <h3 className={s[isErrorText]}>
+              Correo electrónico o contraseña no válidos.
+            </h3>
+          </div>
+          <label htmlFor="email">Correo electrónico</label>
+          <Input
+            className={s.email}
+            type="email"
+            value={email}
+            callback={setEmail}
+            placeholder="micorreo@correo.com"
+          />
+          <label htmlFor="password">Contraseña</label>
+          <Input
+            type="password"
+            value={password}
+            callback={setPassword}
+            placeholder="**********"
+          />
+          <button className={s.entra} id="logIn" type="submit">
+            ENTRA
           </button>
-        </Link>
-        <div className={s.imgBackground}></div>
-      </form>
-    </div>
+          <Link href="/registrarse">
+            <button className={s.registrar} id="signIn" type="button">
+              REGÍSTRATE
+            </button>
+          </Link>
+          <div className={s.imgBackground}></div>
+        </form>
+      </div>
+    </>
   );
 };
 

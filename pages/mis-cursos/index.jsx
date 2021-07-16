@@ -69,47 +69,52 @@ const MisCursos = () => {
   }, [user]);
 
   return (
-    <div className={misCursosStyles.container}>
-      <div className={misCursosStyles.headerWrapper}>
-        <div>
-          <h3>Tus cursos</h3>
-          <p>
-            Aqui podras encontrar todos los cursos que has seleccionado o
-            comprado.
-          </p>
+    <>
+      <Head>
+        <title>Mis cursos</title>
+      </Head>
+      <div className={misCursosStyles.container}>
+        <div className={misCursosStyles.headerWrapper}>
+          <div>
+            <h3>Tus cursos</h3>
+            <p>
+              Aqui podras encontrar todos los cursos que has seleccionado o
+              comprado.
+            </p>
+          </div>
         </div>
-      </div>
 
-      <div className={misCursosStyles.contentWrapper}>
-        <div className={misCursosStyles.filterWrapper}>
-          <h3>Total de cursos {cursos.length === 0 ? "0" : cursos.length}</h3>
-        </div>
+        <div className={misCursosStyles.contentWrapper}>
+          <div className={misCursosStyles.filterWrapper}>
+            <h3>Total de cursos {cursos.length === 0 ? "0" : cursos.length}</h3>
+          </div>
 
-        <div className={misCursosStyles.videosWrapper}>
-          {cursos.length === 0 ? (
-            <p>No cuentas con cursos registrados...</p>
-          ) : (
-            cursos.map((curso) => (
-              <div
-                className={misCursosStyles.videoCard}
-                key={curso._id}
-                onClick={() => router.push(`/curso/${curso._id}`)}
-              >
-                <img src={curso.imgUrl} alt={curso.title} />
-                <div className={misCursosStyles.wrapperCardText}>
-                  <h3>{curso.title ? curso.title : ""}</h3>
-                  <p>
-                    {curso.description
-                      ? curso.description.substr(0, 250) + "..."
-                      : ""}
-                  </p>
+          <div className={misCursosStyles.videosWrapper}>
+            {cursos.length === 0 ? (
+              <p>No cuentas con cursos registrados...</p>
+            ) : (
+              cursos.map((curso) => (
+                <div
+                  className={misCursosStyles.videoCard}
+                  key={curso._id}
+                  onClick={() => router.push(`/curso/${curso._id}`)}
+                >
+                  <img src={curso.imgUrl} alt={curso.title} />
+                  <div className={misCursosStyles.wrapperCardText}>
+                    <h3>{curso.title ? curso.title : ""}</h3>
+                    <p>
+                      {curso.description
+                        ? curso.description.substr(0, 250) + "..."
+                        : ""}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            ))
-          )}
+              ))
+            )}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

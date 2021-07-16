@@ -216,6 +216,9 @@ const Leccion = () => {
 
   return (
     <>
+      <Head>
+        <title>Curso</title>
+      </Head>
       {visibilityToast.error === true ? (
         <Toast data={visibilityToast} handleClose={handleCloseToast} />
       ) : null}
@@ -255,13 +258,13 @@ const Leccion = () => {
             {!lecciones
               ? null
               : lecciones.map((leccion, idx) => (
-                  <VideoCard
-                    leccionStyles={leccionStyles}
-                    leccion={leccion}
-                    hasPurchased={hasPurchased}
-                    key={idx}
-                  />
-                ))}
+                <VideoCard
+                  leccionStyles={leccionStyles}
+                  leccion={leccion}
+                  hasPurchased={hasPurchased}
+                  key={idx}
+                />
+              ))}
           </div>
         </div>
       </div>

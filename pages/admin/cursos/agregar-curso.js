@@ -59,7 +59,7 @@ const AgregarCurso = () => {
                 // 'https://dev-alba.herokuapp.com/categories'
                 const { data } = await axios.get(
                     `${process.env.NEXT_PUBLIC_API_URL}categories}`
-                    );
+                );
                 setCategories(data.data.categories);
             } catch (error) {
                 console.error(error)
@@ -114,6 +114,9 @@ const AgregarCurso = () => {
 
     return (
         <>
+            <Head>
+                <title>Agregar Curso</title>
+            </Head>
             {
                 visibilityPopUp === true ?
                     <div className="mt-3 animate__animated animate__backInDown alert alert-dismissible alert-danger position-fixed fixed-top w-50 mx-auto">

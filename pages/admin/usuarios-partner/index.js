@@ -26,7 +26,7 @@ const UsuariosPartner = () => {
                 // 'https://dev-alba.herokuapp.com/users'
                 const { data } = await axios.get(
                     `${process.env.NEXT_PUBLIC_API_URL}`
-                    /users, options);
+                    / users, options);
                 const partners = data.data.users.filter(user => user.role.includes('partner'));
                 setUsers(partners);
             } catch (error) {
@@ -61,7 +61,7 @@ const UsuariosPartner = () => {
                     auth: token
                 }
             }
-            `https://dev-alba.herokuapp.com/users/${id}`
+                `https://dev-alba.herokuapp.com/users/${id}`
             const { data } = await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/users/${id}`, options);
             setHasRemoved(true);
             setHasRemoved(false);
@@ -73,6 +73,9 @@ const UsuariosPartner = () => {
 
     return (
         <>
+            <Head>
+                <title>Usuarios partner</title>
+            </Head>
             <div className="w-100 d-flex flex-column flex-lg-row">
                 <div className="container container-fluid">
                     <div className={`w-100 text-center mt-3 shadow-sm border bg-light position-relative rounded p-4`}>

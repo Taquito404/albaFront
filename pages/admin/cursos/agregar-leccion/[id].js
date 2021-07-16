@@ -115,6 +115,9 @@ const AgregarLeccion = () => {
 
   return (
     <>
+      <Head>
+        <title>Agregar Leccion</title>
+      </Head>
       {visibilityPopUp === true ? (
         <div className="mt-3 animate__animated animate__backInDown alert alert-dismissible alert-danger position-fixed fixed-top w-50 mx-auto">
           <span
@@ -181,12 +184,12 @@ const AgregarLeccion = () => {
               {!lecciones
                 ? null
                 : lecciones.map((video) => (
-                    <Leccion
-                      key={video._id}
-                      video={video}
-                      handleDeleteLeccion={handleDeleteLeccion}
-                    />
-                  ))}
+                  <Leccion
+                    key={video._id}
+                    video={video}
+                    handleDeleteLeccion={handleDeleteLeccion}
+                  />
+                ))}
             </div>
           </div>
         </div>

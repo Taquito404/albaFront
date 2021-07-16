@@ -63,7 +63,9 @@ const Cursos = () => {
 
     return (
         <>
-
+            <Head>
+                <title>Cursos</title>
+            </Head>
             <div className="w-100 d-flex flex-column flex-lg-row">
                 <div className="container container-fluid">
                     <div className={`w-100 text-center mt-3 shadow-sm border bg-light position-relative rounded p-4`}>

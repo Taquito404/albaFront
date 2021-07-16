@@ -15,9 +15,12 @@ const Home = () => {
 
         }
     }, [])
-    
+
     return (
         <>
+            <Head>
+                <title>Panel Admin</title>
+            </Head>
             <div className="">
                 <HomeContent />
             </div>

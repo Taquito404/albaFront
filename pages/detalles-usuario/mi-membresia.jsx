@@ -115,6 +115,9 @@ const MiMembresia = () => {
   const closeModal = () => setVisibility(false);
   return (
     <>
+      <Head>
+        <title>Mi membresia</title>
+      </Head>
       {visibility === true ? (
         <Modal
           title="Advertencia, estas a punto de cancelar la subscripcion"
