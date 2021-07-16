@@ -21,7 +21,8 @@ export default function Sugeridos({ data }) {
     useEffect(() => {
         const getCursos = async () => {
             try {
-                const { data } = await axios.get('https://dev-alba.herokuapp.com/courses');
+                // 'https://dev-alba.herokuapp.com/courses'
+                const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}courses`);
                 setCursos(data.data.courses)
                 // console.log (data)
             } catch (error) {
@@ -40,7 +41,8 @@ export default function Sugeridos({ data }) {
     useEffect(() => {
         const getLeccionesByCurso = async () => {
             try {
-                const { data } = await axios.get('https://dev-alba.herokuapp.com/videos');
+                // 'https://dev-alba.herokuapp.com/videos'
+                const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}videos`);
                 setLecciones(data.data.videos)
                 console.log(data)
             } catch (error) {

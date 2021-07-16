@@ -39,7 +39,8 @@ const AgregarCurso = () => {
                         auth: token
                     }
                 }
-                const { data } = await axios.get('https://dev-alba.herokuapp.com/users', options);
+                // 'https://dev-alba.herokuapp.com/users'
+                const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}users`, options);
                 const filteredUser = data.data.users.filter(user => user.role.includes('partner'))
                 setUsers(filteredUser);
             } catch (error) {
@@ -55,7 +56,10 @@ const AgregarCurso = () => {
     useEffect(() => {
         const getCategories = async () => {
             try {
-                const { data } = await axios.get('https://dev-alba.herokuapp.com/categories');
+                // 'https://dev-alba.herokuapp.com/categories'
+                const { data } = await axios.get(
+                    `${process.env.NEXT_PUBLIC_API_URL}categories}`
+                    );
                 setCategories(data.data.categories);
             } catch (error) {
                 console.error(error)
@@ -99,7 +103,8 @@ const AgregarCurso = () => {
                 })
                 return;
             }
-            const { data } = await axios.post('https://dev-alba.herokuapp.com/courses', curso, options);
+            // 'https://dev-alba.herokuapp.com/courses'
+            const { data } = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}courses`, curso, options);
             setVisibilityPopUp(false);
             router.push('/admin/cursos');
         } catch (error) {

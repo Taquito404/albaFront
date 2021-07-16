@@ -33,8 +33,9 @@ const Layout = ({ children }) => {
             auth: token,
           },
         };
+        // "https://dev-alba.herokuapp.com/users/profile"
         const { data } = await axios.get(
-          "https://dev-alba.herokuapp.com/users/profile",
+          `${process.env.NEXT_PUBLIC_API_URL}users/profile`,
           options
         );
 
@@ -83,9 +84,7 @@ const Layout = ({ children }) => {
             </Head>
             <div className="w-100 d-flex flex-column flex-lg-row">
               <NavbarAdmin setIsNewSession={setIsNewSession} />
-              <div className="container container-fluid w-100">
-                {children}
-              </div>
+              <div className="container container-fluid w-100">{children}</div>
             </div>
           </div>
         );
@@ -113,13 +112,7 @@ const Layout = ({ children }) => {
     }
   };
 
-  return <>{
-    !role ?
-      <p>Loading...</p>
-      :
-      setView(role)
-  }</>;
-
+  return <>{!role ? <p>Loading...</p> : setView(role)}</>;
 };
 
 export default Layout;
