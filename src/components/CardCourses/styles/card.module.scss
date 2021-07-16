@@ -1,6 +1,5 @@
 .band {
   width: 70%;
-  max-width: 1240px;
   margin: 4vh 1vw 2vh 4vw;
 
   display: grid;
@@ -38,12 +37,13 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
-  min-height: 100%;
-
+  height: 600px;
+  margin-top: 20px;
   // sets up hover state
   position: relative;
   top: 0;
   transition: all 0.1s ease-in;
+  width: 100%;
 
   &:hover {
     top: -2px;
@@ -53,7 +53,6 @@
   article {
     padding: 20px;
     flex: 1;
-
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -73,7 +72,7 @@
   span {
     font-size: 12px;
     font-weight: bold;
-    color: black;
+    color: rgba(0, 0, 0, 0.7);;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     margin: 1em 0 0 0;
@@ -166,5 +165,24 @@
     width: 18vw; //70%;
     margin: 4vh 1vw 2vh 4vw;
     justify-content: space-around;
+  }
+
+  .card{
+    margin-top: unset;
+    width: 50%;
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  // grid-template-rows: auto;
+  // grid-template-columns: 60px 60px;
+  .band {
+    width: 18vw; //70%;
+    margin: 4vh 1vw 2vh 4vw;
+    justify-content: space-around;
+  }
+
+  .card{
+    width: 15%;
   }
 }

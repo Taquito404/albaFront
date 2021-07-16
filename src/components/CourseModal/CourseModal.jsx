@@ -1,50 +1,41 @@
 import React, { useState } from "react";
-import Modal from "react-modal";
 import { useRouter } from "next/router";
-import "../CourseModal/styles/coursemodal.module.scss";
-import Styles from "../RoundButton/styles/RoundButton.module.scss";
-import logo from "../CardCourses/styles/card.module.scss";
-import pack from "../CourseModal/styles/coursemodal.module.scss";
+import modalStyles from "../CourseModal/styles/modalStyles.module.scss";
+
 
 export default function CourseModal({ selected, closeModal }) {
   const router = useRouter();
+
   return (
-    <div>
-      <Modal
-        isOpen={selected}
-        ariaHideApp={false}
-        className={pack.modalWrapper}
-      >
-        <div className={pack.imgContainer}>
-          <img src={selected.imgUrl}></img>
+    <div className={modalStyles.container}>
+      <div className={modalStyles.modal}>
+        <div className={modalStyles.modalImgWrapper}>
+          <img src='https://i.vimeocdn.com/video/1175908678_240' alt="a" />
         </div>
-        <div className={pack.titleContainer}>
-          <h1>{selected.title}</h1>
-          <ul>
-            <il>
-              {/* Aquí debería ir la cantidade lecciones por curso */}
-              <svg className={pack.videoPlayer} />
-            </il>
-          </ul>
+
+        <div className={modalStyles.titleWrapper}>
+          <h3>Titulo del video</h3>
+          <div className={modalStyles.titleVideoWrapper}>
+            <div className={modalStyles.videoInfoWrapper}>
+              <svg className={modalStyles.videoPlayer} />
+              <p>10</p>
+            </div>
+
+            <p>Por: <span>Nombre del mentor</span></p>
+          </div>
         </div>
-        <button
-          type="button"
-          className={`${pack.buttonModal}`}
-          onClick={() => closeModal(null)}
-        >
-          X
-        </button>
-        <div className={pack.descriptionContainer}>
-          <p>{selected.description}</p>
+
+
+        <div className={modalStyles.descriptionWrapper}>
+          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatibus, amet dicta delectus cumque dolor beatae. Eum animi soluta distinctio. Sapiente non nobis est voluptatem quasi officia nihil vitae incidunt rerum!</p>
+          <div className={modalStyles.btnWrapper}>
+            <button type="text">Ver ahora</button>
+            <button type="text">Cerrar ventana</button>
+          </div>
         </div>
-        <button
-          type="button"
-          className={pack.verButton}
-          onClick={() => router.push(`/curso/${selected._id}`)}
-        >
-          VER
-        </button>
-      </Modal>
+
+        <button className={modalStyles.btnClose}>x</button>
+      </div>
     </div>
   );
 }

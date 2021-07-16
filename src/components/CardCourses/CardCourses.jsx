@@ -6,7 +6,7 @@ import Styles from "../CardCourses/styles/card.module.scss";
 import RoundButton from "../RoundButton/RoundButton";
 import CourseModal from "../CourseModal/CourseModal";
 
-export default function CardCourses({ curso, openModal, lecciones }) {
+export default function CardCourses({ curso, lecciones, handleOpenModal }) {
   // console.log ('props', data)
 
   const [author, setAuthor] = useState({ name: "", lastName: "" });
@@ -28,7 +28,6 @@ export default function CardCourses({ curso, openModal, lecciones }) {
           `https://dev-alba.herokuapp.com/users/mentor/${curso.authorId}`
         );
         setAuthor(data.data.user);
-        // console.log ({data})
       } catch (error) {
         console.error(error);
       }
@@ -37,38 +36,35 @@ export default function CardCourses({ curso, openModal, lecciones }) {
   }, []);
 
   return (
-    <div className={`${Styles.background}`}>
-      <div className={`${Styles.band}`}>
-        <div className={`${Styles.item1}`}>
-          <div className={`${Styles.card}`}>
-            <div>
-              <img src={curso.imgUrl} className={Styles.image}></img>
-            </div>
-            <article>
-              <h1>{curso.title}</h1>
-              <div className={Styles.listStyle}>
-                <div className={Styles.listCounter}>
-                  <svg className={Styles.videoPlayer} />
-                  <span>{numLecciones}</span>
-                </div>
-              </div>
-              <span>{curso.description}</span>
-            </article>
-            <button
-              onClick={() => openModal(curso)}
-              type="button"
-              className={`${pack.buttonModal}`}
-            >
-              ABRIR
-            </button>
-            <div className={Styles.cardFooter}>
-              <span>
-                Por: {author.name} {author.lastName}
-              </span>
+    <>
+      <div className={`${Styles.card}`}>
+        <div>
+          <img src={curso.imgUrl} className={Styles.image}></img>
+        </div>
+        <article>
+          <h1>{curso.title}</h1>
+          <div className={Styles.listStyle}>
+            <div className={Styles.listCounter}>
+              <svg className={Styles.videoPlayer} />
+              <span>{numLecciones}</span>
             </div>
           </div>
+          <span>{curso.description}</span>
+        </article>
+        <button
+          onClick={handleOpenModal}
+          type="button"
+          className={`${pack.buttonModal}`}
+        >
+          ABRIR
+        </button>
+        <div className={Styles.cardFooter}>
+          <span>
+            Por: {author.name} {author.lastName}
+          </span>
         </div>
       </div>
-    </div>
+
+    </>
   );
 }
