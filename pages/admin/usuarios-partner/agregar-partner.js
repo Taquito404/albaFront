@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Head from "next/head";
 import Image from 'next/image';
 import FormAEPartner from '../../../src/components/FormAEPartner';
 import { useRouter } from 'next/router';

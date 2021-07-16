@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Head from "next/head";
 import axios from 'axios'
 import Image from 'next/image';
 import ListElement from '../../../src/components/ListElement';

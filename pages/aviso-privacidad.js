@@ -1,4 +1,6 @@
 import s from "../styles/Documents.module.scss";
+import Head from "next/head";
+
 const Politicas = () => {
   return (
     <>

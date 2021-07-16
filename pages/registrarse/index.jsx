@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import Head from "next/head";
+
 import { useRouter } from "next/router";
 import Link from "next/link";
 import axios from "axios";

@@ -1,3 +1,4 @@
+import Head from "next/head";
 import s from "../styles/Documents.module.scss";
 
 const Terminos = () => {

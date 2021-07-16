@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router';
+import Head from "next/head";
 import React, { useEffect } from 'react';
 import HomeContent from '../../src/components/HomeContent';
 const Home = () => {

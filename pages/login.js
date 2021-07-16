@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import Head from "next/head";
+
 import { useRouter } from "next/router";
 import Link from "next/link";
 import axios from "axios";
 import s from "../styles/Login.module.scss";
 import Input from "../src/components/inputs";
+import { route } from "next/dist/next-server/server/router";
 
 const LogIn = () => {
   const [email, setEmail] = useState("");
@@ -11,6 +14,20 @@ const LogIn = () => {
   const [isError, setIsError] = useState("errorDiv");
   const [isErrorText, setIsErrorText] = useState("errorText");
   const router = useRouter();
+
+
+  useEffect(() => {
+    const validateLogin = () => {
+      const token = window.localStorage.getItem('token');
+      if(token){
+        router.push('/')
+        return;
+      }
+
+    }
+
+    validateLogin()
+  }, [])
 
   const makeSubmit = async (event) => {
     event.preventDefault();
@@ -31,6 +48,7 @@ const LogIn = () => {
       if (token) {
         router.push("/");
       }
+      router.push("/");
       location.reload();
     } catch (error) {
       console.log(error.message);

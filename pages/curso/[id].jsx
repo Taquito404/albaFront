@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Head from "next/head";
 import axios from "axios";
 import jwt from "jsonwebtoken";
 import { useRouter } from "next/router";
@@ -261,6 +262,7 @@ const Leccion = () => {
                 <VideoCard
                   leccionStyles={leccionStyles}
                   leccion={leccion}
+                  curso={curso}
                   hasPurchased={hasPurchased}
                   key={idx}
                 />
