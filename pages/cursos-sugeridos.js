@@ -1,6 +1,6 @@
-import React, {useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router';
-import axios from  'axios'
+import axios from 'axios'
 import Cover from '../src/components/Cover/Cover'
 import CourseBar from '../src/components/CourseBar/CourseBar'
 import CardCourses from '../src/components/CardCourses/CardCourses'
@@ -9,15 +9,15 @@ import DropDown from '../src/components/dropDownMenu/dropDown'
 import CourseModal from '../src/components/CourseModal/CourseModal'
 import Styles from '../styles/Suggested.module.scss'
 
-export default function sugeridos ({data}) {
-    const [selectedCourse, setSelectedCourse] = useState (null)
+export default function sugeridos({ data }) {
+    const [selectedCourse, setSelectedCourse] = useState(null)
     const [cursos, setCursos] = useState([]);
     const [mentores, setMentores] = useState([])
 
     const [lecciones, setLecciones] = useState([])
     const router = useRouter()
 
-    
+
     useEffect(() => {
         const getCursos = async () => {
             try {
@@ -35,44 +35,47 @@ export default function sugeridos ({data}) {
     }, [])
 
 
-// Función para obtener las lecciones
+    // Función para obtener las lecciones
 
-useEffect(() => {
-    const getLeccionesByCurso = async () => {
-        try {
-            const { data } = await axios.get('https://dev-alba.herokuapp.com/videos');
-            setLecciones  (data.data.videos)
-            console.log (data)
-        } catch (error) {
-            console.error(error);
+    useEffect(() => {
+        const getLeccionesByCurso = async () => {
+            try {
+                const { data } = await axios.get('https://dev-alba.herokuapp.com/videos');
+                setLecciones(data.data.videos)
+                console.log(data)
+            } catch (error) {
+                console.error(error);
+            }
         }
-    }
-    getLeccionesByCurso()
-   
-    
-}, [])
+        getLeccionesByCurso()
+
+
+    }, [])
+
+    const handleOpenModal = () => {setSelectedCourse(true); console.log(selectedCourse)}
+    const handleCloseModal = () => setSelectedCourse(false);
 
     return (
         <div className={`${Styles.background}`}>
             <div>
-                <Cover/>
+                <Cover />
             </div>
-            <div>
-                {/* <CourseBar/>   */}
-            </div>
+
             <div className={Styles.cardStyle}>
-
-                {cursos.map ((item) => {
-                    return (<CardCourses key={item._id} curso={item} openModal={setSelectedCourse} lecciones={lecciones}/>)
+                {cursos.map((item) => {
+                    return (<CardCourses key={item._id} curso={item} lecciones={lecciones} handleOpenModal={handleOpenModal} />)
                 })}
-
-                
             </div>
             <div>
                 {/* <Carussel/> */}
             </div>
-            {selectedCourse && (<CourseModal selected={selectedCourse} closeModal={setSelectedCourse} />)}
-            
+            {
+                selectedCourse === true ?
+                <CourseModal selected={selectedCourse} closeModal={setSelectedCourse} />
+                :
+                null
+            }
+
         </div>
     )
 }
