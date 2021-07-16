@@ -238,6 +238,7 @@ const Leccion = () => {
                                     leccionStyles={leccionStyles}
                                     leccion={leccion}
                                     hasPurchased={hasPurchased}
+                                    curso={curso}
                                     key={idx}
                                 />)
 
