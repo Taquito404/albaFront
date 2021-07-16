@@ -80,6 +80,11 @@
       align-self: center;
       display: flex;
       height: 50px;
+      &:hover {
+        cursor: pointer;
+        background-color: $secondNavColor;
+        border-radius: 5px;
+      }
       h3 {
         width: 80px;
         margin-right: 10px;

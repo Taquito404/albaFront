@@ -15,9 +15,14 @@
   .suscriptions {
     height: 81px;
     background-color: $navFooColor;
-    margin-bottom: 20px;
     display: flex;
     justify-content: center;
+    align-items: center;
+  }
+  .cards {
+    display: flex;
+    height: 500px;
+    justify-content: space-evenly;
     align-items: center;
   }
 }
