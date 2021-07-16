@@ -25,9 +25,7 @@ const UsuariosPartner = () => {
                     }
                 }
                 // 'https://dev-alba.herokuapp.com/users'
-                const { data } = await axios.get(
-                    `${process.env.NEXT_PUBLIC_API_URL}`
-                    / users, options);
+                const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}users`, options);
                 const partners = data.data.users.filter(user => user.role.includes('partner'));
                 setUsers(partners);
             } catch (error) {
