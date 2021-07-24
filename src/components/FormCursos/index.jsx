@@ -18,7 +18,7 @@ const FormCursos = ({ categories, users, curso, handleChangeValues, handleSubmit
                         !curso.categoryId ? <option value={undefined}>---Asigna una categoria---</option> : null
                     }
                     {
-                        !categories ? null: categories.map((category, idx) => <option value={category._id} key={category._id} defaultValue={idx === 0 ? true : false}>{category.title}</option>)
+                        !categories ? null : categories.map((category, idx) => <option value={category._id} key={category._id} defaultValue={idx === 0 ? true : false}>{category.title}</option>)
                     }
                 </select>
             </div>
@@ -38,8 +38,18 @@ const FormCursos = ({ categories, users, curso, handleChangeValues, handleSubmit
                 <input type="text" className="form-control border rounded shadow-sm p-1" placeholder="E.g. https://image.com/123123" name="imgUrl" value={curso.imgUrl ? curso.imgUrl : ''} onChange={handleChangeValues} />
             </div>
             <div className="form-group">
+                <label className="font-weight-bold">Sera gratis?</label>
+                <select className="form-control form-select w-100" name="isFree" onChange={handleChangeValues}>
+                    {
+                        !curso.isFree ? <option value={undefined}>---Asigna si es gratuito---</option> : null
+                    }
+                    <option value={true}>Si</option>
+                    <option value={false}>No</option>
+                </select>
+            </div>
+            <div className="form-group">
                 <label className="font-weight-bold">Precio (MXN )</label>
-                <input type="number" className="form-control border rounded shadow-sm p-1" placeholder="E.g. 250" name="price" value={curso.price ? curso.price : ''} onChange={handleChangeValues} />
+                <input type="number" className="form-control border rounded shadow-sm p-1" placeholder="E.g. 250" name="price" value={curso.price ? curso.price : ''} onChange={handleChangeValues} disabled={curso.isFree === true ? true: false} />
             </div>
             <div className="d-flex justify-content-between">
                 <button type="submit" className="btn btn-primary w-100">Agregar curso</button>

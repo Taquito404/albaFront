@@ -20,7 +20,8 @@ const AgregarCurso = () => {
         categoryId: '',
         createdDate: new Date(),
         imgUrl: '',
-        price: ''
+        price: '',
+        isFree: false
     });
 
     const [visibilityPopUp, setVisibilityPopUp] = useState(false);
@@ -72,7 +73,7 @@ const AgregarCurso = () => {
         }
     }, []);
 
-    const handleChangeValues = ev => setCurso({ ...curso, [ev.target.name]: ev.target.value })
+    const handleChangeValues = ev => {setCurso({ ...curso, [ev.target.name]: ev.target.value }); console.log(curso)}
 
     const handleSubmit = async ev => {
         ev.preventDefault();
@@ -84,7 +85,8 @@ const AgregarCurso = () => {
                 categoryId,
                 createdDate,
                 imgUrl,
-                price
+                price,
+                isFree
             } = curso;
 
             const token = window.localStorage.getItem('token');
@@ -96,7 +98,7 @@ const AgregarCurso = () => {
                 }
             }
 
-            if (!authorId || !title || !description || !categoryId || !createdDate || !imgUrl || !price) {
+            if (!authorId || !title || !description || !categoryId || !createdDate || !imgUrl || !price || isFree == undefined) {
                 setVisibilityPopUp(true);
                 setMessagePopUp({
                     titlePopUp: 'Campos vacios',
