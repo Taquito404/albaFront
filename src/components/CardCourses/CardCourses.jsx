@@ -60,7 +60,7 @@ export default function CardCourses({ curso, lecciones, handleOpenModal }) {
         </button>
         <div className={Styles.cardFooter}>
           <span>
-            Por: {author.name} {author.lastName}
+            Por {author.name} {author.lastName}
           </span>
         </div>
       </div>
