@@ -51,7 +51,9 @@
                 &:first-of-type {
                     background-color: $elementsColor;
                     &:hover {
-                        background-color: #1b9b8e;
+                        background-color: $navFooColor;
+                        border: none;
+                        color: white;
                     }
                 }
                 &:nth-child(2) {
