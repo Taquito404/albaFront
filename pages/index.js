@@ -128,7 +128,7 @@ export default function Home() {
                   type="text"
                   onClick={() => router.push("/curso/" + cursos[0]._id)}
                 >
-                  Ver mas
+                  Ver más
                 </button>
               </div>
             </div>
