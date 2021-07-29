@@ -10,6 +10,7 @@
   display: flex;
   justify-content: space-between;
   overflow: hidden;
+  font-weight: 500;
   .burger {
     display: none;
   }
@@ -36,6 +37,7 @@
     font-size: 13px;
     text-align: center;
     align-self: center;
+    font-weight: 500;
   }
   .location {
     width: 90px;
@@ -126,7 +128,6 @@
         max-width: 80px;
         align-self: center;
         margin-right: 5px;
-        font-weight: initial;
         font-weight: 500;
       }
       svg {
