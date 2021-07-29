@@ -1,10 +1,7 @@
 import React, { useState, useEffect, useMemo } from "react";
-import { GetServerSideProps } from "next";
 import axios from "axios";
 import pack from "../RoundButton/styles/RoundButton.module.scss";
 import Styles from "../CardCourses/styles/card.module.scss";
-import RoundButton from "../RoundButton/RoundButton";
-import CourseModal from "../CourseModal/CourseModal";
 
 export default function CardCourses({ curso, lecciones, handleOpenModal }) {
   // console.log ('props', data)
@@ -24,7 +21,6 @@ export default function CardCourses({ curso, lecciones, handleOpenModal }) {
   useEffect(() => {
     const getUser = async () => {
       try {
-        // `https://dev-alba.herokuapp.com/users/mentor/${curso.authorId}`
         const { data } = await axios.get(
           `${process.env.NEXT_PUBLIC_API_URL}users/mentor/${curso.authorId}`
         );
@@ -49,6 +45,9 @@ export default function CardCourses({ curso, lecciones, handleOpenModal }) {
               <svg className={Styles.videoPlayer} />
               <span>{numLecciones}</span>
             </div>
+            <div>
+              <span>{curso.isFree === true ? 'Gratis' : `$ ${curso.price} mxn`}</span>
+            </div>
           </div>
           <span>{curso.description}</span>
         </article>
@@ -61,7 +60,7 @@ export default function CardCourses({ curso, lecciones, handleOpenModal }) {
         </button>
         <div className={Styles.cardFooter}>
           <span>
-            Por: {author.name} {author.lastName}
+            Por {author.name} {author.lastName}
           </span>
         </div>
       </div>

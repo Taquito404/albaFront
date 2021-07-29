@@ -14,6 +14,7 @@ const Leccion = () => {
   const { id } = router.query;
   const [curso, setCurso] = useState({});
   const [lecciones, setLecciones] = useState([]);
+  const [cursos, setCursos] = useState([]);
   const [user, setUser] = useState({});
   const [author, setAuthor] = useState({});
   const [hasPurchased, setHasPurchased] = useState(false);
@@ -64,6 +65,18 @@ const Leccion = () => {
       }
     };
     getProfile();
+
+    const getCourses = async () => {
+      try {
+        const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}courses`);
+        const filteredCourses = data.data.courses.filter(course => course.isFree === false);
+        setCursos(filteredCourses);
+      } catch (error) {
+        console.error(error)
+      }
+    }
+
+    getCourses()
     return () => {
       setUser({});
     };
@@ -147,27 +160,7 @@ const Leccion = () => {
         router.push("/login");
         return;
       }
-      if (!user.subscriptionId) {
-        setVisibilityToast({
-          error: true,
-          title: "Error",
-          message:
-            "No cuentas con la suscripción Pro. Favor de comprarla o cerrar este mensaje.",
-        });
-        setVisibilityModal(false);
-        return;
-      }
 
-      if (user.purchasedCourses.length >= 2) {
-        setVisibilityToast({
-          error: true,
-          title: "Error",
-          message:
-            "Cuentas con 2 cursos registrados para este mes, favor de validar.",
-        });
-        setVisibilityModal(false);
-        return;
-      }
       let options = {
         headers: {
           "Content-Type": "application/json;charset=UTF-8",
@@ -175,18 +168,53 @@ const Leccion = () => {
           auth: token,
         },
       };
-      //   "https://dev-alba.herokuapp.com/stripe/subscription"
-      const { data } = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URL}subscription`,
-        options
-      );
+      
+      if (curso.isFree === true) {
+        await axios.patch(`${process.env.NEXT_PUBLIC_API_URL}users/add-course`, { courseId: curso._id }, options);
+        setAddedCourse(true);
+        setAddedCourse(false);
+        setVisibilityModal(false);
+        return;
+      }
+
+      if (!user.subscriptionId) {
+        setVisibilityToast({
+          error: true,
+          title: "Error",
+          message:
+            "No cuentas con la suscripción Pro y el curso es de paga. Favor de comprarla o cerrar este mensaje.",
+        });
+        setVisibilityModal(false);
+        return;
+      }
+
+      let totalCourses = 0;
+
+      user.purchasedCourses.forEach(ownedCourse => {
+        cursos.forEach(course => {
+          if (ownedCourse.courseId === course._id) {
+            totalCourses += 1;
+          }
+        })
+      })
+
+      if (totalCourses >= 2) {
+        setVisibilityToast({
+          error: true,
+          title: "Error",
+          message:
+            "Cuentas con 2 cursos de pago registrados para este mes, favor de validar.",
+        });
+        setVisibilityModal(false);
+        return;
+      }
+
+
+      const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}stripe/subscription`, options);
 
       const endDate = new Date();
       endDate.setTime(data.data.subscription.current_period_end * 1000);
-      if (
-        today.getTime > endDate.getTime() ||
-        data.data.subscription.status !== "active"
-      ) {
+      if (today.getTime > endDate.getTime() || data.data.subscription.status !== "active") {
         setVisibilityToast({
           error: true,
           title: "Error",
@@ -195,16 +223,12 @@ const Leccion = () => {
         setVisibilityModal(false);
         return;
       }
-      ("https://dev-alba.herokuapp.com/users/add-course");
-      await axios.patch(
-        `${process.env.NEXT_PUBLIC_API_URL}users/add-course`,
-        { courseId: curso._id },
-        options
-      );
 
+      await axios.patch(`${process.env.NEXT_PUBLIC_API_URL}users/add-course`, { courseId: curso._id }, options);
       setAddedCourse(true);
       setAddedCourse(false);
       setVisibilityModal(false);
+
     } catch (error) {
       console.error(error);
     }

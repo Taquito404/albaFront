@@ -94,16 +94,18 @@
                     &:first-of-type {
                         background-color: $elementsColor;
                         &:hover {
-                            background-color: #1b9b8e;
-                            padding: 0.7rem 1.6rem;
+                            background-color: $navFooColor;
+                            border: none;
+                            color: white;
                         }
                     }
                     &:nth-child(2) {
                         background-color: #fff6f2;
                         color: rgba(0, 0, 0, 0.6);
                         &:hover {
-                            background-color: #1b9b8e;
-                            padding: 0.7rem 1.6rem;
+                            background-color: $navFooColor;
+                            border: none;
+                            color: white;
                         }
                     }
                 }
@@ -160,7 +162,7 @@
                 height: 150px;
                 .btnWrapper {
                     justify-content: center;
-                    &:first-of-type{
+                    &:first-of-type {
                         right: 5%;
                         bottom: -35px;
                         position: absolute;

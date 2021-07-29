@@ -4,10 +4,7 @@ import Head from "next/head";
 import { useRouter } from 'next/router';
 import axios from 'axios'
 import Cover from '../src/components/Cover/Cover'
-import CourseBar from '../src/components/CourseBar/CourseBar'
 import CardCourses from '../src/components/CardCourses/CardCourses'
-import Carussel from '../src/components/CarusselButton/CarusselButton'
-import DropDown from '../src/components/dropDownMenu/dropDown'
 import CourseModal from '../src/components/CourseModal/CourseModal'
 import Styles from '../styles/Suggested.module.scss'
 
@@ -15,11 +12,9 @@ export default function Sugeridos({ data }) {
     const [selectedCourse, setSelectedCourse] = useState(null)
     const [cursos, setCursos] = useState([]);
     const [mentor, setMentor] = useState({});
-
     const [lecciones, setLecciones] = useState([])
     const [curso, setCurso] = useState({})
     const router = useRouter()
-
 
     useEffect(() => {
         const getCursos = async () => {
