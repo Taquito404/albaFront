@@ -3,16 +3,16 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import axios from "axios";
 
-// import InputNav from "./inputNav";
+import InputNav from "./inputNav";
 import s from "./Navbar.module.scss";
-// import Drop from "./dropdownMenuNav/drop";
+import Drop from "./dropdownMenuNav/drop";
 import Burger from "./burgerMenu/burger/Burger";
 import Menu from "./burgerMenu/menu/Menu";
 import { useOnClickOutside } from "./burgerMenu/hooks";
 
 const Nav = () => {
   const router = useRouter();
-  // const [search, setSearch] = useState("");
+  const [search, setSearch] = useState("");
   const [logIn, setLogIn] = useState("hide");
   const [logOut, setLogOut] = useState("hide");
   const [open, setOpen] = useState(false);
@@ -80,14 +80,14 @@ const Nav = () => {
     }
   };
 
-  // const makeSearch = async (event) => {
-  //   event.preventDefault();
-  //   try {
-  //     await console.log(search);
-  //   } catch (error) {
-  //     console.log(error.message);
-  //   }
-  // };
+  const makeSearch = async (event) => {
+    event.preventDefault();
+    try {
+      await console.log(search);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
   return (
     <div>
       <div className={s.navTop}>
@@ -98,8 +98,8 @@ const Nav = () => {
         <Link href="/">
           <button className={s.btnLogo}></button>
         </Link>
-        {/*
-          <h3 className={s.location}>
+
+        <h3 className={s.location}>
           Tu ubicación:
           <br />
           ---
@@ -115,7 +115,7 @@ const Nav = () => {
           />
           <button className={s.search} id="search" type="submit" />
         </form>
-          */}
+
         <div className={s.settings}>
           <div onClick={toUserPage} className={s.user}>
             <svg />
@@ -153,7 +153,7 @@ const Nav = () => {
             <a>DONA ROPA Y ARTÍCULOS</a>
           </li>
         </ul>
-        {/* <a>ACCESO A PROVEEDORES</a> */}
+        <a>ACCESO A PROVEEDORES</a>
       </div>
     </div>
   );
