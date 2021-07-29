@@ -153,7 +153,7 @@ const Nav = () => {
             <a>DONA ROPA Y ARTÍCULOS</a>
           </li>
         </ul>
-        <a>ACCESO A PROVEEDORES</a>
+        {/* <a>ACCESO A PROVEEDORES</a> */}
       </div>
     </div>
   );
