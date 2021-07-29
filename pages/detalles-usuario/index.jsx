@@ -14,6 +14,7 @@ import Manos from "../../src/assets/img/iconos/NON-PROFIT.png";
 import Servicios from "../../src/assets/img/iconos/servicios-medicos-alba-maternidad.png";
 import Cursos from "../../src/assets/img/iconos/cursos-y-talleres-alba-maternidad.png";
 import perfil from "../../src/assets/img/perfil-de-usuario-movil.png";
+import perfilDesktop from "../../src/assets/img/perfil-usuario-alba-maternidad.png";
 
 import userDetailsStyles from "./styles/detallesUsuario.module.scss";
 import { useRouter } from "next/router";
@@ -89,26 +90,17 @@ const DetallesUsuario = () => {
               <li>Consultas</li>
               <li>Descargas</li>
               <li onClick={() => router.push("/detalles-usuario/mi-membresia")}>
-                Informacion de la cuenta
+                Información de la cuenta
               </li>
             </ul>
           </div>
 
           <div className={userDetailsStyles.userDetails}>
             <p>
-              Hola Usuario (¿no eres tú?{" "}
+              Hola {user.userName} (¿no eres tú?{" "}
               <span onClick={handleLogOut}>Cerrar sessión</span>)
             </p>
-            <p>
-              Desde el escritorio de tu cuenta puedes ver tus{" "}
-              <span>pedidos recientes</span>, gestionar tus{" "}
-              <span>direcciones de envío</span> y <span>facturación</span> ,{" "}
-              <span>editar tu contraseña</span> y{" "}
-              <span>los detalles de tu cuenta</span> y{" "}
-              <span onClick={() => router.push("/detalles-usuario/mi-membresia")}>
-                membresía.
-              </span>
-            </p>
+            
             <MenuCards
               userDetailsStyles={userDetailsStyles}
               Membresia={Membresia}
@@ -131,6 +123,9 @@ const DetallesUsuario = () => {
 
         <div className={userDetailsStyles.positionFixed}>
           <Image src={perfil} />
+        </div>
+        <div className={userDetailsStyles.positionFixedDesktop}>
+          <Image src={perfilDesktop} />
         </div>
       </div>
     </>
