@@ -1,4 +1,6 @@
 @import "../../../styles/variables.scss";
+@import url("https://fonts.googleapis.com/css2?family=Lexend:wght@100;300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 .navTop {
   font-family: Lexend;
@@ -34,10 +36,10 @@
     font-size: 13px;
     text-align: center;
     align-self: center;
-    font-weight: bold;
   }
   .location {
     width: 90px;
+    font-weight: 500;
   }
   .searchBar {
     display: flex;
@@ -79,6 +81,7 @@
   .settings {
     display: flex;
     margin-right: 2rem;
+
     .user {
       align-self: center;
       display: flex;
@@ -95,6 +98,7 @@
         max-width: 80px;
         // margin-right: 10px;
         text-align: left;
+        font-weight: 500;
       }
       svg {
         background-image: url(./img/USUARIO.png);
@@ -122,6 +126,8 @@
         max-width: 80px;
         align-self: center;
         margin-right: 5px;
+        font-weight: initial;
+        font-weight: 500;
       }
       svg {
         background-image: url("./img/logOut.svg");
@@ -181,6 +187,7 @@
         padding: 12px 0.25rem;
         text-align: center;
         align-self: center;
+        font-weight: initial;
       }
     }
   }

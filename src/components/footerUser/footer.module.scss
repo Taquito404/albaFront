@@ -1,9 +1,11 @@
 @import "../../../styles/variables.scss";
+@import url("https://fonts.googleapis.com/css2?family=Lexend:wght@100;300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
 .footer {
   font-family: Lexend;
-  font-weight: 200;
   height: max-content;
-  font-weight: 400;
+
   .disabled {
     color: rgba(128, 128, 128, 0.644);
     a:hover {
@@ -27,7 +29,7 @@
       li {
         text-align: center;
         margin: 0.5rem 0;
-        font-weight: bold;
+        font-weight: 400;
         &:hover {
           cursor: pointer;
           color: $elementsColor;
@@ -118,7 +120,7 @@
       margin: 0;
       font-size: 0.8rem;
       text-align: center;
-      font-weight: bold;
+      font-weight: 400;
     }
   }
 }
