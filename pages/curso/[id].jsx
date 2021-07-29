@@ -203,7 +203,7 @@ const Leccion = () => {
           error: true,
           title: "Error",
           message:
-            "Cuentas con 2 cursos de pago registrados para este mes, favor de validar.",
+            "Ya consumiste tus dos cursos mensuales, ¿deseas comprarlo de manera individual?",
         });
         setVisibilityModal(false);
         return;
@@ -249,8 +249,8 @@ const Leccion = () => {
       ) : null}
       {visibilityModal === true ? (
         <Modal
-          title="Advertencia, estas a punto de registrar el curso"
-          message="Despues de registrarlo no podras eliminarlo, deseas seguir?"
+          title="¿Estás segura de que quieres empezar este curso?"
+          message="Después de aceptarlo no podrás eliminarlo."
           handleClose={handleClose}
           handleConfirm={handleSelectCourse}
         />
@@ -276,7 +276,7 @@ const Leccion = () => {
 
         <div className={leccionStyles.contentWrapper}>
           <div className={leccionStyles.filterWrapper}>
-            <h3>Lecciones del curso {!lecciones ? "" : lecciones.length}</h3>
+            <h3>Capitulos del curso {!lecciones ? "" : lecciones.length}</h3>
           </div>
 
           <div className={leccionStyles.videosWrapper}>

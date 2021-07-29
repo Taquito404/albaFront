@@ -10,6 +10,7 @@
   font-family: "Lexend", sans-serif;
   overflow-wrap: break-word;
   overflow: hidden;
+  padding-top: 1.5rem;
   width: 100%;
   .userWrapper {
     display: flex;
@@ -138,6 +139,9 @@
   width: 100%;
 }
 
+.positionFixedDesktop {
+  display: none;
+}
 /* DESKTOP */
 
 @media only screen and (min-width: 768px) {
@@ -160,8 +164,8 @@
           display: flex;
           flex-flow: row wrap;
           font-family: "Playfair Display", serif;
-          justify-content: space-around;
-          margin-top: 50px;
+          justify-content: unset;
+          margin-top: unset;
           width: 100%;
           .cardMenu {
             background-color: white;
@@ -171,9 +175,9 @@
             display: flex;
             flex-flow: column wrap;
             justify-content: space-evenly;
+            margin-right: 20px;
             height: 150px;
-            margin: 10px 0;
-            width: 250px;
+            width: 220px;
             z-index: 99;
             div {
               &:first-of-type {
@@ -205,11 +209,20 @@
   }
 
   .positionFixed {
+    display: none;
     bottom: 0;
     left: 0;
     right: unset;
     height: auto;
     width: 40%;
+  }
+  .positionFixedDesktop {
+    bottom: -10px;
+    display: unset;
+    right: -12%;
+    height: auto;
+    position: absolute;
+    width: 90%;
   }
 }
 
@@ -218,7 +231,14 @@
     .userWrapper {
       .cardUser {
         height: 50vh;
-        width: 15%;
+        width: 20%;
+        .headerCard{
+          padding: 1rem;
+          justify-content: unset;
+          .userInfo{
+            margin-left: 10px;
+          }
+        }
       }
       .userDetails {
         width: 70%;

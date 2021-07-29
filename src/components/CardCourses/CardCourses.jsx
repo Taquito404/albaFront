@@ -35,7 +35,7 @@ export default function CardCourses({ curso, lecciones, handleOpenModal }) {
   return (
     <>
       <div className={`${Styles.card}`}>
-        <div>
+        <div className={Styles.imgWrapperCard}>
           <img src={curso.imgUrl} className={Styles.image}></img>
         </div>
         <article>
@@ -49,7 +49,7 @@ export default function CardCourses({ curso, lecciones, handleOpenModal }) {
               <span>{curso.isFree === true ? 'Gratis' : `$ ${curso.price} mxn`}</span>
             </div>
           </div>
-          <span>{curso.description}</span>
+          <span className={Styles.descriptionText}>{curso.description}</span>
         </article>
         <button
           onClick={() => handleOpenModal(curso)}

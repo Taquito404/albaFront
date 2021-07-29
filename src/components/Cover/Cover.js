@@ -8,10 +8,10 @@ export default function Cover({ cursos }) {
         <React.Fragment>
             <div className={Styles.headerWrapper}>
                 <div>
-                    <h3>Curso Recomendado</h3>
+                    <h3>Curso recomendado</h3>
                     <p>{cursos.length === 0 ? null : cursos[0].title}</p>
                     <p>{cursos.length === 0 ? null : cursos[0].description}</p>
-                    <button type="button" onClick={() => cursos.length === 0 ? null : router.push('/curso/' + cursos[0]._id)}>Ver mas</button>
+                    <button type="button" onClick={() => cursos.length === 0 ? null : router.push('/curso/' + cursos[0]._id)}>Ver más</button>
                 </div>
             </div>
 
