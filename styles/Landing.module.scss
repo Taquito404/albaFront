@@ -4,6 +4,12 @@
 
 .body {
   background-color: $backgroundColor;
+  background-image: url("./img/home-contacto-alba-maternidad.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position-y: 100%;
+  background-position-x: right;
+  background-size: 30rem;
   width: 100%;
   .backSide {
     display: none;
@@ -36,6 +42,52 @@
     h1 {
       font-weight: bold;
     }
+  }
+  .contact {
+    width: 250px;
+    height: 30rem;
+    margin-left: 15%;
+    flex-wrap: wrap;
+    svg {
+      width: 3.5rem;
+      height: 3.5rem;
+      margin: 0.5rem;
+    }
+    h1 {
+      font-family: "Playfair Display", serif;
+      font-weight: bold;
+      margin: 3rem 0;
+    }
+  }
+  .instagram {
+    background-image: url("./img/instagram.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  .linkedin {
+    background-image: url("./img/linkedin.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  .facebook {
+    background-image: url("./img/facebook.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  .whatsapp {
+    background-image: url("./img/whatsapp.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  .emailIcon {
+    background-image: url("./img/email.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  .tiktok {
+    background-image: url("./img/tiktok.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
   }
   .cards {
     display: flex;
