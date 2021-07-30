@@ -18,9 +18,11 @@ html,
 body {
   padding: 0;
   margin: 0;
+  font-weight: 400;
 }
 body p {
   font-family: Lexend;
+  font-weight: 400;
 }
 
 li a {
