@@ -43,6 +43,11 @@ const Footer = () => {
         </ul>
 
         <div className={s.contact}>
+          <Link href="/">
+            <a>
+              <svg className={s.btnLogo} />
+            </a>
+          </Link>
           <a href="https://www.instagram.com/alba.maternidad/">
             <svg className={s.instagram} />
           </a>
