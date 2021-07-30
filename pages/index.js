@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Vimeo from "@u-wave/react-vimeo";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import jwt from "jsonwebtoken";
@@ -10,6 +11,10 @@ import FreeCard from "../src/components/CardsSuscriptions/Free";
 import ProCard from "../src/components/CardsSuscriptions/Pro";
 
 import axios from "axios";
+import cursoT from '../src/assets/img/iconos/cursos-y-talleres-alba-maternidad.png'
+
+//import "react-responsive-carousel/lib/styles/carousel.min.css"; requires a loader
+//import { Carousel } from 'react-responsive-carousel';
 
 export default function Home() {
   const [isValidated, setIsValidated] = useState(false);
@@ -115,7 +120,59 @@ export default function Home() {
             </div>
             {
               //<CarouselComplete className={s.carousel} />
+
+              /*
+                <div className={s.carousel}>
+
+              <Carousel
+                autoPlay
+                showArrows={true}
+                showIndicators={false}
+                showStatus={false}
+                width={'100%'}
+              >
+                <div className={s.wrapperCards}>
+                  <div className={`${s.cardMenu}`}>
+                    <div>
+                      <Image
+                        src={cursoT}
+                      />
+                    </div>
+                    <h3>Cursos y talleres</h3>
+                    <p>Prepárate para las diferentes etapas de la maternidad con los mejores cursos en línea, impartidos por expertos certificados.</p>
+                  </div>
+                </div>
+
+                <div className={s.wrapperCards}>
+                  <div className={`${s.cardMenu}`}>
+                    <div>
+                      <Image
+                        src={cursoT}
+                      />
+                    </div>
+                    <h3>Cursos y talleres</h3>
+                    <p>Prepárate para las diferentes etapas de la maternidad con los mejores cursos en línea, impartidos por expertos certificados.</p>
+                  </div>
+                </div>
+
+                <div className={s.wrapperCards}>
+                  <div className={`${s.cardMenu}`}>
+                    <div>
+                      <Image
+                        src={cursoT}
+                      />
+                    </div>
+                    <h3>Cursos y talleres</h3>
+                    <p>Prepárate para las diferentes etapas de la maternidad con los mejores cursos en línea, impartidos por expertos certificados.</p>
+                  </div>
+                </div>
+              </Carousel>
+            </div>
+              */
             }
+
+
+
             <div className={s.cursos}>
               <div className={s.card}>
                 <h3>{cursos.length === 0 ? "" : cursos[0].title}</h3>
@@ -141,24 +198,26 @@ export default function Home() {
             </div>
             <div className={s.contact}>
               <h1>CONTACTO</h1>
-              <a href="https://www.instagram.com/alba.maternidad/">
-                <svg className={s.instagram} />
-              </a>
-              <a href="https://www.linkedin.com/company/alba-maternidad/">
-                <svg className={s.linkedin} />
-              </a>{" "}
-              <a href="https://www.facebook.com/alba.maternidad">
-                <svg className={s.facebook} />
-              </a>{" "}
-              <a href="https://wa.me/5215539376827">
-                <svg className={s.whatsapp} />
-              </a>
-              <a href="mailto:contacto@albamaternidad.com">
-                <svg className={s.emailIcon} />
-              </a>
-              <a href="https://www.tiktok.com/@alba.maternidad?_d=secCgYIASAHKAESMgowWtXuro32fJ278%2BciA22IxkfELt51%2Fs9QX%2Fw2Irp4AVZfgNESDYjjhT9IwcvnwpOdGgA%3D&checksum=f4818e366059819f58ccd400134abedc76ef2ad1b80f882b3419f2b0b0de28a7&language=es&sec_uid=MS4wLjABAAAAm-qdU47ZGTBidM_actIviWLAmEBZbccPTeIwPM39A3hWoRszu6WbzPFVqN2U2gTQ&sec_user_id=MS4wLjABAAAAm-qdU47ZGTBidM_actIviWLAmEBZbccPTeIwPM39A3hWoRszu6WbzPFVqN2U2gTQ&share_app_id=1233&share_author_id=6966298810503283717&share_link_id=12C79A96-35E4-47EF-B906-D3CBC29E1AAD&tt_from=whatsapp&u_code=dik79617kmjm7k&user_id=6966298810503283717&utm_campaign=client_share&utm_medium=ios&utm_source=whatsapp&source=h5_m&_r=1">
-                <svg className={s.tiktok} />
-              </a>
+              <div className={s.wrapperContact}>
+                <a href="https://www.instagram.com/alba.maternidad/">
+                  <svg className={s.instagram} />
+                </a>
+                <a href="https://www.linkedin.com/company/alba-maternidad/">
+                  <svg className={s.linkedin} />
+                </a>{" "}
+                <a href="https://www.facebook.com/alba.maternidad">
+                  <svg className={s.facebook} />
+                </a>{" "}
+                <a href="https://wa.me/5215539376827">
+                  <svg className={s.whatsapp} />
+                </a>
+                <a href="mailto:contacto@albamaternidad.com">
+                  <svg className={s.emailIcon} />
+                </a>
+                <a href="https://www.tiktok.com/@alba.maternidad?_d=secCgYIASAHKAESMgowWtXuro32fJ278%2BciA22IxkfELt51%2Fs9QX%2Fw2Irp4AVZfgNESDYjjhT9IwcvnwpOdGgA%3D&checksum=f4818e366059819f58ccd400134abedc76ef2ad1b80f882b3419f2b0b0de28a7&language=es&sec_uid=MS4wLjABAAAAm-qdU47ZGTBidM_actIviWLAmEBZbccPTeIwPM39A3hWoRszu6WbzPFVqN2U2gTQ&sec_user_id=MS4wLjABAAAAm-qdU47ZGTBidM_actIviWLAmEBZbccPTeIwPM39A3hWoRszu6WbzPFVqN2U2gTQ&share_app_id=1233&share_author_id=6966298810503283717&share_link_id=12C79A96-35E4-47EF-B906-D3CBC29E1AAD&tt_from=whatsapp&u_code=dik79617kmjm7k&user_id=6966298810503283717&utm_campaign=client_share&utm_medium=ios&utm_source=whatsapp&source=h5_m&_r=1">
+                  <svg className={s.tiktok} />
+                </a>
+              </div>
             </div>
           </div>
         </div>

@@ -123,21 +123,18 @@
     }
   }
 }
-@media (max-width: 480px) {
+
+@media (max-width: 481px) {
   .footer {
     .container {
       padding: 1rem;
     }
     .contact {
-      flex-direction: column;
-      justify-content: space-evenly;
-      flex-wrap: wrap;
-      align-content: space-evenly;
+      flex-flow: column wrap;
+      justify-content: space-between;
+      align-content: center;
       height: 150px;
-      padding-left: 20px;
-      div {
-        align-self: center;
-      }
+      
       a {
         width: 30px;
       }
