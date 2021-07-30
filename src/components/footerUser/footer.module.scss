@@ -18,6 +18,7 @@
     height: max-content;
     background-color: $navFooColor;
     justify-content: space-evenly;
+    justify-content: space-between;
     padding: 1rem 5%;
     align-items: center;
     font-family: "Lexend";
@@ -36,24 +37,6 @@
           transition: all 0.4s ease;
         }
       }
-      .btnLogo {
-        background-image: url("../navbarUser/img/Group.svg");
-        background-repeat: no-repeat;
-        background-size: contain;
-        height: 50px;
-        width: 60px;
-        border-radius: 10px;
-        &:hover {
-          transform: scale(1.5);
-          transition: all 0.4s ease;
-        }
-      }
-      &:first-of-type {
-        width: 30%;
-        li {
-          text-align: left;
-        }
-      }
     }
     .contact {
       width: 30%;
@@ -70,6 +53,22 @@
           }
         }
       }
+      .btnLogo {
+        background-image: url("../navbarUser/img/Group.svg");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 50px;
+        width: 60px;
+        border-radius: 10px;
+        &:hover {
+          transform: scale(1.5);
+          transition: all 0.4s ease;
+        }
+      }
+      // &:first-of-type {
+      //   width: 30%;
+      //   align-self: center;
+      // }
       .instagram {
         background-image: url("./img/instagram.svg");
         background-repeat: no-repeat;

@@ -18,12 +18,10 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-weight: 400;
   font-display: fallback;
 }
 body p {
   font-family: "Lexend";
-  font-weight: 400;
 }
 
 li a {
@@ -36,6 +34,5 @@ li a {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  font-weight: 400;
   font-display: fallback;
 }
